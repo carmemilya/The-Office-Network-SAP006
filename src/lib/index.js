@@ -1,6 +1,7 @@
 // aqui você exportará as funções que precisa
 
-export const myFunction = () => {
-  // aqui vai seu código
-  console.log('Olá mundo!');
-};
+// export const myFunction = () => {
+//  const container = document.createElement("div");
+//   console.log('Olá mundo!');
+// };
+
