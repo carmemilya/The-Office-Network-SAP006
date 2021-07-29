@@ -1,9 +1,8 @@
-//  import {createUser} from "./lib/services/index.js"
-
-export const Register = () => {
-    console.log("test")
+export const Login = () =>{
     const rootElement = document.createElement("div");
-    rootElement.innerHTML = `
+    rootElement.innerHTML = 
+ //---------------------------alterar para tela de Login-------------------------------------------
+    `
     <h1>Cadastre-se</h1>
     <div class= "container">
       <hr>
@@ -29,21 +28,6 @@ export const Register = () => {
     </div>
 
     `;
+ //-------------------------------------------------------------------------------------------
     return rootElement
-}  
-
-// export const registrerUser = () =>{
-//     const email = document.querySelector("#nameEmail");
-//     const password = document.querySelector("#psw");
-//     createUser(email.value, password.value)  
-// }
-  
-// btnCadastro.addEventListener("click", registrerUser)
-
-    // const botao = rootElement.querySelector("#pageLogin");
-    // botao.addEventListener("click", () => {
-    //     window.history.pushState({}, "", "/Login");
-    //     const popstateEvent = new PopStateEvent("popstate", {state:{}});
-    //     dispatchEvent(popstateEvent);
-    // })
-
+}

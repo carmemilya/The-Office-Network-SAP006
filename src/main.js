@@ -1,16 +1,14 @@
-import {Register} from './lib/signup/index.js';
-
-const main = document.querySelector("#root")
-
-window.addEventListener("load", () => {
-  main.appendChild(Register());
-})
-
- 
+// anotações de codigo (não vamos usar o main por enquanto)
 
 
+//persistencia da usuario na pagina firebase ou sessionStorege metodo javascript
 
-
+//promessas fetch("endereço")
+ //.then()
+ //.then()
+ //.catch(error){
+//    exibe erro
+//  }
 
 
 // firebase.auth().createUserWithEmailAndPassword(email, password)

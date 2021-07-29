@@ -1,16 +1,24 @@
-//   import {Register} from "./lib/signup/index.js"
+import {Register} from "./pages/signup/index.js"
+import {Login} from "./pages/login/index.js"
 
-//  const routRender = () =>{
-//      const elemento = document.querySelector("#root");
-//      const routes = {
-//         // "/":Login
-//          "/Cadastro":Register
-//      }
-//      elemento.innerHTML = "";
-//      elemento.appendChild(routes[window.location.pathname]())
-//  }
+const routeRender = () =>{
+    const element = document.querySelector('#root');
+  
+    const routes =  {
+         "/":Login,
+        "/login":Register
+        // "/Feed": Feed,
+        //"/Publicacao": Publicar
 
-//  window.addEventListener("popstate", routRender)
-//  window.addEventListener("load", () => {
-//      routRender();
-// })
+    } 
+
+     
+    element.innerHTML = "";
+    element.appendChild(routes[window.location.pathname]());
+    console.log(window.location.pathname)
+}
+
+window.addEventListener("popstate", routeRender)
+window.addEventListener("load", () => {
+   routeRender();
+})
