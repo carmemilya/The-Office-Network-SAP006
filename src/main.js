@@ -1,43 +1,33 @@
-// Este é o ponto de entrada da sua aplicação
+import { Register } from './pages/signup/index.js';
 
-// import { myFunction } from './lib/index.js';
+const main = document.querySelector("#root"),
+window.addEventListener("load", () => {
+  main.appendChild(Register());
+});
 
-// myFunction();
+// firebase.auth().createUserWithEmailAndPassword(email, password)
+//   .then((userCredential) => {
+//     // Signed in
+//     const user = userCredential.user;
+//     console.log("deu bom", user);
+//     // ...
+//   })
+//   .catch((error) => {
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
 
-// Criar por DOM -
-const email = 'thalita.neves24@gmail.com';
-const password = 'Tete300';
+//     // ..
+//     console.log ("Aqui deu ruim", errorCode, errorMessage);
+//   });
 
-// Retorna PROMISSE - Metodo ASSÍNCRONO.
-// Se retornar THEN, promessa deu certo - Se retornar CATCH, promessa deu errada.
+// }
 
-// Novos usuários
+// buttonEntrar.addEventListener("click", autenticar)
 
-firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+// const Autentic = () =>{
+//   createUser(inpu)
+// }
 
-// Login de usuários existentes.
+// buttonEntrar.addEventListener("click", autenticar)
 
-firebase.auth().signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
 
-// Fazer Login com provedor do GOOGLE.
-
-const provider = new firebase.auth.GoogleAuthProvider();
