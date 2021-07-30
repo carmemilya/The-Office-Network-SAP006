@@ -1,17 +1,22 @@
-// COLOCAR AS ROTAS DO SITE
-// COMO VAI ABRIR
-import { Register } from "./pages/signup/index.js"
+import { Login } from './pages/login/index.js';
+import { Register } from './pages/sign-up/index.js';
+import { Feed } from './pages/feed/index.js';
 
-const routRender = () =>{
-  const elemento = document.querySelector('#root');
+const routeRender = () => {
+  const element = document.querySelector('#root');
   const routes = {
-    //"/":Login
-    "/Cadastro":Register
-  },
-  elemento.innerHTML = "";
-  elemento.appendChild(routes[window.location.pathname]())
-}
-window.addEventListener("popstate", routRender);
+    '/': Login,
+    '/cadastro': Register,
+    '/feed': Feed,
+    // "/publicacao": Publicar
+
+  };
+
+  element.innerHTML = '';
+  element.appendChild(routes[window.location.pathname]());
+};
+
+window.addEventListener('popstate', routeRender);
 window.addEventListener('load', () => {
-  routRender();
+  routeRender();
 });
