@@ -3,7 +3,7 @@ export const Login = () =>{
     rootElement.innerHTML = 
  //---------------------------alterar para tela de Login-------------------------------------------
     `
-    <h1>Cadastre-se</h1>
+    <h1>Entre</h1>
     <div class= "container">
       <hr>
         <label class="completeName"><b>Nome</b></label>
@@ -23,11 +23,21 @@ export const Login = () =>{
         <button id= "cadatroGoogle">Cadastrar com a conta Google</button>
     
      <div class="entrarLogin">
-        <p>Já tem uma conta?<a href="login" class="pageLogin"> Entre</a></p>
+        <p class="pageLogin">Já tem uma conta? Entre</p>
      </div>
     </div>
 
     `;
  //-------------------------------------------------------------------------------------------
-    return rootElement
+   
+        const botao = rootElement.querySelector(".pageLogin");
+
+        botao.addEventListener("click", function () {
+            window.history.pushState({}, "", "/cadastro");
+            const popstateEvent = new PopStateEvent("popstate", {state:{}});
+            dispatchEvent(popstateEvent);
+        })
+   
+  return rootElement
+
 }
