@@ -15,10 +15,7 @@ export const Register = () => {
       <label class="psw-repeat"><b>Repetir senha</b></label>
       <input id="senha" placeholder="Digite uma senha 6 digitos"></input>
     <hr>
-  
-      <button id= "btnCadastro">Cadastrar</button>
-      <button id= "cadatroGoogle">Cadastrar com a conta Google</button>
-  
+      <button id= "btnCadastro">Cadastrar</button>  
    <div class="entrarLogin">
       <p>Já tem uma conta? <u class="pageLogin"> Entre</u></p>
    </div>

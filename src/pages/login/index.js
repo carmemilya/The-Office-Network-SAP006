@@ -1,20 +1,18 @@
-// Tudo que for relacionado a login - login com e-mail e senha - login com google
-// Redefinir senha
-// Cadastro
+import { signInGoogle, usuarioExistente } from '../../services/index.js';
 export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
     <h1>The Office Network</h1>
     <div class= "container">
       <hr>
-        <input id= "emailLogin" placeholder="Digite seu e-mail"></input>
-        <input id="senhaLogin" placeholder="Digite sua senha"></input>
+        <input id= "email-login" placeholder="Digite seu e-mail"></input>
+        <input id="senha-login" placeholder="Digite sua senha"></input>
         <p>Esqueceu a senha?</p>
         <button id="btnEntrar">Entrar</button>
         <p>OU</p>
       <hr>
 
-        <button id= "cadastroGoogle">Cadastrar com a conta Google</button>
+        <button id= "google">Entrar com a conta Google</button>
     
      <div class="entrarLogin">
         <p>Não tem conta? <u class="pageCadastro" id="leva-tela-cadastro">Cadastre-se</u></p>
@@ -24,6 +22,7 @@ export const Login = () => {
     `;
 
   const btnEntrar = rootElement.querySelector('#btnEntrar');
+  const googleBotao = rootElement.querySelector('#google');
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
 
   btnEntrar.addEventListener('click', () => {
@@ -38,5 +37,8 @@ export const Login = () => {
     dispatchEvent(popStateEvent);
   });
 
+  googleBotao.addEventListener('click', () => {
+    signInGoogle();
+  });
   return rootElement;
 };

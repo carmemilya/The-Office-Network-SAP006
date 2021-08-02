@@ -1,18 +1,3 @@
-// Login de novos usuários
-export const createUser = (email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-    // Signed in
-      const user = userCredential.user;
-    // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
-};
-
 // Login de usuários existentes
 export const usuarioExistente = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -37,3 +22,7 @@ export const sairDaConta = () => {
   });
 };
 
+export const signInGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(provider);
+};

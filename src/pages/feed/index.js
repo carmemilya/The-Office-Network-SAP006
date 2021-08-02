@@ -17,8 +17,8 @@ export const Feed = () => {
   const cadastro = rootElement.querySelector('.sair');
   cadastro.addEventListener('click', () => {
     window.history.pushState({}, '', '/');
-    const popstateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popstateEvent);
+    const popStateEvent = new PopStateEvent('popstate', { state: {} });
+    dispatchEvent(popStateEvent);
   });
   return rootElement;
 };
