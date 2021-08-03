@@ -1,4 +1,4 @@
-import { signInGoogle, usuarioExistente } from '../../services/index.js';
+import { signInGoogle, existingUser } from '../../services/index.js';
 export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
@@ -6,8 +6,8 @@ export const Login = () => {
     <div class= "container">
       <hr>
         <input id= "email-login" placeholder="Digite seu e-mail"></input>
-        <input id="senha-login" placeholder="Digite sua senha"></input>
-        <p>Esqueceu a senha?</p>
+        <input id="senha" type="password" placeholder="Digite sua senha"></input>
+        <p id= "reset"> <u>Esqueceu a senha?</u></p>
         <button id="btnEntrar">Entrar</button>
         <p>OU</p>
       <hr>
@@ -22,8 +22,13 @@ export const Login = () => {
     `;
 
   const btnEntrar = rootElement.querySelector('#btnEntrar');
+  const resetarSenha = rootElement.querySelector('#reset');
   const googleBotao = rootElement.querySelector('#google');
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
+
+  // btnEntrar.addEventListener ('click', () => {
+  //   existingUser();
+  // });
 
   btnEntrar.addEventListener('click', () => {
     window.history.pushState({}, '', '/feed');
@@ -40,5 +45,6 @@ export const Login = () => {
   googleBotao.addEventListener('click', () => {
     signInGoogle();
   });
+
   return rootElement;
 };
