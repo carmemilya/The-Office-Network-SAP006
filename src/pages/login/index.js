@@ -1,43 +1,45 @@
-export const Login = () =>{
-    const rootElement = document.createElement("div");
-    rootElement.innerHTML = 
- //---------------------------alterar para tela de Login-------------------------------------------
-    `
-    <h1>Entre</h1>
+import { signInGoogle } from '../../services/index.js';
+
+export const Login = () => {
+  const rootElement = document.createElement('div');
+  rootElement.innerHTML = `
+    <h1>The Office Network</h1>
     <div class= "container">
       <hr>
-        <label class="completeName"><b>Nome</b></label>
-        <input placeholder="Nome Completo">
-
-        <label class="nameEmail"><b>Email</b></label>
-        <input id= "email" placeholder="Digite seu e-mail"></input>
-
-        <label class="psw"><b>Senha</b></label>
-        <input id="senha" placeholder="Digite uma senha 6 digitos"></input>
-
-        <label class="psw-repeat"><b>Repetir senha</b></label>
-        <input id="senha" placeholder="Digite uma senha 6 digitos"></input>
+        <input id= "email-login" placeholder="Digite seu e-mail"></input>
+        <input id="senha-login" placeholder="Digite sua senha"></input>
+        <p>Esqueceu a senha?</p>
+        <button id="btnEntrar">Entrar</button>
+        <p>OU</p>
       <hr>
-    
-        <button id= "btnCadastro">Cadastrar</button>
-        <button id= "cadatroGoogle">Cadastrar com a conta Google</button>
+
+        <button id= "google">Entrar com a conta Google</button>
     
      <div class="entrarLogin">
-        <p class="pageLogin">Já tem uma conta? Entre</p>
+        <p>Não tem conta? <u class="pageCadastro" id="leva-tela-cadastro">Cadastre-se</u></p>
      </div>
     </div>
 
     `;
- //-------------------------------------------------------------------------------------------
-   
-        const botao = rootElement.querySelector(".pageLogin");
 
-        botao.addEventListener("click", function () {
-            window.history.pushState({}, "", "/cadastro");
-            const popstateEvent = new PopStateEvent("popstate", {state:{}});
-            dispatchEvent(popstateEvent);
-        })
-   
-  return rootElement
+  const btnEntrar = rootElement.querySelector('#btnEntrar');
+  const googleBotao = rootElement.querySelector('#google');
+  const cadastro = rootElement.querySelector('#leva-tela-cadastro');
 
-}
+  btnEntrar.addEventListener('click', () => {
+    window.history.pushState({}, '', '/feed');
+    const popstateEvent = new PopStateEvent('popstate', { state: {} });
+    dispatchEvent(popstateEvent);
+  });
+
+  cadastro.addEventListener('click', () => {
+    window.history.pushState({}, '', '/cadastro');
+    const popStateEvent = new PopStateEvent('popstate', { state: {} });
+    dispatchEvent(popStateEvent);
+  });
+
+  googleBotao.addEventListener('click', () => {
+    signInGoogle();
+  });
+  return rootElement;
+};

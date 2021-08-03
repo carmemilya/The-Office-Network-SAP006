@@ -1,21 +1,23 @@
-import {Login} from "./pages/login/index.js"
-import {Register} from "./pages/signup/index.js"
+import { Login } from './pages/login/index.js';
+import { Register } from './pages/sign-up/index.js';
+import { Feed } from './pages/feed/index.js';
 
+const routeRender = () => {
+  const element = document.querySelector('#root');
+  const routes = {
+    '/': Login,
+    '/cadastro': Register,
+    '/feed': Feed,
+    // '/publicacao": Publicar
+    // '/perfil": Perfil
 
-const routeRender = () =>{
-    const element = document.querySelector('#root');
-  
-    const routes =  {
-         "/":Login,
-         "/cadastro":Register
-        // "/Feed": Feed,
-        //"/Publicacao": Publicar
-    }
-    element.innerHTML = "";
-    element.appendChild(routes[window.location.pathname]());   
-}
+  };
 
-window.addEventListener("popstate", routeRender)
-window.addEventListener("load", () => {
-   routeRender();
-})
+  element.innerHTML = '';
+  element.appendChild(routes[window.location.pathname]());
+};
+
+window.addEventListener('popstate', routeRender);
+window.addEventListener('load', () => {
+  routeRender();
+});

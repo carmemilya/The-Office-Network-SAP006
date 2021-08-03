@@ -21,7 +21,7 @@
 //   .catch((error) => {
 //     var errorCode = error.code;
 //     var errorMessage = error.message;
-    
+
 //     // ..
 //     console.log ("Aqui deu ruim", errorCode, errorMessage);
 //   });
@@ -35,3 +35,5 @@
 // }
 
 // buttonEntrar.addEventListener("click", autenticar)
+
+
