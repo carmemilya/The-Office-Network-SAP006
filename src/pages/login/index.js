@@ -1,4 +1,5 @@
 import { signInGoogle, existingUser } from '../../services/index.js';
+
 export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
@@ -22,13 +23,9 @@ export const Login = () => {
     `;
 
   const btnEntrar = rootElement.querySelector('#btnEntrar');
-  const resetarSenha = rootElement.querySelector('#reset');
+  // const resetarSenha = rootElement.querySelector('#reset');
   const googleBotao = rootElement.querySelector('#google');
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
-
-  // btnEntrar.addEventListener ('click', () => {
-  //   existingUser();
-  // });
 
   btnEntrar.addEventListener('click', () => {
     window.history.pushState({}, '', '/feed');
