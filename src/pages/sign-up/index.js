@@ -28,9 +28,9 @@ export const Register = () => {
             </div>
             <label class="msgPassword"></label>
           
-        
+          
             <button class= "btnCadastro">Cadastrar</button>
-        
+          
             <div class="entrarLogin">
             <p>Já tem uma conta?<a class="pageLogin"> Entre</a></p>
             </div>

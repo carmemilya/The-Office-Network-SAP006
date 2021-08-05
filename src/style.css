@@ -35,3 +35,8 @@ p u {
 .passwordRegister, .repeatPassword{
     width: 99%;
 }
+
+.inconHome{
+  display: flex;
+  justify-content: space-between;
+}
