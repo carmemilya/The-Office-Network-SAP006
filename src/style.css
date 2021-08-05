@@ -1,4 +1,10 @@
 .container{
+    
+    display: flex;
+    flex-direction: column;
+    flex-flow: row ;
+}
+.container{
     display: flex;
     flex-direction: column;
 }
@@ -6,7 +12,9 @@
 .entrarLogin{
     text-align: center;
 }
-
+.btnCadastro{
+    justify-content: center;
+}
 .footer{
     position:absolute;
     bottom:0;
@@ -15,4 +23,15 @@
 
 p u {
     cursor: pointer;
+}
+.eye, .eyeRepeat{
+    
+    cursor: pointer;
+    left: 95%;
+    position: absolute;
+    width: 20px;
+    
+}
+.passwordRegister, .repeatPassword{
+    width: 99%;
 }

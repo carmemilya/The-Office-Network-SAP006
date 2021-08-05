@@ -1,4 +1,5 @@
-import { signInGoogle, existingUser } from '../../services/index.js';
+import { signInGoogle } from '../../services/index.js';
+import { navigation } from '../../routes/navigation.js';
 
 export const Login = () => {
   const rootElement = document.createElement('div');
@@ -28,20 +29,15 @@ export const Login = () => {
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
 
   btnEntrar.addEventListener('click', () => {
-    window.history.pushState({}, '', '/feed');
-    const popstateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popstateEvent);
-  });
-
-  cadastro.addEventListener('click', () => {
-    window.history.pushState({}, '', '/cadastro');
-    const popStateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popStateEvent);
+    navigation('/feed');
   });
 
   googleBotao.addEventListener('click', () => {
-    signInGoogle();
+    signInGoogle().then(() => navigation('/feed'));
   });
 
+  cadastro.addEventListener('click', () => {
+    navigation('/cadastro');
+  });
   return rootElement;
 };
