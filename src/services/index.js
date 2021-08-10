@@ -1,45 +1,42 @@
-// Criar conta
+import { navigation } from '../routes/navigation.js';
 
+// Login de usuários existentes
+export const existingUser = (email, password, errorFunction) => {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      navigation('/feed');
+      const user = userCredential.user;
+      return user;
+    })
+    .catch((error) => {
+      const erros = error.code;
+      errorFunction(erros);
+      console.log(erros);
+    });
+};
+
+// Login com o Google - Está funcionando (APARENTEMENTE)
+export const signInGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  const result = firebase.auth().signInWithPopup(provider);
+  return result;
+};
+
+// Criar conta - Está Funcionando (APARENTEMENTE)
 export const createUser = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log('deu bom', user);
+      return user;
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log ('Aqui deu ruim', errorCode, errorMessage);
-    });
-};
-// Login de usuários existentes
-export const existingUser = (email, password) => {
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-    // Signed in
-      const user = userCredential.user;
-      console.log('deu bom', user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('Aqui deu ruim', errorCode, errorMessage);
-    });
+    .catch((error) => error.code);
 };
 
-// Sair
-export const sairDaConta = () => {
+/// Desconectar Usuário
+export const signOut = () => {
   firebase.auth().signOut().then(() => {
-  // Sign-out successful.
   }).catch((error) => {
-  // An error happened.
   });
 };
 
-// Login com o Google
-export const signInGoogle = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup()
-    .then((result) => result)
-    .catch(error => error);
-};
+// Botão de resetar a senha  <3

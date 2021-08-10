@@ -1,3 +1,6 @@
+import { navigation } from '../../routes/navigation.js';
+import { signOut } from '../../services/index.js';
+
 export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
@@ -13,12 +16,10 @@ export const Feed = () => {
       </div>
   
       `;
-
-  const cadastro = rootElement.querySelector('.sair');
-  cadastro.addEventListener('click', () => {
-    window.history.pushState({}, '', '/');
-    const popStateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popStateEvent);
+  // Acho que tá funcionando kkkcrying
+  const sair = rootElement.querySelector('.sair');
+  sair.addEventListener('click', () => {
+    signOut().then(() => navigation('/'));
   });
   return rootElement;
 };
