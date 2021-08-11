@@ -1,4 +1,4 @@
-import { signInGoogle, existingUser } from '../../services/index.js';
+import { signInGoogle, existingUser, resetarSenha } from '../../services/index.js';
 import { navigation } from '../../routes/navigation.js';
 
 export const Login = () => {
@@ -31,22 +31,27 @@ export const Login = () => {
   const password = rootElement.querySelector('#senha');
   const msgErro = rootElement.querySelector('#error-message');
   const btnEntrar = rootElement.querySelector('#btnEntrar');
-  // const resetarSenha = rootElement.querySelector('#reset');
+  const trocarSenha = rootElement.querySelector('#reset');
   const googleBotao = rootElement.querySelector('#google');
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
 
-  // const errorFunction = (error) => {
-  //   if (error.code === 'auth/wrong-password') {
-  //     console.log(error.code);
-  //     console.log('deu erro');
-  //     msgErro.innerHTML = 'Senha incorreta';
-  //   }
-  // };
+  const errorFunction = (error) => {
+    if (error.code === 'auth/wrong-password') {
+      msgErro.innerHTML = 'Senha incorreta';
+    } else if (error.code === 'auth/invalid-email') {
+      msgErro.innerHTML = 'E-mail incorreto';
+    }
+  };
 
   btnEntrar.addEventListener('click', (e) => {
     e.preventDefault();
-    existingUser(email.value, password.value);
+    existingUser(email.value, password.value, errorFunction);
   });
+
+  // resetarSenha.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   resetarSenha().then(() => navigation('/'));
+  // });
 
   googleBotao.addEventListener('click', (e) => {
     e.preventDefault();

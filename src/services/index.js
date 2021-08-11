@@ -8,10 +8,19 @@ export const existingUser = (email, password, errorFunction) => {
       const user = userCredential.user;
       return user;
     })
+    .catch((error) => errorFunction(error));
+};
+
+export const resetarSenha = (email) => {
+  firebase.auth().sendPasswordResetEmail(email)
+    .then(() => {
+    // Password reset email sent!
+    // ..
+    })
     .catch((error) => {
-      const erros = error.code;
-      errorFunction(erros);
-      console.log(erros);
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    // ..
     });
 };
 
