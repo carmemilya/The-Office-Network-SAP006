@@ -42,19 +42,7 @@ export const createUser = (email, password) => {
 };
 
 // Manter usuário logado
-export const mantemConectado = (callback) => firebase.auth().onAuthStateChanged(callback);
-
-// export const manterConectado = () => {
-//   firebase.auth().onAuthStateChanged((user) => {
-//     if (user.uid) {
-//       const uid = user.uid;
-//       navigation('/feed');
-//       // ...
-//     } else {
-//       navigation('/');
-//     }
-//   });
-// };
+export const manterConectado = (user) => firebase.auth().onAuthStateChanged(user);
 
 /// Desconectar Usuário
 export const signOut = () => firebase.auth().signOut();

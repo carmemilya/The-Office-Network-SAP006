@@ -8,7 +8,10 @@ export const Login = () => {
     <form class= "container">
       <hr>
         <input id= "email-login" placeholder="Digite seu e-mail"></input>
-        <input id="senha" type="password" placeholder="Digite sua senha"></input>
+        <fieldset>
+          <input id="senha" type="password" placeholder="Digite sua senha"></input>
+          <img src="" alt="">
+        </fieldset>
         <p id='error-message'></p>
 
         <p id= "reset"> <u>Esqueceu a senha?</u></p>
