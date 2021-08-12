@@ -1,4 +1,5 @@
 import { signInGoogle } from '../../services/index.js';
+import { navigation } from '../../routes/navigation.js';
 
 export const Login = () => {
   const rootElement = document.createElement('div');
@@ -7,8 +8,8 @@ export const Login = () => {
     <div class= "container">
       <hr>
         <input id= "email-login" placeholder="Digite seu e-mail"></input>
-        <input id="senha-login" placeholder="Digite sua senha"></input>
-        <p>Esqueceu a senha?</p>
+        <input id="senha" type="password" placeholder="Digite sua senha"></input>
+        <p id= "reset"> <u>Esqueceu a senha?</u></p>
         <button id="btnEntrar">Entrar</button>
         <p>OU</p>
       <hr>
@@ -23,23 +24,20 @@ export const Login = () => {
     `;
 
   const btnEntrar = rootElement.querySelector('#btnEntrar');
+  // const resetarSenha = rootElement.querySelector('#reset');
   const googleBotao = rootElement.querySelector('#google');
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
 
   btnEntrar.addEventListener('click', () => {
-    window.history.pushState({}, '', '/feed');
-    const popstateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popstateEvent);
-  });
-
-  cadastro.addEventListener('click', () => {
-    window.history.pushState({}, '', '/cadastro');
-    const popStateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popStateEvent);
+    navigation('/feed');
   });
 
   googleBotao.addEventListener('click', () => {
-    signInGoogle();
+    signInGoogle().then(() => navigation('/feed'));
+  });
+
+  cadastro.addEventListener('click', () => {
+    navigation('/cadastro');
   });
   return rootElement;
 };

@@ -4,9 +4,17 @@
     flex-direction: column;
     flex-flow: row ;
 }
-.container{
+.tamplete-register{
+    display: flex;
+    width: 50%; 
+    height: 30%;
+}
+.container-register{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
 
 .entrarLogin{
@@ -14,11 +22,26 @@
 }
 .btnCadastro{
     justify-content: center;
+    background-color: #161616;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-color: #161616;
+    color: #FFFFFF;
 }
 .footer{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position:absolute;
     bottom:0;
-    width:100%;
+    width:100%; 
+    height: 5%;
+    left: 0%;
+    background: #161616;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 80%;
+    color: #FFFFFF;
+
 }
 
 p u {
@@ -34,6 +57,9 @@ p u {
 }
 .passwordRegister, .repeatPassword{
     width: 99%;
+    background: #F3EEEE;
+    border: none;
+    height: 100%; ; 
 }
 
 .inconHome{

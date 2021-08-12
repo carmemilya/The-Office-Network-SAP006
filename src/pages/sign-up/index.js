@@ -1,12 +1,13 @@
-import { createUser } from '../../services/index.js';
+import { createUser, creatFormUser } from '../../services/index.js';
+import { navigation } from '../../routes/navigation.js';
 
 export const Register = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
       
-      <fieldset>
+      <fieldset class="tamplete-register">
       <legend>Cadastre-se</legend>
-        <form class= "container">
+        <form class= "container-register">
           
             <label class="UserName"><b>Nome</b></label>
             <input class="completeName" ="type="text" placeholder="Nome Completo">
@@ -47,6 +48,10 @@ export const Register = () => {
   const createUserButton = rootElement.querySelector('.btnCadastro');
   const botao = rootElement.querySelector('.pageLogin');
 
+  botao.addEventListener('click', () => {
+    navigation('/');
+  });
+
   viewPasswordRepeat.addEventListener('click', () => {
     if (passwordRepeat.type === 'password') {
       passwordRepeat.type = 'text';
@@ -69,26 +74,19 @@ export const Register = () => {
     const emailUser = emailInput.value;
     const password = passwordInput.value;
     const confirmPassword = passwordRepeat.value;
-    if (password !== confirmPassword) {
-      passwordMessage.innerHTML = 'As senhas devem ser iguais';
-    }
+
     if (userName === '' || emailUser === '' || password === '' || confirmPassword === '') {
       passwordMessage.innerHTML = 'Todos os campos devem ser preenchidos';
-    }
-    if (password.length < 6 || confirmPassword.length < 6) {
+    } else if (password !== confirmPassword) {
+      passwordMessage.innerHTML = 'As senhas devem ser iguais';
+    } else if (password.length <= 5 || confirmPassword.length <= 5) {
       passwordMessage.innerHTML = 'A senha deve ter no minimo 6 caracteres';
     } else {
-      window.history.pushState({}, '', '/feed');
-      const popstateEvent = new PopStateEvent('popstate', { state: {} });
-      dispatchEvent(popstateEvent);
       createUser(emailUser, password);
+      creatFormUser(userName, emailUser);
+      navigation('/feed');
     }
   });
 
-  botao.addEventListener('click', () => {
-    window.history.pushState({}, '', '/');
-    const popstateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popstateEvent);
-  });
   return rootElement;
 };
