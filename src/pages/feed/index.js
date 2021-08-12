@@ -7,18 +7,19 @@ export const Feed = () => {
       <h1>The Office Network</h1>
       <div class= "container">
         <hr>
-            <p>FEED DE NOTICIAS TEY TEY</p>
+            <p>FEED DE NOTICIAS TEY TEY ffffff</p>
         <hr>
       
        <div class="entrarLogin">
-          <p class="sair">SAIR</p>
+          <p id="sair-da-conta" class="sair">SAINDO COM ARROZ</p>
        </div>
       </div>
   
       `;
   // Acho que tá funcionando kkkcrying
-  const sair = rootElement.querySelector('.sair');
-  sair.addEventListener('click', () => {
+  const sair = rootElement.querySelector('#sair-da-conta');
+  sair.addEventListener('click', (e) => {
+    e.preventDefault();
     signOut().then(() => navigation('/'));
   });
   return rootElement;

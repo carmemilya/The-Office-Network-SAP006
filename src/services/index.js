@@ -11,18 +11,18 @@ export const existingUser = (email, password, errorFunction) => {
     .catch((error) => errorFunction(error));
 };
 
-export const resetarSenha = (email) => {
-  firebase.auth().sendPasswordResetEmail(email)
-    .then(() => {
-    // Password reset email sent!
-    // ..
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    // ..
-    });
-};
+// export const resetarSenha = (email) => {
+//   firebase.auth().sendPasswordResetEmail(email)
+//     .then(() => {
+//     // Password reset email sent!
+//     // ..
+//     })
+//     .catch((error) => {
+//       var errorCode = error.code;
+//       var errorMessage = error.message;
+//     // ..
+//     });
+// };
 
 // Login com o Google - Está funcionando (APARENTEMENTE)
 export const signInGoogle = () => {
@@ -41,11 +41,20 @@ export const createUser = (email, password) => {
     .catch((error) => error.code);
 };
 
-/// Desconectar Usuário
-export const signOut = () => {
-  firebase.auth().signOut().then(() => {
-  }).catch((error) => {
-  });
-};
+// Manter usuário logado
+export const mantemConectado = (callback) => firebase.auth().onAuthStateChanged(callback);
 
-// Botão de resetar a senha  <3
+// export const manterConectado = () => {
+//   firebase.auth().onAuthStateChanged((user) => {
+//     if (user.uid) {
+//       const uid = user.uid;
+//       navigation('/feed');
+//       // ...
+//     } else {
+//       navigation('/');
+//     }
+//   });
+// };
+
+/// Desconectar Usuário
+export const signOut = () => firebase.auth().signOut();
