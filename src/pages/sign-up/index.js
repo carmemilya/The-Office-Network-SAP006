@@ -46,9 +46,9 @@ export const Register = () => {
   const viewPasswordRepeat = rootElement.querySelector('.eyeRepeat');
   const passwordMessage = rootElement.querySelector('.msgPassword');
   const createUserButton = rootElement.querySelector('.btnCadastro');
-  const botao = rootElement.querySelector('.pageLogin');
+  const backToLogin = rootElement.querySelector('.pageLogin');
 
-  botao.addEventListener('click', () => {
+  backToLogin.addEventListener('click', () => {
     navigation('/');
   });
 
@@ -68,6 +68,13 @@ export const Register = () => {
     }
   });
 
+  const clear = () => {
+    completeName.value = '';
+    emailInput.value = '';
+    passwordInput.value = '';
+    passwordRepeat.value = '';
+  };
+
   createUserButton.addEventListener('click', (e) => {
     e.preventDefault();
     const userName = completeName.value;
@@ -82,10 +89,15 @@ export const Register = () => {
     } else if (password.length <= 5 || confirmPassword.length <= 5) {
       passwordMessage.innerHTML = 'A senha deve ter no minimo 6 caracteres';
     } else {
-      createUser(emailUser, password);
-      creatFormUser(userName, emailUser);
-      navigation('/feed');
+    
     }
+    createUser(emailUser, password).then((user) => {
+      console.log(user);
+      const userId = firebase.auth().currentUser.uid;
+      creatFormUser(userId, userName, emailUser);
+      navigation('/');
+    });
+    clear();
   });
 
   return rootElement;

@@ -42,17 +42,16 @@ export const Publication = () => {
   publicationButton.addEventListener('click', (e) => {
     e.preventDefault();
     const textPost = postsText.value;
-    const userId = firebase.auth().currentUser.email;
+    // const userEmail = firebase.auth().currentUser.email;
     // const userId = firebase.firestore().collection('user').doc();
+
     if (textPost === '') {
       console.log('Campo vazio');
     } else {
-      const formPost = {
-        userEmail: userId,
-        post: textPost,
-        likes: 0,
-      };
-      addPublication(formPost).then(() => navigation('/feed'));
+      addPublication(textPost).then((post) => {
+        navigation('/feed');
+        console.log(post);
+      });
     }
   });
 

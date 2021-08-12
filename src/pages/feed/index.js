@@ -1,4 +1,4 @@
-import { showPosts, sairDaConta} from '../../services/index.js';
+import { signOut } from '../../services/index.js';
 import { navigation } from '../../routes/navigation.js';
 
 export const Feed = () => {
@@ -80,9 +80,10 @@ export const Feed = () => {
     navigation('/add-publication');
   });
 
-  entrarLogin.addEventListener('click', () => {
-    sairDaConta();
-    navigation('/');
+  // Acho que tá funcionando kkkcrying
+  const sair = rootElement.querySelector('.sair');
+  sair.addEventListener('click', () => {
+    signOut().then(() => navigation('/'));
   });
   return rootElement;
 };
