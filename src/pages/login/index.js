@@ -1,4 +1,4 @@
-import { signInGoogle, existingUser /* resetarSenha */ } from '../../services/index.js';
+import { signInGoogle, existingUser } from '../../services/index.js';
 import { navigation } from '../../routes/navigation.js';
 
 export const Login = () => {
@@ -31,7 +31,6 @@ export const Login = () => {
   const password = rootElement.querySelector('#senha');
   const msgErro = rootElement.querySelector('#error-message');
   const btnEntrar = rootElement.querySelector('#btnEntrar');
-  // const trocarSenha = rootElement.querySelector('#reset');
   const googleBotao = rootElement.querySelector('#google');
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
 
@@ -40,6 +39,8 @@ export const Login = () => {
       msgErro.innerHTML = 'Senha incorreta';
     } else if (error.code === 'auth/invalid-email') {
       msgErro.innerHTML = 'E-mail incorreto';
+    } else {
+      msgErro.innerHTML = 'Usuário não encontrado';
     }
   };
 
@@ -47,11 +48,6 @@ export const Login = () => {
     e.preventDefault();
     existingUser(email.value, password.value, errorFunction);
   });
-
-  // resetarSenha.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   resetarSenha().then(() => navigation('/'));
-  // });
 
   googleBotao.addEventListener('click', (e) => {
     e.preventDefault();

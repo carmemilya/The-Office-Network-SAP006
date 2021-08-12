@@ -1,5 +1,5 @@
-import { signOut } from '../../services/index.js';
 import { navigation } from '../../routes/navigation.js';
+import { signOut } from '../../services/index.js';
 
 export const Feed = () => {
   const rootElement = document.createElement('div');
@@ -11,7 +11,7 @@ export const Feed = () => {
       <hr>
       
       <div class="entrarLogin">
-        <p class="sair"><img src='img/icon_logout_feed.png'></p>
+        <p id="sair-da-conta" class="sair"><img src='img/icon_logout_feed.png'></p>
       </div>
 
       <ul class='showPublication'></ul>
@@ -27,7 +27,7 @@ export const Feed = () => {
       `;
 
   // const homeFeed = rootElement.querySelector('.iconHome');
-  const entrarLogin = rootElement.querySelector('.sair');
+  const sair = rootElement.querySelector('.sair');
   const addPublication = rootElement.querySelector('.iconPlus');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
 
@@ -81,8 +81,8 @@ export const Feed = () => {
   });
 
   // Acho que tá funcionando kkkcrying
-  const sair = rootElement.querySelector('.sair');
-  sair.addEventListener('click', () => {
+  sair.addEventListener('click', (e) => {
+    e.preventDefault();
     signOut().then(() => navigation('/'));
   });
   return rootElement;
