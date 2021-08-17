@@ -1,72 +1,70 @@
 import { navigation } from '../../routes/navigation.js';
-import { signOut } from '../../services/index.js';
+import { signOut, showPost, deletePost } from '../../services/index.js';
 
 export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
   <h1>The Office Network</h1>
     <div class= "container">
-      <hr>
-        <p>FEED DE NOTICIAS TEY TEY</p>
-      <hr>
       
       <div class="entrarLogin">
-        <p id="sair-da-conta" class="sair"><img src='img/icon_logout_feed.png'></p>
+       <p id="sair-da-conta" class="exitAccount"><img src='img/icon_logout_feed.png'></p>
       </div>
 
-      <ul class='showPublication'></ul>
+      <div class='showPublication'></div>
 
+      
     </div>
-      <section class='iconHome'>
+      <section class='icon'>
         <img class='iconHome' src='img/icon_home_feed.png'>
         <img class='iconPlus' src='img/icon_plus_feed.png'>
         <img class='iconPerfil' src='img/perfil_feed.png'>
       </section>
-     
-  
       `;
 
   // const homeFeed = rootElement.querySelector('.iconHome');
-  const sair = rootElement.querySelector('.sair');
+  const sair = rootElement.querySelector('.exitAccount');
   const addPublication = rootElement.querySelector('.iconPlus');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
 
-  const docRef = firebase.firestore().collection('post').doc();
-  console.log(docRef.id); // pega o id do usuario
-
-  const addPost = (post) => {
-    const postTamplete = `
-    <li class='${post.id}'>
-    ${post.text} ${post.likes}
-    </li>
+  function addPost(data) {
+    const dataPost = data.data().data;
+    const tampleteFeed = ` 
+    <div class='containerFeed' id='${data.id}'> 
+     <div class='dataPost'>${dataPost}</div>
+     <div class='emailUserPublication' data-email='${data.data().email}'>${data.data().email}</div>
+     <div class='publicationFeed'>
+      
+        <div>${data.data().post}</div>
+     </div>
+     <div class='functionsPost'>
+      <div>${data.data().like}</div>
+      <button class='excluir' data-id='${data.id}'>delete</button>
+     </div>
+    </div>
     `;
-    showPublicationFeed.innerHTML += postTamplete;
+
+    showPublicationFeed.innerHTML += tampleteFeed;
   };
-  addPost(docRef);
 
-  // showPosts().then((snap) => {
-  //   snap.forEach((docRef.id) => {
-  //     addPost(docRef);
-  //   });
+  showPost(addPost);
+
+  // const emailUserPublication = rootElement.querySelectorAll('.emailUserPublication');
+  //   console.log(emailUserPublication);
+  const deleteButton = rootElement.querySelector('.showPublication');
+  deleteButton.addEventListener('click', (event) => {
+    // const usuarioExistente = firebase.auth().currentUser;
+    // if( usuarioExistente.email === )
+    const containerPublication = event.target.dataset;
+    deletePost(containerPublication.id);
+  });
+
+
+  // showPublicationFeed.innerHTML += tampleteFeed;
+  //  const deleteButton = tampleteFeed.querySelector('.excluir');
+  // deleteButton.addEventListener('click', () => {
+  //   deletePost(data.data().uid);
   // });
-  // add posts
-  // const addPost = (post) => {
-  //   const postTamplete = `
-  //   <li class='${post.id}'>
-  //   ${post.data().text} ${post.data().likes}
-  //   </li>
-  //   `;
-  //   showPublicationFeed.innerHTML += postTamplete;
-  // };
-  // const loadPosts = () => {
-  //   const postCollection = firebase.firestore().collection('posts');
-  //   postCollection.get().then((snap) => {
-  //     snap.forEach((post) => {
-  //       addPost(post);
-  //     });
-  //   });
-  // };
-
   // const deletePost = (postId) => {
   //   const postsCollection = firebase.firestore().collection('posts');
   //   postsCollection.doc(postId).delete().then(doc => {

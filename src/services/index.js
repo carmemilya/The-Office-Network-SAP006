@@ -29,9 +29,10 @@ export const createUser = async (email, password) => {
 // adiciona publicação
 export const addPublication = async (postsText) => {
   const usuarioExistente = firebase.auth().currentUser;
-  console.log(usuarioExistente);
   const postUser = await firebase.firestore().collection('posts').add({
     email: usuarioExistente.email,
+    data: new Date().toString().slice(4, 21),
+    user: usuarioExistente.uid,
     post: postsText,
     like: 0,
   });
@@ -50,3 +51,18 @@ export const mantemConectado = (callback) => firebase.auth().onAuthStateChanged(
 
 /// Desconectar Usuário
 export const signOut = () => firebase.auth().signOut();
+
+// mostra os posts
+export const showPost = (addPost) => {
+  firebase.firestore().collection('posts').get()
+    .then((qualquer) => {
+      qualquer.forEach((post) => addPost(post));
+    // console.log('Current data: ', doc.data());
+    });
+};
+
+// exclui os posts
+export const deletePost = (postId) => {
+  const postsCollection = firebase.firestore().collection('posts');
+  return postsCollection.doc(postId).delete();
+};

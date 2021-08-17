@@ -19,7 +19,7 @@ export const Publication = () => {
         </fieldset>
         
       </div>
-        <section class='iconHome'>
+        <section class='icon'>
           <img class='iconHome' src='img/icon_home_feed.png'>
           <img class='iconPlus' src='img/icon_plus_feed.png'>
           <img class='iconPerfil' src='img/perfil_feed.png'>
@@ -55,33 +55,5 @@ export const Publication = () => {
     }
   });
 
-  // add posts
-  // const addPost = (post) => {
-  //   const postTamplete = `
-  //   <li class='${post.id}'>
-  //   ${post.data().text} ${post.data().likes}
-  //   </li>
-  //   `;
-  //   showPublicationFeed.innerHTML += postTamplete;
-  // };
-
-  // // mostrar todos os posts
-  // const loadPosts = () => {
-  //   const postCollection = firebase.firestore().collection('posts');
-  //   postCollection.get().then((snap) => {
-  //     snap.forEach((post) => {
-  //       addPost(post);
-  //     });
-  //   });
-  // };
-
-  // const deletePost = (postId) => {
-  //   const postsCollection = firebase.firestore().collection('posts');
-  //   postsCollection.doc(postId).delete().then(doc => {
-  //     console.log('Apagou!');
-  //     loadPosts();
-  //   });
-  // };
-  // deletePost();
   return rootElement;
 };

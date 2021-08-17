@@ -1,0 +1,14 @@
+.icon {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position:fixed;
+    bottom:5%;
+    width:100%; 
+    height: 5%;
+    left: 0%;
+    background: yellow;
+    color: #FFFFFF;
+
+} 
