@@ -1,11 +1,6 @@
-* {
-    margin: 0;
-    border: none;
-    box-sizing: border-box;
-}
 
-.container{
     
+/* .container{
     display: flex;
     flex-direction: column;
    
@@ -54,9 +49,7 @@
 
 }
 
-p u {
-    cursor: pointer;
-}
+
 .eye, .eyeRepeat{
     
     cursor: pointer;
@@ -75,4 +68,4 @@ p u {
 .inconHome{
   display: flex;
   justify-content: space-between;
-}
+} */
