@@ -11,18 +11,32 @@ export const existingUser = (email, password, errorFunction) => {
     .catch((error) => errorFunction(error));
 };
 
-// export const resetarSenha = (email) => {
-//   firebase.auth().sendPasswordResetEmail(email)
-//     .then(() => {
-//     // Password reset email sent!
-//     // ..
-//     })
-//     .catch((error) => {
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-//     // ..
-//     });
-// };
+// criar coleção com informações do usuario
+export const creatFormUser = async (userId, name, email) => {
+  const collectionUser = await firebase.firestore().collection('user').doc(userId).set({
+    userName: name,
+    userEmail: email,
+  });
+  return collectionUser;
+};
+
+// Criar conta - Está Funcionando (APARENTEMENTE)
+export const createUser = async (email, password) => {
+  const creatUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
+  return creatUser;
+};
+
+// adiciona publicação
+export const addPublication = async (postsText) => {
+  const usuarioExistente = firebase.auth().currentUser;
+  console.log(usuarioExistente);
+  const postUser = await firebase.firestore().collection('posts').add({
+    email: usuarioExistente.email,
+    post: postsText,
+    like: 0,
+  });
+  return postUser;
+};
 
 // Login com o Google - Está funcionando (APARENTEMENTE)
 export const signInGoogle = () => {
@@ -31,18 +45,8 @@ export const signInGoogle = () => {
   return result;
 };
 
-// Criar conta - Está Funcionando (APARENTEMENTE)
-export const createUser = (email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      return user;
-    })
-    .catch((error) => error.code);
-};
-
 // Manter usuário logado
-export const manterConectado = (user) => firebase.auth().onAuthStateChanged(user);
+export const mantemConectado = (callback) => firebase.auth().onAuthStateChanged(callback);
 
 /// Desconectar Usuário
 export const signOut = () => firebase.auth().signOut();
