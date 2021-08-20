@@ -5,48 +5,43 @@ export const Register = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
       
-      <fieldset class="tamplete-register">
+      
       <legend>Cadastre-se</legend>
         <form class= "container-register">
+          <div class="name-email-cadastro">
+            <input class="complete-name" ="type="text" placeholder="Nome Completo">
+            <input class= "email-cadastro" type="text" placeholder="Digite seu e-mail">
+          </div>
           
-            <label class="UserName"><b>Nome</b></label>
-            <input class="completeName" ="type="text" placeholder="Nome Completo">
+          <div class="senha-cadastro">
+            <input class='password-register' type="password" placeholder="Digite uma senha 6 digitos">
+            <button type="button" class='eye-senha-cadastro'>
+          </div>
 
-            <label class="nameEmail"><b>Email</b></label>
-            <input class= "email" type="text" placeholder="Digite seu e-mail">
-            
+          <div class="senha-cadastro-repeat">
+            <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
+            <button type="button" class='eye-senha-repeat'> </button>
+          </div>
 
-            <div class="psw"><b>Senha</b></div>
-            <div>
-            <input class='passwordRegister' type="password" placeholder="Digite uma senha 6 digitos">
-            <img class='eye' src='https://image.flaticon.com/icons/png/512/149/149642.png'>
-            </div>
-
-            <label class="psw-repeat"><b>Repetir senha</b></label>
-            <div>
-            <input class="repeatPassword" type="password" placeholder="Digite uma senha 6 digitos">
-            <img class='eyeRepeat' src='https://image.flaticon.com/icons/png/512/149/149642.png'>
-            </div>
-            <label class="msgPassword"></label>
+          <label class="msg-password"></label>
+                   
+          <button class= "btn-cadastro">Cadastrar</button>
           
-          
-            <button class= "btnCadastro">Cadastrar</button>
-          
-            <div class="entrarLogin">
-            <p>Já tem uma conta?<a class="pageLogin"> Entre</a></p>
-            </div>
+          <div class="entrar-login">
+            <p>Já tem uma conta?<a class="page-login"> Entre</a></p>
+          </div>
         </form>
-      </fieldset>
+      
     `;
-  const completeName = rootElement.querySelector('.completeName');
-  const emailInput = rootElement.querySelector('.email');
-  const passwordInput = rootElement.querySelector('.passwordRegister');
-  const viewPassword = rootElement.querySelector('.eye');
-  const passwordRepeat = rootElement.querySelector('.repeatPassword');
-  const viewPasswordRepeat = rootElement.querySelector('.eyeRepeat');
-  const passwordMessage = rootElement.querySelector('.msgPassword');
-  const createUserButton = rootElement.querySelector('.btnCadastro');
-  const backToLogin = rootElement.querySelector('.pageLogin');
+  const completeName = rootElement.querySelector('.complete-name');
+  const emailInput = rootElement.querySelector('.email-cadastro');
+  const passwordInput = rootElement.querySelector('.password-register');
+  const viewPassword = rootElement.querySelector('.eye-senha-cadastro');
+  const passwordRepeat = rootElement.querySelector('.password-repeat');
+  const viewPasswordRepeat = rootElement.querySelector('.eye-senha-repeat');
+  const passwordMessage = rootElement.querySelector('.msg-password');
+  const createUserButton = rootElement.querySelector('.btn-cadastro');
+  const backToLogin = rootElement.querySelector('.page-login');
 
   backToLogin.addEventListener('click', () => {
     navigation('/');

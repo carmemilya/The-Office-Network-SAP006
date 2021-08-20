@@ -1,0 +1,66 @@
+.container-register {
+    width: 100%;
+}
+
+.name-email-cadastro {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.complete-name {
+    margin-top: 5%;
+}
+
+.email-cadastro {
+    margin-top: 5%;
+}
+
+.senha-cadastro {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5%;
+    border: 1px solid;
+
+}
+
+.password-register {
+    width: 93%;
+    border: 0;
+}
+
+.senha-cadastro-repeat {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5%;
+    border: 1px solid;
+
+
+}
+
+.password-repeat {
+    width: 93%;
+    border: 0;
+
+}
+
+.btn-cadastro {
+    margin-top: 5%;
+}
+
+.eye-senha-cadastro, .eye-senha-repeat {
+    background-image: url(../../img/eye.svg);
+    background-repeat: no-repeat;
+    background-size: 30px, 30px;
+    height: 33px;
+    border: 0;
+    background-color: #FFFFFF;
+    margin-top: 5%;
+    width: 5%;
+
+}
+
+
+
+
+

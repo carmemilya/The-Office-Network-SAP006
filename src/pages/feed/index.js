@@ -45,7 +45,7 @@ export const Feed = () => {
     `;
 
     showPublicationFeed.innerHTML += tampleteFeed;
-  };
+  }
 
   showPost(addPost);
 
@@ -58,7 +58,6 @@ export const Feed = () => {
     const containerPublication = event.target.dataset;
     deletePost(containerPublication.id);
   });
-
 
   // showPublicationFeed.innerHTML += tampleteFeed;
   //  const deleteButton = tampleteFeed.querySelector('.excluir');
