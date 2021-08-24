@@ -23,7 +23,7 @@ export const Register = () => {
             <button type="button" class='eye-senha-repeat'> </button>
           </div>
 
-          <label class="msg-password"></label>
+          <p class="msg-error"></p>
                    
           <button class= "btn-cadastro">Cadastrar</button>
           
@@ -33,13 +33,14 @@ export const Register = () => {
         </form>
       
     `;
+
   const completeName = rootElement.querySelector('.complete-name');
   const emailInput = rootElement.querySelector('.email-cadastro');
   const passwordInput = rootElement.querySelector('.password-register');
   const viewPassword = rootElement.querySelector('.eye-senha-cadastro');
   const passwordRepeat = rootElement.querySelector('.password-repeat');
   const viewPasswordRepeat = rootElement.querySelector('.eye-senha-repeat');
-  const passwordMessage = rootElement.querySelector('.msg-password');
+  const errorMessage = rootElement.querySelector('.msg-error');
   const createUserButton = rootElement.querySelector('.btn-cadastro');
   const backToLogin = rootElement.querySelector('.page-login');
 
@@ -63,37 +64,26 @@ export const Register = () => {
     }
   });
 
-  const clear = () => {
-    completeName.value = '';
-    emailInput.value = '';
-    passwordInput.value = '';
-    passwordRepeat.value = '';
-  };
-
   createUserButton.addEventListener('click', (e) => {
     e.preventDefault();
     const userName = completeName.value;
     const emailUser = emailInput.value;
     const password = passwordInput.value;
     const confirmPassword = passwordRepeat.value;
+    createUser();
 
     if (userName === '' || emailUser === '' || password === '' || confirmPassword === '') {
-      passwordMessage.innerHTML = 'Todos os campos devem ser preenchidos';
+      errorMessage.innerHTML = 'Todos os campos devem ser preenchidos';
     } else if (password !== confirmPassword) {
-      passwordMessage.innerHTML = 'As senhas devem ser iguais';
+      errorMessage.innerHTML = 'As senhas devem ser iguais';
     } else if (password.length <= 5 || confirmPassword.length <= 5) {
-      passwordMessage.innerHTML = 'A senha deve ter no minimo 6 caracteres';
-    } else {
-    
+      errorMessage.innerHTML = 'A senha deve ter no minimo 6 caracteres';
     }
     createUser(emailUser, password).then((user) => {
-      console.log(user);
       const userId = firebase.auth().currentUser.uid;
       creatFormUser(userId, userName, emailUser);
-      navigation('/');
+      navigation('/feed');
     });
-    clear();
   });
-
   return rootElement;
 };

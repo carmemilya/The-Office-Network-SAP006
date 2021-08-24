@@ -11,6 +11,12 @@ export const existingUser = (email, password, errorFunction) => {
     .catch((error) => errorFunction(error));
 };
 
+// Criar conta - Está Funcionando
+export const createUser = async (email, password) => {
+  const creatUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
+  return creatUser;
+};
+
 // criar coleção com informações do usuario
 export const creatFormUser = async (userId, name, email) => {
   const collectionUser = await firebase.firestore().collection('user').doc(userId).set({
@@ -18,25 +24,6 @@ export const creatFormUser = async (userId, name, email) => {
     userEmail: email,
   });
   return collectionUser;
-};
-
-// Criar conta - Está Funcionando (APARENTEMENTE)
-export const createUser = async (email, password) => {
-  const creatUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
-  return creatUser;
-};
-
-// adiciona publicação
-export const addPublication = async (postsText) => {
-  const usuarioExistente = firebase.auth().currentUser;
-  const postUser = await firebase.firestore().collection('posts').add({
-    email: usuarioExistente.email,
-    data: new Date().toString().slice(4, 21),
-    user: usuarioExistente.uid,
-    post: postsText,
-    like: 0,
-  });
-  return postUser;
 };
 
 // Login com o Google - Está funcionando (APARENTEMENTE)
@@ -51,6 +38,19 @@ export const mantemConectado = (callback) => firebase.auth().onAuthStateChanged(
 
 /// Desconectar Usuário
 export const signOut = () => firebase.auth().signOut();
+
+// adiciona publicação
+export const addPublication = async (postsText) => {
+  const usuarioExistente = firebase.auth().currentUser;
+  const postUser = await firebase.firestore().collection('posts').add({
+    email: usuarioExistente.email,
+    data: new Date().toString().slice(4, 21),
+    user: usuarioExistente.uid,
+    post: postsText,
+    like: 0,
+  });
+  return postUser;
+};
 
 // mostra os posts
 export const showPost = (addPost) => {

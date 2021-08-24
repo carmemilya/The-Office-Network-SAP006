@@ -55,8 +55,10 @@ export const Login = () => {
       msgErro.innerHTML = 'Senha incorreta';
     } else if (error.code === 'auth/invalid-email') {
       msgErro.innerHTML = 'E-mail incorreto';
-    } else {
+    } else if (error.code === 'auth/user-not-found') {
       msgErro.innerHTML = 'Usuário não encontrado';
+    } else {
+      msgErro.innerHTML = 'Ocorreu algum erro. Tente novamente.';
     }
   };
 
