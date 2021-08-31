@@ -50,7 +50,6 @@ export const Publication = () => {
     } else {
       addPublication(textPost).then((post) => {
         navigation('/feed');
-        console.log(post);
       });
     }
   });
