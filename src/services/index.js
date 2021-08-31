@@ -12,9 +12,14 @@ export const existingUser = (email, password, errorFunction) => {
 };
 
 // Criar conta - Está Funcionando
-export const createUser = async (email, password) => {
-  const creatUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
-  return creatUser;
+export const createUser = (email, password, errorFunction) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      navigation('/feed');
+      const user = userCredential.user;
+      return user;
+    })
+    .catch((error) => errorFunction(error));
 };
 
 // criar coleção com informações do usuario
