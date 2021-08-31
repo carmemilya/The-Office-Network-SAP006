@@ -56,21 +56,24 @@ export const Feed = () => {
           <i class="far fa-heart icone-curtir" data-item="like"></i>
           <span class = 'numero-Likes '>${like.length}</span>
         </span>
+
         
-        ${userPost ? '<i class="far fa-trash-alt" data-item="delete"></i>' : "" }
-      </div>
+        ${userPost ? 'class="far fa-trash-alt" data-item="delete"></i>' : "" }
+        
 
     </div>
     `;
 
     showPublicationFeed.innerHTML += tampleteFeed;
 
+    
     const postTamplete = rootElement.querySelectorAll('[data-post]');
     for ( let post of postTamplete) {
        post.addEventListener('click', (e) => {
           const idPost = post.getAttribute('id')
           const targetDataSet = e.target.dataset.item
           if (targetDataSet == 'delete') {
+            deleteModal
             deletePost(idPost);
             showPublicationFeed.innerHTML = '';
           }
