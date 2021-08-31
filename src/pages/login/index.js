@@ -12,34 +12,38 @@ export const Login = () => {
       </div>
 
       <h1 class="titulo"> The Office Network </h1>
+      
+      <div class="container-img-forms">
+        <div class="img-fundo"> <img src="../../img/fun.png"></div>
 
-      <form class= "container">
+        <form class= "container-forms">
 
-        <fieldset id="eye-fiel" class="fieldset-login">
-          <div class="container-email-login">
-            <input id= "email-login" class="email-login" placeholder="Digite seu e-mail"></input>
+          <fieldset id="eye-fiel" class="fieldset-login">
+            <div class="container-email-login">
+              <input id= "email-login" class="email-login" placeholder="Digite seu e-mail"></input>
+            </div>
+            <div class="container-senha-login">
+              <input id="senha" type="password" class="senha-login" placeholder="Digite sua senha"></input>
+              <button type="button" class="botao-eye-login"> </button>
+            </div>
+          </fieldset>
+          
+          <p id='error-message' class="erro-login"></p>
+
+          <p id= "reset"> <u>Esqueceu a senha?</u></p>
+
+          <button id="btnEntrar" class="botao-entrar"> Entrar </button>
+
+          <p class="ou"> OU </p>
+          
+          <button id= "google" class="botao-google"> Entrar com Google </button>
+          
+          <div class="entrarLogin">
+            <p class="cadastro" > Não tem conta? <u class="page-cadastro" id="leva-tela-cadastro"> Cadastre-se </u></p>
           </div>
-          <div class="container-senha-login">
-            <input id="senha" type="password" class="senha-login" placeholder="Digite sua senha"></input>
-            <button type="button" class="botao-eye-login"> </button>
-          </div>
-        </fieldset>
-        
-        <p id='error-message' class="erro-login"></p>
 
-        <p id= "reset"> <u>Esqueceu a senha?</u></p>
-
-        <button id="btnEntrar" class="botao-entrar"> Entrar </button>
-
-        <p class="ou"> OU </p>
-        
-        <button id= "google" class="botao-google"> Entrar com Google </button>
-        
-        <div class="entrarLogin">
-          <p class="cadastro" > Não tem conta? <u class="page-cadastro" id="leva-tela-cadastro"> Cadastre-se </u></p>
-        </div>
-
-      </form>
+        </form>
+      </div>
 
     `;
 
