@@ -26,14 +26,9 @@ export const Publication = () => {
         </section>
        
        `;
-  const backToLogin = rootElement.querySelector('.sair');
   const postsText = rootElement.querySelector('.newPublication');
   const publicationButton = rootElement.querySelector('.BtnNewPublication');
   const backTimeLine = rootElement.querySelector('.iconHome');
-
-  backToLogin.addEventListener('click', () => {
-    navigation('/');
-  });
 
   backTimeLine.addEventListener('click', () => {
     navigation('/feed');
@@ -50,7 +45,6 @@ export const Publication = () => {
     } else {
       addPublication(textPost).then((post) => {
         navigation('/feed');
-        console.log(post);
       });
     }
   });

@@ -1,24 +1,40 @@
+.headerfeed{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 60%;
+}
+
 .showPublication {
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 20%;
 }  
 
-.containerFeed {
-    display: flex;
+ .containerFeed {
     flex-direction: column;
     padding: 2%;
-    margin: 3%;
+    margin: 1%;
     height: 50%;
     width: 50%;
-    border-radius: 25px;
+    border-radius: 10px;
     background: linear-gradient(145deg, #e1e1e1, #ffffff);
     box-shadow:  41px 41px 82px #b2b2b2,
                -41px -41px 82px #ffffff;
-} 
+}  
 .emailUserPublication {
     display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1 rem;
     
+}
+
+.dataPost{
+    font-family: initial;
+    font-size:0.7rem;
 }
 
 .icon {
@@ -29,26 +45,50 @@
     position:fixed;
     bottom:5%;
     width:100%; 
-    height: 5%;
+    height: 6%;
     left: 0%;
-    background: yellow;
+    background: #FF7C50;
     color: #FFFFFF;
 
 } 
-
-.dataPost{
- font-size: 12pt;
+.line{
+    color:black;
 }
-
+.postFeed{
+    padding: 2%;
+}
+/* 
 .exitAccount {
     display: flex;
     justify-content: flex-end;
-}
+} */
 
-.publicationFeed {
-    display: flex;
-    
-}
+
 .functionsPost {
     display: flex;
 }
+
+.fa-trash-alt{
+    display: block;
+}
+
+/* .modal{
+    width:100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top:0px;
+    left:0px;
+    z-index:2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.modal-content{
+    background: white;
+    width: 60%;
+    min-width: 300px;
+    padding: 5%;
+    border: 
+} */

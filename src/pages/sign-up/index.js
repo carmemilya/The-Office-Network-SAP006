@@ -6,28 +6,24 @@ export const Register = () => {
   rootElement.innerHTML = `
       
         <form class= "container-register">
-
           <div class="img-tela-cadastro">
              <img class="img-cadastro" src="../../img/fun.png">
           </div>
-
           <div class="inputs"> 
             <h1 class="cadastre-se">Cadastre-se</h1>
             <div class="name-email-cadastro">
               <input class="complete-name" ="type="text" placeholder="Nome Completo">
-              <input class= "email-cadastro" type="text" placeholder="Digite seu e-mail">
+              <input class= "email-cadastro" type="email" placeholder="Digite seu e-mail">
             </div>
             
             <div class="senha-cadastro">
               <input class='password-register' type="password" placeholder="Digite uma senha 6 digitos">
               <button type="button" class='eye-senha-cadastro'>
             </div>
-
             <div class="senha-cadastro-repeat">
               <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
               <button type="button" class='eye-senha-repeat'> </button>
             </div>
-
             <p class="msg-error"></p>
             <p class="msg-erro-firebase"></p>
                     
@@ -73,8 +69,10 @@ export const Register = () => {
   });
 
   const errorFunction = (error) => {
-    if (error.code === 'auth/email-already-exists') {
+    if (error.code === 'auth/uid-already-exists') {
       erroFirebase.innerHTML = 'E-mail já existe';
+    } else if (error.code === 'auth/email-already-in-use') {
+      erroFirebase.innerHTML = 'E-mail já cadastrado';
     } else if (error.code === 'auth/invalid-email') {
       erroFirebase.innerHTML = 'E-mail invalido';
     } else if (error.code === 'auth/invalid-password') {
@@ -90,7 +88,6 @@ export const Register = () => {
     const emailUser = emailInput.value;
     const password = passwordInput.value;
     const confirmPassword = passwordRepeat.value;
-    createUser();
 
     if (userName === '' || emailUser === '' || password === '' || confirmPassword === '') {
       errorMessage.innerHTML = 'Todos os campos devem ser preenchidos';
@@ -98,10 +95,14 @@ export const Register = () => {
       errorMessage.innerHTML = 'As senhas devem ser iguais';
     }
 
-    createUser(emailUser, password).then((user) => {
+    createUser(emailUser, password, errorFunction).then((response) => {
+      console.log(response);
       const userId = firebase.auth().currentUser.uid;
-      creatFormUser(userId, userName, emailUser, errorFunction);
-    });
+      creatFormUser(userId, userName, emailUser);
+    })
+      .catch((response) => {
+        console.log(response);
+      });
   });
   return rootElement;
 };

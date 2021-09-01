@@ -48,11 +48,26 @@ export const Login = () => {
     `;
 
   const email = rootElement.querySelector('#email-login');
-  const password = rootElement.querySelector('#senha');
+  const passwordLogin = rootElement.querySelector('#senha');
   const msgErro = rootElement.querySelector('#error-message');
   const btnEntrar = rootElement.querySelector('#btnEntrar');
   const googleBotao = rootElement.querySelector('#google');
   const cadastro = rootElement.querySelector('#leva-tela-cadastro');
+  const btnEye = rootElement.querySelector('.botao-eye-login');
+  // const resetarSenha = rootElement.querySelector('#reset');
+
+  btnEye.addEventListener('click', () => {
+    if (passwordLogin.type === 'password') {
+      passwordLogin.type = 'text';
+    } else {
+      passwordLogin.type = 'password';
+    }
+  });
+
+  // resetarSenha.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   navigation('/recuperar');
+  // });
 
   const errorFunction = (error) => {
     if (error.code === 'auth/wrong-password') {
@@ -68,7 +83,7 @@ export const Login = () => {
 
   btnEntrar.addEventListener('click', (e) => {
     e.preventDefault();
-    existingUser(email.value, password.value, errorFunction);
+    existingUser(email.value, passwordLogin.value, errorFunction);
   });
 
   googleBotao.addEventListener('click', (e) => {
