@@ -30,7 +30,7 @@ export const Register = () => {
             <button class= "btn-cadastro">Cadastrar</button>
             
             <div class="entrar-login">
-              <p>Já tem uma conta?<a class="page-login"> Entre</a></p>
+              <p>Já tem uma conta? <u class="page-login"> Entre</u> </p>
             </div>
           </div>
         </form>

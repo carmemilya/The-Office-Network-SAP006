@@ -8,8 +8,7 @@
 }
 
 .img-tela-cadastro {
-    padding: 40px;
-    display: flex;
+   margin-right: -10%;
 }
 
 
@@ -90,6 +89,16 @@
     border-radius: 10px;
 }
 
+.msg-error {
+    color: #FF7C50;
+    font-size: 20px;
+}
+
+.msg-erro-firebase {
+    color: #FF7C50;
+    font-size: 20px;
+}
+
 .btn-cadastro {
     background: #161616;
     width: 50%;
@@ -98,7 +107,13 @@
     font-family: Noto Sans JP;
     font-size: 20px;
     color: #FFFFFF;
+    cursor: pointer;
 }
+
+.entrar-login {
+    font-size: 22px;
+}
+
 
 .eye-senha-cadastro, .eye-senha-repeat {
     background-image: url(../../img/eye.svg);
@@ -114,6 +129,9 @@
     margin-top: inherit;
 }
 
+u {
+    cursor: pointer;
+}
 
 
 

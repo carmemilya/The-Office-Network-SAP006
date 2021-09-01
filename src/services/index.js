@@ -41,7 +41,7 @@ export const signOut = () => {
   firebase.auth().signOut();
 };
 
-// criar coleção com informações do usuario
+// Criar coleção com informações do usuário
 export const creatFormUser = async (userId, name, email) => {
   const collectionUser = await firebase.firestore().collection('user').doc(userId).set({
     userName: name,
@@ -55,7 +55,7 @@ export const getCurrentUser = () => {
   return usuarioExistente;
 };
 
-// adiciona publicação
+// Adicionar publicação
 export const addPublication = async (postsText) => {
   const usuarioExistente = firebase.auth().currentUser;
   const postUser = await firebase.firestore().collection('posts').add({
@@ -71,7 +71,8 @@ export const addPublication = async (postsText) => {
 // export const getPost = () => {
 //   return firebase.firestore().collection('posts').get();
 // }
-// mostra os posts
+
+// Mostra Posts
 export const showPost = (addPost) => {
   firebase.firestore().collection('posts')
     .onSnapshot((qualquer) => {
@@ -79,25 +80,30 @@ export const showPost = (addPost) => {
     });
 };
 
-// exclui os posts
+// Excluir posts
 export const deletePost = (postId) => {
   const postsCollection = firebase.firestore().collection('posts');
   return postsCollection.doc(postId).delete();
 };
 
+// Curtir Posts
 export const likePost = async (idPost, userId) => {
-  await firebase.firestore().collection('posts').doc(idPost).get()
+    return await firebase.firestore().collection('posts').doc(idPost).get()
     .then((post) => {
       const arrayLike = post.data().like;
       if (arrayLike.indexOf(userId) === -1) {
         firebase.firestore().collection('posts').doc(idPost).update({
-          like: firebase.firestore.FieldValue.arrayUnion(userId),
+          like: firebase.firestore.FieldValue.arrayUnion(userId),  
         });
+
+        return arrayLike.length
       } else {
         firebase.firestore().collection('posts').doc(idPost).update({
           like: firebase.firestore.FieldValue.arrayRemove(userId),
         });
+        return arrayLike.length
       }
+
     });
 };
 
