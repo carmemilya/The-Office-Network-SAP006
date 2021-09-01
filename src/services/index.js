@@ -86,9 +86,14 @@ export const deletePost = (postId) => {
   return postsCollection.doc(postId).delete();
 };
 
+// Editar post
+export const editPost = (newPost, id) => {
+  creatFormUser('post').doc(id).update({ text: newPost });
+};
+
 // Curtir Posts
 export const likePost = async (idPost, userId) => {
-    return await firebase.firestore().collection('posts').doc(idPost).get()
+  return await firebase.firestore().collection('posts').doc(idPost).get()
     .then((post) => {
       const arrayLike = post.data().like;
       if (arrayLike.indexOf(userId) === -1) {

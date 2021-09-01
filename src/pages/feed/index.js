@@ -92,13 +92,9 @@ export const Feed = () => {
       
     }
   }
-  showPost(addPost)
+  showPost(addPost);
 
-
-
-      
-      
-    // postTamplete.addEventListener('click', (e) =>{
+      // postTamplete.addEventListener('click', (e) =>{
     //   const target = e.target;
     //   if (target.dataset.like === 'like' && !target.classList.contains('liked'))
     // })
