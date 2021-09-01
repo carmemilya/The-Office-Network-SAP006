@@ -57,68 +57,51 @@ export const Feed = () => {
           <span class = 'numero-Likes '>${like.length}</span>
         </span>
 
-        
-        ${userPost ? 'class="far fa-trash-alt" data-item="delete"></i>' : "" }
+        ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="delete"></i>' : "" }
+      </div>
+
+      <div id="id01" class="modal" data-item="open-modal">
+        <form class="modal-content" ">
+          <div class="modal-close">x</div>
+            <div class="container">
+              <h1>Tem certeza que deseja excluir o post?</h1>
+              <button type="button" data-confirmdelete class="cancelbtn">Cancel</button>
+              <button type="button" data-closemodal class="deletebtn">Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+     
         
 
     </div>
     `;
 
-    showPublicationFeed.innerHTML += tampleteFeed;
+     showPublicationFeed.innerHTML += tampleteFeed;
 
-    
     const postTamplete = rootElement.querySelectorAll('[data-post]');
     for ( let post of postTamplete) {
-       post.addEventListener('click', (e) => {
-          const idPost = post.getAttribute('id')
-          const targetDataSet = e.target.dataset.item
-          if (targetDataSet == 'delete') {
-            deleteModal
-            deletePost(idPost);
-            showPublicationFeed.innerHTML = '';
-          }
-        });
-      };
-   
-  
-    for (let post of postTamplete) {
       post.addEventListener('click', (e) => {
-
-        const idPost = post.getAttribute('id') //pega Id do post
-        const target = e.target // retorna <i class="far fa-heart icone-curtir" data-item="like"></i>
-        const targetDataSet = target.dataset.item //like
+        const idPost = post.getAttribute('id')
+        const targetDataSet = e.target.dataset.item
         const numeroLike = post.children[5].children[0].children[1] //<span class = 'numero-Likes '>${like.length}</span>
-        let nomeLike;
+        if (targetDataSet == 'delete') { 
+            deletePost(idPost);    
+        }   
         if (targetDataSet == 'like'){
-          likePost(idPost, currentUser.uid)
-          numeroLike.innerText = nomeLike
-          showPublicationFeed.innerHTML = ''  
+          likePost(idPost, currentUser.uid).then((response) => 
+          numeroLike.innerText = response)
+              
         } 
-      })
+      });
+      
     }
   }
   showPost(addPost)
 
 
 
-      // postTamplete.addEventListener('click', (e) => {
-      //   const { target } = e;
-      //   const likeId = target.dataset.like;
-      //   if (likeId) {
-      //     const numberLikes = rootElement.querySelector(`[data-numLike="${likeId}"]`);
-      //     const beforLike = numberLikes.classList.contains('befor-like');
-      //     const number = Number(numberLikes.textContent);
-      //     if (beforLike === true) {
-      //       numberLikes.classList.replace('befor-like', 'after-like');
-      //       numberLikes.innerHTML = number + 1;
-      //       liked(likeId);
-      //     } else {
-      //       numberLikes.classList.replace('after-like', 'befor-like');
-      //       numberLikes.innerHTML = number - 1;
-      //       liked(likeId);
-      //     }
-      //   }
-      // });
+      
       
     // postTamplete.addEventListener('click', (e) =>{
     //   const target = e.target;

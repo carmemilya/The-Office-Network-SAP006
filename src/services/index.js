@@ -79,18 +79,22 @@ export const deletePost = (postId) => {
 };
 
 export const likePost = async (idPost, userId) => {
-  await firebase.firestore().collection('posts').doc(idPost).get()
+    return await firebase.firestore().collection('posts').doc(idPost).get()
     .then((post) => {
       const arrayLike = post.data().like;
       if (arrayLike.indexOf(userId) === -1) {
         firebase.firestore().collection('posts').doc(idPost).update({
-          like: firebase.firestore.FieldValue.arrayUnion(userId),
+          like: firebase.firestore.FieldValue.arrayUnion(userId),  
         });
+
+        return arrayLike.length
       } else {
         firebase.firestore().collection('posts').doc(idPost).update({
           like: firebase.firestore.FieldValue.arrayRemove(userId),
         });
+        return arrayLike.length
       }
+
     });
 };
 

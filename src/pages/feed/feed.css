@@ -71,7 +71,10 @@
     display: block;
 }
 
-/* .modal{
+.delete-modal{
+    display: block;
+}
+ /* .modal{
     width:100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.1);
@@ -90,4 +93,4 @@
     min-width: 300px;
     padding: 5%;
     border: 
-} */
+}  */
