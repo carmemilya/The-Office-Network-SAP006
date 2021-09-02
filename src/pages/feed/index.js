@@ -1,6 +1,6 @@
 import { navigation } from '../../routes/navigation.js';
 import {
-  signOut, showPost, deletePost, getCurrentUser, likePost,
+  signOut, showPost, deletePost, getCurrentUser, likePost, editarPost,
 } from '../../services/index.js';
 
 export const Feed = () => {
@@ -54,6 +54,8 @@ export const Feed = () => {
         </span>
 
         ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="delete"></i>' : ''}
+        ${userPost ? '<i id="editar-modal" class="far fa-pencil-alt" data-item="edit"></i>' : ''}
+        <img src="../../img/pen.png">
       </div>
 
       <div id="id01" class="modal" data-item="open-modal">
@@ -75,51 +77,50 @@ export const Feed = () => {
     showPublicationFeed.innerHTML += tampleteFeed;
 
     const postTamplete = rootElement.querySelectorAll('[data-post]');
-    for ( let post of postTamplete) {
+    postTamplete.forEach((post) => {
       post.addEventListener('click', (e) => {
-        const idPost = post.getAttribute('id')
-        const targetDataSet = e.target.dataset.item
-        const numeroLike = post.children[5].children[0].children[1] //<span class = 'numero-Likes '>${like.length}</span>
-        if (targetDataSet == 'delete') { 
-            deletePost(idPost);    
-        }   
-        if (targetDataSet == 'like'){
-          likePost(idPost, currentUser.uid).then((response) => 
-          numeroLike.innerText = response)
-              
-        } 
+        const idPost = post.getAttribute('id');
+        const targetDataSet = e.target.dataset.item;
+        const numeroLike = post.children[5].children[0].children[1];
+        if (targetDataSet === 'delete') {
+          deletePost(idPost);
+        }
+        if (targetDataSet === 'like') {
+          likePost(idPost, currentUser.uid)
+            // eslint-disable-next-line no-return-assign
+            .then((response) => numeroLike.innerText = response);
+        }
       });
-      
-    }
-  }
+    });
+  };
   showPost(addPost);
 
-      // postTamplete.addEventListener('click', (e) =>{
-    //   const target = e.target;
-    //   if (target.dataset.like === 'like' && !target.classList.contains('liked'))
-    // })
-      // for (let post of postTamplete) {
-      //   post.addEventListener('click', (e) => {
+  // postTamplete.addEventListener('click', (e) =>{
+  //   const target = e.target;
+  //   if (target.dataset.like === 'like' && !target.classList.contains('liked'))
+  // })
+  // for (let post of postTamplete) {
+  //   post.addEventListener('click', (e) => {
 
-      //     const idPost = post.getAttribute('id') //id do post
-      //     const postUnliked = post.classList.contains('far') // falso (não tem curtida desse usuario)
-      //     let likeNumber = rootElement.querySelector('.number-likes') //<span class="number-likes "></span>
-      //     let likeNumberContent = Number(likeNumber.innerHTML); // 0
-          
-      //     if(postUnliked == true){
-      //       post.classList.replace('far','fas')
-      //       likeNumberContent--
-      //       likePost(idPost)
-      //     } else {
-      //       post.classList.replace('fas', 'far')
-      //       likeNumberContent++
-      //       UnlikedPost(idPost)
-      //     }
-          
-      //     likeNumber.innerHTML = likeNumberContent 
-      //   })
-       
-      // }
-   
+  //     const idPost = post.getAttribute('id') //id do post
+  //     const postUnliked = post.classList.contains('far') // falso (não tem curtida desse usuario)
+  // let likeNumber = rootElement.querySelector('.number-likes')
+  // <span class="number-likes "></span>
+  //     let likeNumberContent = Number(likeNumber.innerHTML); // 0
+
+  //     if(postUnliked == true){
+  //       post.classList.replace('far','fas')
+  //       likeNumberContent--
+  //       likePost(idPost)
+  //     } else {
+  //       post.classList.replace('fas', 'far')
+  //       likeNumberContent++
+  //       UnlikedPost(idPost)
+  //     }
+  //     likeNumber.innerHTML = likeNumberContent
+  //   })
+
+  // }
+
   return rootElement;
 };

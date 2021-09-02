@@ -87,29 +87,28 @@ export const deletePost = (postId) => {
 };
 
 // Editar post
-export const editPost = (newPost, id) => {
+export const editarPost = (newPost, id) => {
   creatFormUser('post').doc(id).update({ text: newPost });
 };
 
 // Curtir Posts
 export const likePost = async (idPost, userId) => {
-  return await firebase.firestore().collection('posts').doc(idPost).get()
+  const postLike = await firebase.firestore().collection('posts').doc(idPost).get()
     .then((post) => {
       const arrayLike = post.data().like;
+      const arrayLength = arrayLike.length;
       if (arrayLike.indexOf(userId) === -1) {
         firebase.firestore().collection('posts').doc(idPost).update({
-          like: firebase.firestore.FieldValue.arrayUnion(userId),  
+          like: firebase.firestore.FieldValue.arrayUnion(userId),
         });
-
-        return arrayLike.length
       } else {
         firebase.firestore().collection('posts').doc(idPost).update({
           like: firebase.firestore.FieldValue.arrayRemove(userId),
         });
-        return arrayLike.length
       }
-
+      return arrayLength;
     });
+  return postLike;
 };
 
 // export const likePost = (idPost, userId) => {
