@@ -6,16 +6,12 @@ export const Publication = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
     <h1>The Office Network</h1>
-      <div class="backToLogin">
-        <p class="sair"><img src='img/icon_logout_feed.png'></p>
-      </div>
       <div class= "container">
       <h2>No que está pensando</h2>
         <fieldset>
           <input class='newPublication' type='text'>
           <button class='BtnNewPublication'>Publicar</button>
           <ul class='showPublication'></ul>
-
         </fieldset>
         
       </div>
@@ -43,7 +39,7 @@ export const Publication = () => {
     if (textPost === '') {
       console.log('Campo vazio');
     } else {
-      addPublication(textPost).then((post) => {
+      addPublication(textPost).then(() => {
         navigation('/feed');
       });
     }
