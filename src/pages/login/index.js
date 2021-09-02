@@ -5,36 +5,45 @@ export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
 
-    <div class="roxa">
-      <div class="preto"> 
-        <div class="laranja"></div>
+      <div class="roxa">
+        <div class="preto"> 
+          <div class="laranja"></div>
+        </div>
       </div>
-    </div>
-    <h1 class="titulo"> The Office Network </h1>
 
-    <form class= "container">
-
-      <fieldset id="eye-fiel" class="eye">
-        <input id= "email-login" class="email" placeholder="Digite seu e-mail"></input>
-        <input id="senha" type="password" class="senha" placeholder="Digite sua senha"></input>
-        <button type="button" class="botao-eye"> </button>
-      </fieldset>
-  
+      <h1 class="titulo"> The Office Network </h1>
       
-        <p id='error-message' class="erro"></p>
+      <div class="container-img-forms">
+        <div class="img-fundo"> <img src="../../img/fun.png"></div>
 
-        <p id= "reset"> <u>Esqueceu a senha?</u></p>
+        <form class= "container-forms">
 
-        <button id="btnEntrar" class="botao-entrar"> Entrar </button>
+          <fieldset id="eye-fiel" class="fieldset-login">
+            <div class="container-email-login">
+              <input id= "email-login" class="email-login" placeholder="Digite seu e-mail"></input>
+            </div>
+            <div class="container-senha-login">
+              <input id="senha" type="password" class="senha-login" placeholder="Digite sua senha"></input>
+              <button type="button" class="botao-eye-login"> </button>
+            </div>
+          </fieldset>
+          
+          <p id='error-message' class="erro-login"></p>
 
-        <p class="ou"> OU </p>
-      
-        <button id= "google" class="botao-google"> Entrar com Google </button>
-      
-     <div class="entrarLogin">
-        <p class="cadastro" > Não tem conta? <u class="page-cadastro" id="leva-tela-cadastro"> Cadastre-se </u></p>
-     </div>
-    </form>
+          <p id= "reset"> <u>Esqueceu a senha?</u></p>
+
+          <button id="btnEntrar" class="botao-entrar"> Entrar </button>
+
+          <p class="ou"> OU </p>
+          
+          <button id= "google" class="botao-google"> Entrar com Google </button>
+          
+          <div class="entrarLogin">
+            <p class="cadastro" > Não tem conta? <u class="page-cadastro" id="leva-tela-cadastro"> Cadastre-se </u></p>
+          </div>
+
+        </form>
+      </div>
 
     `;
 
@@ -50,8 +59,10 @@ export const Login = () => {
       msgErro.innerHTML = 'Senha incorreta';
     } else if (error.code === 'auth/invalid-email') {
       msgErro.innerHTML = 'E-mail incorreto';
-    } else {
+    } else if (error.code === 'auth/user-not-found') {
       msgErro.innerHTML = 'Usuário não encontrado';
+    } else {
+      msgErro.innerHTML = 'Ocorreu algum erro. Tente novamente.';
     }
   };
 

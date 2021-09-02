@@ -5,48 +5,52 @@ export const Register = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
       
-      <fieldset class="tamplete-register">
-      <legend>Cadastre-se</legend>
         <form class= "container-register">
-          
-            <label class="UserName"><b>Nome</b></label>
-            <input class="completeName" ="type="text" placeholder="Nome Completo">
 
-            <label class="nameEmail"><b>Email</b></label>
-            <input class= "email" type="text" placeholder="Digite seu e-mail">
+          <div class="img-tela-cadastro">
+             <img class="img-cadastro" src="../../img/fun.png">
+          </div>
+
+          <div class="inputs"> 
+            <h1 class="cadastre-se">Cadastre-se</h1>
+            <div class="name-email-cadastro">
+              <input class="complete-name" ="type="text" placeholder="Nome Completo">
+              <input class= "email-cadastro" type="text" placeholder="Digite seu e-mail">
+            </div>
             
-
-            <div class="psw"><b>Senha</b></div>
-            <div>
-            <input class='passwordRegister' type="password" placeholder="Digite uma senha 6 digitos">
-            <img class='eye' src='https://image.flaticon.com/icons/png/512/149/149642.png'>
+            <div class="senha-cadastro">
+              <input class='password-register' type="password" placeholder="Digite uma senha 6 digitos">
+              <button type="button" class='eye-senha-cadastro'>
             </div>
 
-            <label class="psw-repeat"><b>Repetir senha</b></label>
-            <div>
-            <input class="repeatPassword" type="password" placeholder="Digite uma senha 6 digitos">
-            <img class='eyeRepeat' src='https://image.flaticon.com/icons/png/512/149/149642.png'>
+            <div class="senha-cadastro-repeat">
+              <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
+              <button type="button" class='eye-senha-repeat'> </button>
             </div>
-            <label class="msgPassword"></label>
-          
-          
-            <button class= "btnCadastro">Cadastrar</button>
-          
-            <div class="entrarLogin">
-            <p>Já tem uma conta?<a class="pageLogin"> Entre</a></p>
+
+            <p class="msg-error"></p>
+            <p class="msg-erro-firebase"></p>
+                    
+            <button class= "btn-cadastro">Cadastrar</button>
+            
+            <div class="entrar-login">
+              <p>Já tem uma conta?<a class="page-login"> Entre</a></p>
             </div>
+          </div>
         </form>
-      </fieldset>
+      
     `;
-  const completeName = rootElement.querySelector('.completeName');
-  const emailInput = rootElement.querySelector('.email');
-  const passwordInput = rootElement.querySelector('.passwordRegister');
-  const viewPassword = rootElement.querySelector('.eye');
-  const passwordRepeat = rootElement.querySelector('.repeatPassword');
-  const viewPasswordRepeat = rootElement.querySelector('.eyeRepeat');
-  const passwordMessage = rootElement.querySelector('.msgPassword');
-  const createUserButton = rootElement.querySelector('.btnCadastro');
-  const backToLogin = rootElement.querySelector('.pageLogin');
+
+  const completeName = rootElement.querySelector('.complete-name');
+  const emailInput = rootElement.querySelector('.email-cadastro');
+  const passwordInput = rootElement.querySelector('.password-register');
+  const viewPassword = rootElement.querySelector('.eye-senha-cadastro');
+  const passwordRepeat = rootElement.querySelector('.password-repeat');
+  const viewPasswordRepeat = rootElement.querySelector('.eye-senha-repeat');
+  const errorMessage = rootElement.querySelector('.msg-error');
+  const erroFirebase = rootElement.querySelector('.msg-erro-firebase');
+  const createUserButton = rootElement.querySelector('.btn-cadastro');
+  const backToLogin = rootElement.querySelector('.page-login');
 
   backToLogin.addEventListener('click', () => {
     navigation('/');
@@ -68,11 +72,16 @@ export const Register = () => {
     }
   });
 
-  const clear = () => {
-    completeName.value = '';
-    emailInput.value = '';
-    passwordInput.value = '';
-    passwordRepeat.value = '';
+  const errorFunction = (error) => {
+    if (error.code === 'auth/email-already-exists') {
+      erroFirebase.innerHTML = 'E-mail já existe';
+    } else if (error.code === 'auth/invalid-email') {
+      erroFirebase.innerHTML = 'E-mail invalido';
+    } else if (error.code === 'auth/invalid-password') {
+      erroFirebase.innerHTML = 'Senha inválida';
+    } else {
+      erroFirebase.innerHTML = 'Ocorreu algum erro. Tente novamente.';
+    }
   };
 
   createUserButton.addEventListener('click', (e) => {
@@ -81,24 +90,18 @@ export const Register = () => {
     const emailUser = emailInput.value;
     const password = passwordInput.value;
     const confirmPassword = passwordRepeat.value;
+    createUser();
 
     if (userName === '' || emailUser === '' || password === '' || confirmPassword === '') {
-      passwordMessage.innerHTML = 'Todos os campos devem ser preenchidos';
+      errorMessage.innerHTML = 'Todos os campos devem ser preenchidos';
     } else if (password !== confirmPassword) {
-      passwordMessage.innerHTML = 'As senhas devem ser iguais';
-    } else if (password.length <= 5 || confirmPassword.length <= 5) {
-      passwordMessage.innerHTML = 'A senha deve ter no minimo 6 caracteres';
-    } else {
-    
+      errorMessage.innerHTML = 'As senhas devem ser iguais';
     }
-    createUser(emailUser, password).then((user) => {
-      console.log(user);
-      const userId = firebase.auth().currentUser.uid;
-      creatFormUser(userId, userName, emailUser);
-      navigation('/');
-    });
-    clear();
-  });
 
+    createUser(emailUser, password).then((user) => {
+      const userId = firebase.auth().currentUser.uid;
+      creatFormUser(userId, userName, emailUser, errorFunction);
+    });
+  });
   return rootElement;
 };

@@ -1,5 +1,5 @@
 import { navigation } from '../../routes/navigation.js';
-import { signOut, showPost, deletePost, getCurrentUser, likePost} from '../../services/index.js';
+import { signOut, showPost, deletePost, getCurrentUser, likePost } from '../../services/index.js';
 
 export const Feed = () => {
   const rootElement = document.createElement('div');
@@ -34,13 +34,11 @@ export const Feed = () => {
     signOut().then(() => navigation('/'));
   });
 
-  
-
-  const addPost =  (data) => {
+  const addPost = (data) => {
     const objetoPost = data.data();
     const like = objetoPost.like;
     const userPost = (objetoPost.email === currentUser.email);
-  
+
     const tampleteFeed = ` 
     <div class='containerFeed' data-post id='${data.id}'> 
 
@@ -57,19 +55,29 @@ export const Feed = () => {
           <span class = 'numero-Likes '>${like.length}</span>
         </span>
 
-        ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="delete"></i>' : "" }
+        ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="open-delete"></i>' : ''}
+        
       </div>
 
-      <div id="id01" class="modal" data-item="open-modal">
-        <form class="modal-content" ">
-          <div class="modal-close">x</div>
-            <div class="container">
-              <h1>Tem certeza que deseja excluir o post?</h1>
-              <button type="button" data-confirmdelete class="cancelbtn">Cancel</button>
-              <button type="button" data-closemodal class="deletebtn">Delete</button>
-            </div>
+      <div id="modal-msg" class="modal" data-item="open-modal">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <div class="modal-close" data-item="cancel">x</div>  
+            <h1 class="modal-title">Excluir Post</h1>   
           </div>
-        </form>
+
+          <div class="modal-body">
+            <h2>Tem certeza que deseja excluir este post?</h2>
+          </div>
+
+          <div class="modal-btn">
+            <button type="button" data-item="cancel" class="cancelbtn">Cancel</button>
+            <button type="button" data-item="confirm" "class="deletebtn">Delete</button>
+          </div>
+          <div class="modal-footer"></div>
+        
+        </div>
       </div>
      
         
@@ -77,58 +85,40 @@ export const Feed = () => {
     </div>
     `;
 
-     showPublicationFeed.innerHTML += tampleteFeed;
+    showPublicationFeed.innerHTML += tampleteFeed;
 
     const postTamplete = rootElement.querySelectorAll('[data-post]');
-    for ( let post of postTamplete) {
+    postTamplete.forEach((post) => {
       post.addEventListener('click', (e) => {
-        const idPost = post.getAttribute('id')
-        const targetDataSet = e.target.dataset.item
-        const numeroLike = post.children[5].children[0].children[1] //<span class = 'numero-Likes '>${like.length}</span>
-        if (targetDataSet == 'delete') { 
-            deletePost(idPost);    
-        }   
-        if (targetDataSet == 'like'){
-          likePost(idPost, currentUser.uid).then((response) => 
-          numeroLike.innerText = response)
-              
-        } 
+        console.log(post);
+        const idPost = post.getAttribute('id'); 
+        const targetDataSet = e.target.dataset.item; //
+        console.log(targetDataSet);
+        const numeroLike = post.children[5].children[0].children[1];
+        const modal = rootElement.querySelector('#modal-msg');
+        if (targetDataSet === 'like') {
+          console.log('entrou no if certo');
+          likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response});
+        }
+        if (targetDataSet === 'confirm') {
+          modal.style.display = 'none';
+          deletePost(idPost).then(() => {
+            post.remove();
+          });
+        }
+        if (targetDataSet === 'open-delete') {
+          console.log(modal)
+          console.log('entrou no modal');
+          modal.style.display = 'block';
+        }
+        if (targetDataSet === 'cancel') {
+          modal.style.display = 'none';
+        }
       });
-      
-    }
-  }
-  showPost(addPost)
-
-
-
-      
-      
-    // postTamplete.addEventListener('click', (e) =>{
-    //   const target = e.target;
-    //   if (target.dataset.like === 'like' && !target.classList.contains('liked'))
-    // })
-      // for (let post of postTamplete) {
-      //   post.addEventListener('click', (e) => {
-
-      //     const idPost = post.getAttribute('id') //id do post
-      //     const postUnliked = post.classList.contains('far') // falso (não tem curtida desse usuario)
-      //     let likeNumber = rootElement.querySelector('.number-likes') //<span class="number-likes "></span>
-      //     let likeNumberContent = Number(likeNumber.innerHTML); // 0
-          
-      //     if(postUnliked == true){
-      //       post.classList.replace('far','fas')
-      //       likeNumberContent--
-      //       likePost(idPost)
-      //     } else {
-      //       post.classList.replace('fas', 'far')
-      //       likeNumberContent++
-      //       UnlikedPost(idPost)
-      //     }
-          
-      //     likeNumber.innerHTML = likeNumberContent 
-      //   })
-       
-      // }
-   
+    });
+  };
+  showPost().then((allPosts) => {
+    allPosts.forEach((individualPost) => addPost(individualPost));
+  });
   return rootElement;
 };

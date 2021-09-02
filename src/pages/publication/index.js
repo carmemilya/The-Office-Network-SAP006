@@ -6,9 +6,6 @@ export const Publication = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
     <h1>The Office Network</h1>
-      <div class="backToLogin">
-        <p class="sair"><img src='img/icon_logout_feed.png'></p>
-      </div>
       <div class= "container">
       <h2>No que está pensando</h2>
         <fieldset>
@@ -26,14 +23,9 @@ export const Publication = () => {
         </section>
        
        `;
-  const backToLogin = rootElement.querySelector('.sair');
   const postsText = rootElement.querySelector('.newPublication');
   const publicationButton = rootElement.querySelector('.BtnNewPublication');
   const backTimeLine = rootElement.querySelector('.iconHome');
-
-  backToLogin.addEventListener('click', () => {
-    navigation('/');
-  });
 
   backTimeLine.addEventListener('click', () => {
     navigation('/feed');
@@ -48,7 +40,7 @@ export const Publication = () => {
     if (textPost === '') {
       console.log('Campo vazio');
     } else {
-      addPublication(textPost).then((post) => {
+      addPublication(textPost).then(() => {
         navigation('/feed');
       });
     }
