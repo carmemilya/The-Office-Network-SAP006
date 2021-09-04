@@ -31,7 +31,7 @@ export const Register = () => {
             <button class= "btn-register">Cadastrar</button>
             
             <div class="enter-login">
-              <p>Já tem uma conta? <u class="page-login"> Entre</u> </p>
+              <p class="page-login">Já tem uma conta? <u class="page-login"> Entre</u> </p>
             </div>
           </div>
         </form>

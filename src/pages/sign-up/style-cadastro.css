@@ -99,7 +99,14 @@
     border-radius: 10px;
 }
 
-.page-login:hover {
+.page-login{
+    font-family: Noto Sans JP;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+u.page-login:hover {
     cursor: pointer;
     color: #F27127;  
 }
