@@ -1,13 +1,13 @@
 import { navigation } from '../../routes/navigation.js';
 import {
-  signOut, showPost, deletePost, getCurrentUser, likePost,
+  signOut, showPost, deletePost, getCurrentUser, likePost, editPost,
 } from '../../services/index.js';
 
 export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
   <div class='headerfeed'>
-    <h1><img class='logo' src='img/logo_canva.png'></h1>
+    <h1><img class='logo' src='img/ton.png'></h1>
     <p id="sair-da-conta" class="exitAccount"><img src='img/icon_logout_feed.png'></p>
   </div>  
   <div class= "container">
@@ -53,6 +53,8 @@ export const Feed = () => {
           <span class = 'numero-Likes '>${like.length}</span>
         </span>
         ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="open-delete"></i>' : ''}
+
+        ${userPost ? '<i id="editar-post" class="fas fa-pen" data-edit="${post.id}"></i>' : ''}
         
       </div>
       <div id="modal-msg" class="modal" data-item="open-modal">
@@ -71,8 +73,23 @@ export const Feed = () => {
           <div class="modal-footer"></div>
         
         </div>
-      </div>
-     
+      </div> 
+      
+      <div id="modal-edit" class="modal-edit" data-item="open-modal-edit">
+       <div class="modal-content-edit">
+         <div class="modal-header">
+          <input type="text" id="new-text"></input>
+          <div class="modal-close" data-item="cancel">x</div>   
+         </div>
+         <div class="modal-btn">
+           <button type="button" data-item="cancel-edit" class="cancelbtn">Cancel</button>
+           <button type="button" data-item="confirm-edit" "class="deletebtn">Salvar</button>
+         </div>
+         <div class="modal-footer"></div>
+      
+       </div>
+     </div>
+
         
     </div>
     `;
@@ -82,14 +99,18 @@ export const Feed = () => {
     const postTamplete = rootElement.querySelectorAll('[data-post]');
     postTamplete.forEach((post) => {
       post.addEventListener('click', (e) => {
-        console.log(post);
         const idPost = post.getAttribute('id');
+        console.log(idPost);
         const targetDataSet = e.target.dataset.item; //
         console.log(targetDataSet);
+        // const targetDataSetEdit = e.target.dataset.item;
+        // console.log(targetDataSetEdit);
+        // const newText = rootElement.querySelectorAll('#new-text');
         const numeroLike = post.children[5].children[0].children[1];
         const modal = rootElement.querySelector('#modal-msg');
+        // const modalEdit = rootElement.querySelector('#modal-edit');
+
         if (targetDataSet === 'like') {
-          console.log('entrou no if certo');
           likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response});
         }
         if (targetDataSet === 'confirm') {
@@ -99,8 +120,6 @@ export const Feed = () => {
           });
         }
         if (targetDataSet === 'open-delete') {
-          console.log(modal);
-          console.log('entrou no modal');
           modal.style.display = 'block';
         }
         if (targetDataSet === 'cancel') {

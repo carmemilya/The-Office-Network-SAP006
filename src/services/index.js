@@ -80,8 +80,8 @@ export const deletePost = (postId) => {
 };
 
 // Editar post
-export const editarPost = (newPost, id) => {
-  creatFormUser('post').doc(id).update({ text: newPost });
+export const editPost = (newPost, id) => {
+  addPublication('post').doc(id).update({ text: newPost });
 };
 
 // Curtir Posts

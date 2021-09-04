@@ -1,6 +1,12 @@
 .headerfeed{
+  
     display: flex;
-    justify-content: space-between;
+    /* justify-content: center; */
+    flex-direction: row;
+    align-items: center;
+    margin-top: -18%;
+    margin-bottom: -9%;
+
 }
 
 .logo{
