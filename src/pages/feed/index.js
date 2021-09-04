@@ -1,15 +1,16 @@
 import { navigation } from '../../routes/navigation.js';
-import { signOut, showPost, deletePost, getCurrentUser, likePost } from '../../services/index.js';
+import {
+  signOut, showPost, deletePost, getCurrentUser, likePost,
+} from '../../services/index.js';
 
 export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
   <div class='headerfeed'>
-    <h1><img class='logo' src='img/logo_canva.png'></h1>
+    <h1><img class='logo' src='img/fun.png'></h1>
     <p id="sair-da-conta" class="exitAccount"><img src='img/icon_logout_feed.png'></p>
   </div>  
   <div class= "container">
-
       <div class='showPublication' ></div>
   
   </div>
@@ -20,7 +21,7 @@ export const Feed = () => {
       </section>
       `;
 
-  const sair = rootElement.querySelector('.exitAccount');
+  const sair = rootElement.querySelector('#sair-da-conta');
   const addPublication = rootElement.querySelector('.iconPlus');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
   const currentUser = getCurrentUser();
@@ -41,14 +42,11 @@ export const Feed = () => {
 
     const tampleteFeed = ` 
     <div class='containerFeed' data-post id='${data.id}'> 
-
       <div class='dataPost'>${objetoPost.data}</div>
       <div class='emailUserPublication' data-email='${objetoPost.email}'>${objetoPost.email}</div>
-
       <hr class='line'>
       <div class='postFeed'>${objetoPost.post}</div>
       <hr class='line'>
-
       <div class='functionsPost'>
         <span class = 'likes'>
           <i class="far fa-heart icone-curtir" data-item="like"></i>
@@ -81,7 +79,6 @@ export const Feed = () => {
       </div>
      
         
-
     </div>
     `;
 
@@ -90,15 +87,12 @@ export const Feed = () => {
     const postTamplete = rootElement.querySelectorAll('[data-post]');
     postTamplete.forEach((post) => {
       post.addEventListener('click', (e) => {
-        console.log(post);
-        const idPost = post.getAttribute('id'); 
-        const targetDataSet = e.target.dataset.item; //
-        console.log(targetDataSet);
+        const idPost = post.getAttribute('id');
+        const targetDataSet = e.target.dataset.item; 
         const numeroLike = post.children[5].children[0].children[1];
         const modal = rootElement.querySelector('#modal-msg');
         if (targetDataSet === 'like') {
-          console.log('entrou no if certo');
-          likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response});
+          likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response });
         }
         if (targetDataSet === 'confirm') {
           modal.style.display = 'none';
@@ -107,8 +101,6 @@ export const Feed = () => {
           });
         }
         if (targetDataSet === 'open-delete') {
-          console.log(modal)
-          console.log('entrou no modal');
           modal.style.display = 'block';
         }
         if (targetDataSet === 'cancel') {

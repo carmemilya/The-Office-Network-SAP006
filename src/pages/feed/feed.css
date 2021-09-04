@@ -3,6 +3,15 @@
     justify-content: space-between;
 }
 
+.headerfeed h1 {
+    width: 62%;
+    margin-bottom: -12%;
+    margin-top: -14%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .logo{
     width: 60%;
 }
@@ -11,6 +20,7 @@
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 20%;
 }  
 
  .containerFeed {
@@ -105,6 +115,7 @@
    padding: 10px;
    background-color: rgba(44, 41, 41, 0.7);
 }
+
 .modal-title{
     display: flex;
     justify-content: center;
@@ -117,27 +128,12 @@
     margin: 3%;
 }
 
+.modal-close:hover{
+    cursor: pointer;
+}
+
 .modal-footer{
     height: 4vh;
     background-color: rgba(44, 41, 41, 0.7);
 }
-  /* .modal{
-    width:100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top:0px;
-    left:0px;
-    z-index:2000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-.modal-content{
-    background: white;
-    width: 60%;
-    min-width: 300px;
-    padding: 5%;
-    border: 
-}   */
+  

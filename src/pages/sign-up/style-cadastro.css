@@ -1,96 +1,76 @@
-.container-register {
-    padding: 26px;
+
+.tamplete-register {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
     justify-content: space-around;
-    margin-top: 6%;
+    flex-wrap: nowrap;
+    align-content: center;
 }
 
-.img-tela-cadastro {
-    padding: 40px;
-    display: flex;
+.img-register{
+   display: flex;
+   align-items: center;  
 }
 
+.container-register {  
+    padding: 5%;
+    margin-top: 5%;
+} 
 
-.inputs {
+ .inputs {
     display: flex;
     flex-direction: column;
-    margin-right: 12%;
     align-items: center;
+}  
 
+.title-register {
+    font-family: Noto Sans JP;
+    font-size: 150%;
+    text-align: center;
 }
 
-.cadastre-se {
-    font-family: Noto Sans JP;
-    font-size: 30px;
-    text-align: center;
+.input-form, .div-password {
+    display: flex;
+    width: 25vw;
+    height: 5vh; 
+    margin: 2%;
+    border-radius: 5px;
+    border: 1px solid; 
+}
+
+.inputs-name{
     display: flex;
     flex-direction: column;
-}
-
-.name-email-cadastro {
-    display: flex;
-    width: 100%;
-    height: 136px;
+    align-items: center;
     justify-content: center;
-    flex-direction: column;   
+    height: 30vh;
+    width: 28vw;
 }
 
-.complete-name {
-    width: 400px;
-    height: 50px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid;
-}
-
-.email-cadastro {
-    width: 400px;
-    height: 50px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid;
-}
-
-.senha-cadastro {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 5%;
-    border: 1px solid;
-    width: 405px;
-    height: 50px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid;
-}
-
-.password-register {
-    width: 100%;
+.password-register, .password-repeat {
+    width: 30vw;
     border: 0;
-    border-radius: 10px;
+    border-radius: 5px;
+    outline: 0;
 
 }
 
-.senha-cadastro-repeat {
+.div-password-repeat {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 5%;
+    width: 25vw;
+    height: 5vh; 
+    margin: 2%;
+    border-radius: 5px;
     border: 1px solid;
-    width: 405px;
-    height: 50px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid;
+} 
+
+.msg-error, .msg-erro-firebase {
+    color: #FF7C50;
+    font-size: 90%;
+    line-height: 1.5;
 }
 
-.password-repeat {
-    width: 100%;
-    border: 0;
-    border-radius: 10px;
-}
-
-.btn-cadastro {
+.btn-register {
     background: #161616;
     width: 50%;
     height: 48px;
@@ -98,22 +78,31 @@
     font-family: Noto Sans JP;
     font-size: 20px;
     color: #FFFFFF;
+    cursor: pointer;
+}
+.btn-register:hover{
+    background-color: #353434;
+   
 }
 
-.eye-senha-cadastro, .eye-senha-repeat {
+.enter-login {
+    font-size: 22px;
+}
+
+.eye-password-register, .eye-password-repeat {
     background-image: url(../../img/eye.svg);
     background-repeat: no-repeat;
     background-size: 30px, 30px;
-    width: 32px;
-    margin-right: 8px;
-    height: 30px;
+    width: 15%;
     border: 0;
     background-color: #FFFFFF;
     border-radius: 10px;
-    /* display: flex; */
-    margin-top: inherit;
 }
 
+.page-login:hover {
+    cursor: pointer;
+    color: #F27127;  
+}
 
 
 

@@ -4,52 +4,49 @@ import { navigation } from '../../routes/navigation.js';
 export const Register = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-      
+      <div class='tamplete-register'>
+        <div class="img-register">
+            <img class="img-logo" src="../../img/fun.png">
+        </div>
+
         <form class= "container-register">
-
-          <div class="img-tela-cadastro">
-             <img class="img-cadastro" src="../../img/fun.png">
-          </div>
-
           <div class="inputs"> 
-            <h1 class="cadastre-se">Cadastre-se</h1>
-            <div class="name-email-cadastro">
-              <input class="complete-name" ="type="text" placeholder="Nome Completo">
-              <input class= "email-cadastro" type="text" placeholder="Digite seu e-mail">
-            </div>
+            <h1 class ="title-register">Cadastre-se</h1>
+            <div class="inputs-name">
+              <input class="input-form" id="completeName" ="type="text" placeholder="Nome Completo">
+              <input class= "input-form" id="emailRegister" type="email" placeholder="Digite seu e-mail">
             
-            <div class="senha-cadastro">
-              <input class='password-register' type="password" placeholder="Digite uma senha 6 digitos">
-              <button type="button" class='eye-senha-cadastro'>
+              <div class="div-password">
+                <input class='password-register' type="password" placeholder="Digite uma senha 6 digitos">
+                <button type="button" class='eye-password-register'>
+              </div>
+              <div class="div-password-repeat">
+                <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
+                <button type="button" class='eye-password-repeat'> </button>
+              </div>
             </div>
-
-            <div class="senha-cadastro-repeat">
-              <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
-              <button type="button" class='eye-senha-repeat'> </button>
-            </div>
-
             <p class="msg-error"></p>
             <p class="msg-erro-firebase"></p>
                     
-            <button class= "btn-cadastro">Cadastrar</button>
+            <button class= "btn-register">Cadastrar</button>
             
-            <div class="entrar-login">
-              <p>Já tem uma conta?<a class="page-login"> Entre</a></p>
+            <div class="enter-login">
+              <p>Já tem uma conta? <u class="page-login"> Entre</u> </p>
             </div>
           </div>
         </form>
-      
+      </div>
     `;
 
-  const completeName = rootElement.querySelector('.complete-name');
-  const emailInput = rootElement.querySelector('.email-cadastro');
+  const completeName = rootElement.querySelector('#completeName');
+  const emailInput = rootElement.querySelector('#emailRegister');
   const passwordInput = rootElement.querySelector('.password-register');
-  const viewPassword = rootElement.querySelector('.eye-senha-cadastro');
+  const viewPassword = rootElement.querySelector('.eye-password-register');
   const passwordRepeat = rootElement.querySelector('.password-repeat');
-  const viewPasswordRepeat = rootElement.querySelector('.eye-senha-repeat');
+  const viewPasswordRepeat = rootElement.querySelector('.eye-password-repeat');
   const errorMessage = rootElement.querySelector('.msg-error');
   const erroFirebase = rootElement.querySelector('.msg-erro-firebase');
-  const createUserButton = rootElement.querySelector('.btn-cadastro');
+  const createUserButton = rootElement.querySelector('.btn-register');
   const backToLogin = rootElement.querySelector('.page-login');
 
   backToLogin.addEventListener('click', () => {
@@ -73,8 +70,10 @@ export const Register = () => {
   });
 
   const errorFunction = (error) => {
-    if (error.code === 'auth/email-already-exists') {
+    if (error.code === 'auth/uid-already-exists') {
       erroFirebase.innerHTML = 'E-mail já existe';
+    } else if (error.code === 'auth/email-already-in-use') {
+      erroFirebase.innerHTML = 'E-mail já cadastrado';
     } else if (error.code === 'auth/invalid-email') {
       erroFirebase.innerHTML = 'E-mail invalido';
     } else if (error.code === 'auth/invalid-password') {
@@ -90,7 +89,6 @@ export const Register = () => {
     const emailUser = emailInput.value;
     const password = passwordInput.value;
     const confirmPassword = passwordRepeat.value;
-    createUser();
 
     if (userName === '' || emailUser === '' || password === '' || confirmPassword === '') {
       errorMessage.innerHTML = 'Todos os campos devem ser preenchidos';
@@ -98,10 +96,14 @@ export const Register = () => {
       errorMessage.innerHTML = 'As senhas devem ser iguais';
     }
 
-    createUser(emailUser, password).then((user) => {
+    createUser(emailUser, password, errorFunction).then((response) => {
+      console.log(response);
       const userId = firebase.auth().currentUser.uid;
-      creatFormUser(userId, userName, emailUser, errorFunction);
-    });
+      creatFormUser(userId, userName, emailUser);
+    })
+      .catch((response) => {
+        console.log(response);
+      });
   });
   return rootElement;
 };
