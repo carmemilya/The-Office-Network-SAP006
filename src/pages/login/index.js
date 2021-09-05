@@ -4,13 +4,6 @@ import { navigation } from '../../routes/navigation.js';
 export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-
-      <div class="roxa">
-        <div class="preto"> 
-          <div class="laranja"></div>
-        </div>
-      </div>
-
       <h1 class="titulo"> The Office Network </h1>
       
       <div class="container-img-forms">

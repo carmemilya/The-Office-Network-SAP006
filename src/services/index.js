@@ -80,9 +80,7 @@ export const deletePost = (postId) => {
 };
 
 // Editar post
-export const editPost = (newPost, id) => {
-  addPublication('post').doc(id).update({ text: newPost });
-};
+export const editPost = (newText, postID) => firebase.firestore().collection('posts').doc(postID).update({ text: newText });
 
 // Curtir Posts
 export const likePost = async (idPost, userId) => {
