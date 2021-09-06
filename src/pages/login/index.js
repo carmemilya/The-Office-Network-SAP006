@@ -15,7 +15,7 @@ export const Login = () => {
 
     <div class="tamplete-login">
       <div class="container-img-forms">
-        <img src="../../img/fun.png">
+        <img class="img-fundo" src="../../img/fun.png">
       </div>
 
       <form class= "container-forms">

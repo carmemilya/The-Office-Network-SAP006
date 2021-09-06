@@ -72,6 +72,12 @@ export const deletePost = (postId) => {
   return postsCollection;
 };
 
+// Editar post
+export const editPost = (newText, postId) => firebase.firestore().collection('posts').doc(postId)
+  .update({
+    post: newText,
+  });
+
 // Curtir Posts
 export const likePost = async (idPost, userId) => {
   const postLike = await firebase.firestore().collection('posts').doc(idPost).get()

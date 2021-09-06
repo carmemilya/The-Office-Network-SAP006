@@ -1,15 +1,12 @@
-.headerfeed{
+.header-feed{
+  
     display: flex;
-    justify-content: space-between;
-}
-
-.headerfeed h1 {
-    width: 62%;
-    margin-bottom: -12%;
-    margin-top: -14%;
-    display: flex;
+    /* justify-content: center; */
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    /* margin-top: -18%; */
+    margin-bottom: -9%;
+
 }
 
 .logo{
@@ -20,7 +17,6 @@
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 20%;
 }  
 
  .containerFeed {
@@ -136,4 +132,7 @@
     height: 4vh;
     background-color: rgba(44, 41, 41, 0.7);
 }
-  
+
+.modal-edit{
+    display:none;
+}
