@@ -1,8 +1,9 @@
 import { navigation } from '../routes/navigation.js';
 
+const db = firebase.auth();
 // Login de usuários existentes
 export const existingUser = (email, password, errorFunction) => {
-  firebase.auth().signInWithEmailAndPassword(email, password)
+  db.signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       navigation('/feed');
       const user = userCredential.user;
@@ -14,13 +15,13 @@ export const existingUser = (email, password, errorFunction) => {
 // Login com o Google - Está funcionando (APARENTEMENTE)
 export const signInGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  const result = firebase.auth().signInWithPopup(provider);
+  const result = db.signInWithPopup(provider);
   return result;
 };
 
 // Criar conta - Está Funcionando
-export const createUser = (email, password, errorFunction) => firebase
-  .auth().createUserWithEmailAndPassword(email, password)
+export const createUser = (name, email, password, errorFunction) => db
+  .createUserWithEmailAndPassword(name, email, password)
   .then((userCredential) => {
     navigation('/feed');
     const user = userCredential.user;
@@ -33,12 +34,12 @@ export const createUser = (email, password, errorFunction) => firebase
   });
 
 // Manter usuário logado
-export const mantemConectado = (callback) => firebase.auth().onAuthStateChanged(callback);
+export const mantemConectado = (callback) => db.onAuthStateChanged(callback);
 
 /// Desconectar Usuário
 export const signOut = () => {
   localStorage.removeItem('uid');
-  firebase.auth().signOut();
+  db.signOut();
 };
 
 // Criar coleção com informações do usuário
@@ -54,8 +55,6 @@ export const getCurrentUser = () => {
   const usuarioExistente = firebase.auth().currentUser;
   return usuarioExistente;
 };
-
-// export const signOut = () => firebase.auth().signOut();
 
 // Adicionar publicação
 export const addPublication = async (postsText) => {
@@ -103,3 +102,8 @@ export const likePost = async (idPost, userId) => {
     });
   return postLike;
 };
+
+// Incluir imagem no perfil
+export const updatePhotoProfile = (userId, file) => firebase.storage().ref(`imageProfile/${userId}`).put(file);
+
+export const downloadPhotoProfile = (userId) => firebase.storage().ref().child(`imageProfile/${userId}`).getDownloadURL();

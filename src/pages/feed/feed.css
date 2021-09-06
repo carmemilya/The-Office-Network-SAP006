@@ -17,6 +17,7 @@
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 19%;
 }  
 
  .containerFeed {
@@ -111,6 +112,7 @@
    padding: 10px;
    background-color: rgba(44, 41, 41, 0.7);
 }
+
 .modal-title{
     display: flex;
     justify-content: center;
@@ -121,6 +123,10 @@
     flex-direction: row;
     justify-content: center;
     margin: 3%;
+}
+
+.modal-close:hover{
+    cursor: pointer;
 }
 
 .modal-footer{

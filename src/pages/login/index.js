@@ -4,50 +4,54 @@ import { navigation } from '../../routes/navigation.js';
 export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-      <h1 class="titulo"> The Office Network </h1>
-      
+
+    <div class="purple">
+      <div class="black"> 
+        <div class="orange"></div>
+      </div>
+    </div>
+
+      <h1 class="title"> The Office Network </h1>
+
+    <div class="tamplete-login">
       <div class="container-img-forms">
-        <div class="img-fundo"> <img src="../../img/fun.png"></div>
+        <img src="../../img/fun.png">
+      </div>
 
-        <form class= "container-forms">
-
-          <fieldset id="eye-fiel" class="fieldset-login">
-            <div class="container-email-login">
+      <form class= "container-forms">
+        <div class="inputs">
+          <h2 class="title-login">Conecte-se</h2>
+          <div class"input-box">
               <input id= "email-login" class="email-login" placeholder="Digite seu e-mail"></input>
+              
+            <div class="container-password-login">
+                <input id="password" type="password" class="password-login" placeholder="Digite sua senha"></input>
+                <button type="button" class="btn-eye-login"> </button>
             </div>
-            <div class="container-senha-login">
-              <input id="senha" type="password" class="senha-login" placeholder="Digite sua senha"></input>
-              <button type="button" class="botao-eye-login"> </button>
-            </div>
-          </fieldset>
+          </div>
           
           <p id='error-message' class="erro-login"></p>
 
-          <p id= "reset"> <u>Esqueceu a senha?</u></p>
-
-          <button id="btnEntrar" class="botao-entrar"> Entrar </button>
-
-          <p class="ou"> OU </p>
+          <button id="btnEnter" class="btn-enter">Entrar</button>
+          <p class="another-option">OU</p>
+          <button id= "google" class="btn-google"><img class="logo-google" src="../../img/google-logo.svg">Entrar com Google</button>
           
-          <button id= "google" class="botao-google"> Entrar com Google </button>
-          
-          <div class="entrarLogin">
-            <p class="cadastro" > Não tem conta? <u class="page-cadastro" id="leva-tela-cadastro"> Cadastre-se </u></p>
+          <div class="enter-login">
+            <p class="register-msg"> Não tem conta? <u class="page-register" id="route-register"> Cadastre-se</u> </p>
           </div>
-
-        </form>
-      </div>
-
+        </div>
+      </form>
+      
+    </div>
     `;
 
   const email = rootElement.querySelector('#email-login');
-  const passwordLogin = rootElement.querySelector('#senha');
+  const passwordLogin = rootElement.querySelector('#password');
   const msgErro = rootElement.querySelector('#error-message');
-  const btnEntrar = rootElement.querySelector('#btnEntrar');
-  const googleBotao = rootElement.querySelector('#google');
-  const cadastro = rootElement.querySelector('#leva-tela-cadastro');
-  const btnEye = rootElement.querySelector('.botao-eye-login');
-  // const resetarSenha = rootElement.querySelector('#reset');
+  const btnEnter = rootElement.querySelector('#btnEnter');
+  const googleBtn = rootElement.querySelector('#google');
+  const registerRoute = rootElement.querySelector('#route-register');
+  const btnEye = rootElement.querySelector('.btn-eye-login');
 
   btnEye.addEventListener('click', () => {
     if (passwordLogin.type === 'password') {
@@ -56,11 +60,6 @@ export const Login = () => {
       passwordLogin.type = 'password';
     }
   });
-
-  // resetarSenha.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   navigation('/recuperar');
-  // });
 
   const errorFunction = (error) => {
     if (error.code === 'auth/wrong-password') {
@@ -74,17 +73,17 @@ export const Login = () => {
     }
   };
 
-  btnEntrar.addEventListener('click', (e) => {
+  btnEnter.addEventListener('click', (e) => {
     e.preventDefault();
     existingUser(email.value, passwordLogin.value, errorFunction);
   });
 
-  googleBotao.addEventListener('click', (e) => {
+  googleBtn.addEventListener('click', (e) => {
     e.preventDefault();
     signInGoogle().then(() => navigation('/feed'));
   });
 
-  cadastro.addEventListener('click', (e) => {
+  registerRoute.addEventListener('click', (e) => {
     e.preventDefault();
     navigation('/cadastro');
   });

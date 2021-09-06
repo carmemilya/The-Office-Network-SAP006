@@ -5,39 +5,47 @@ import { addPublication } from '../../services/index.js';
 export const Publication = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-    <h1>The Office Network</h1>
-      <div class= "container">
-      <h2>No que está pensando</h2>
-        <fieldset>
-          <input class='newPublication' type='text'>
-          <button class='BtnNewPublication'>Publicar</button>
-          <ul class='showPublication'></ul>
+
+    <img class= "img-logo-page" src="../../img/fun.png">
+      <div class= "container-publication">
+        <h1 class="title-text">Compartilhe aqui suas experiencias com outros colaboradores</h1>
+
+        <fieldset class="tamplete-text">
+          <textarea class="new-publication" type='text' rows="4" cols="50" placeholder ="Digite seu post..."></textarea>
+            <div class="btns-publication">
+              <button class="confirm-publication">Publicar</button>
+              <button class="clear-text">Limpar texto</button>
+            </div>
         </fieldset>
         
       </div>
-        <section class='icon'>
-          <img class='iconHome' src='img/icon_home_feed.png'>
-          <img class='iconPlus' src='img/icon_plus_feed.png'>
-          <img class='iconPerfil' src='img/perfil_feed.png'>
-        </section>
+      <section class='icon'>
+        <img class='iconHome' src='img/icon_home_feed.png'>
+        <img class='iconPlus' src='img/icon_plus_feed.png'>
+        <img class='iconPerfil' src='img/perfil_feed.png'>
+      </section>
        
        `;
-  const postsText = rootElement.querySelector('.newPublication');
-  const publicationButton = rootElement.querySelector('.BtnNewPublication');
+  const postsText = rootElement.querySelector('.new-publication');
+  const publicationButton = rootElement.querySelector('.confirm-publication');
+  const btnClear = rootElement.querySelector('.clear-text');
   const backTimeLine = rootElement.querySelector('.iconHome');
 
   backTimeLine.addEventListener('click', () => {
     navigation('/feed');
   });
 
+  btnClear.addEventListener('click', () => {
+    postsText.value = '';
+  });
+
   publicationButton.addEventListener('click', (e) => {
     e.preventDefault();
     const textPost = postsText.value;
-    // const userEmail = firebase.auth().currentUser.email;
-    // const userId = firebase.firestore().collection('user').doc();
 
     if (textPost === '') {
-      console.log('Campo vazio');
+      postsText.value = 'Campo vazio';
+      postsText.style.color = 'red';
     } else {
       addPublication(textPost).then(() => {
         navigation('/feed');

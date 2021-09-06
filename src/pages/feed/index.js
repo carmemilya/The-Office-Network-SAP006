@@ -7,7 +7,7 @@ export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
   <div class='headerfeed'>
-    <h1><img class='logo' src='img/ton.png'></h1>
+    <h1><img class='logo' src='img/fun.png'></h1>
     <p id="sair-da-conta" class="exitAccount"><img src='img/icon_logout_feed.png'></p>
   </div>  
   <div class= "container">
@@ -25,8 +25,15 @@ export const Feed = () => {
   const addPublication = rootElement.querySelector('.iconPlus');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
   const currentUser = getCurrentUser();
+  const btnProfile = rootElement.querySelector('.iconPerfil');
 
-  addPublication.addEventListener('click', () => {
+  btnProfile.addEventListener('click', (e) => {
+    e.preventDefault();
+    navigation('/perfil');
+  });
+
+  addPublication.addEventListener('click', (e) => {
+    e.preventDefault();
     navigation('/add-publication');
   });
 
@@ -38,12 +45,12 @@ export const Feed = () => {
   const addPost = (data) => {
     const objetoPost = data.data();
     const like = objetoPost.like;
-    const userPost = (objetoPost.email === currentUser.email);
+    const userPost = (objetoPost.name === currentUser.email);
 
     const tampleteFeed = ` 
     <div class='containerFeed' data-post id='${data.id}'> 
       <div class='dataPost'>${objetoPost.data}</div>
-      <div class='emailUserPublication' data-email='${objetoPost.email}'>${objetoPost.email}</div>
+      <div class='emailUserPublication' data-email='${objetoPost.name}'>${objetoPost.email}</div>
       <hr class='line'>
       <div class='postFeed'>${objetoPost.post}</div>
       <hr class='line'>
@@ -102,16 +109,16 @@ export const Feed = () => {
         console.log(idPost);
         const targetDataSet = e.target.dataset.item; //
         console.log(targetDataSet);
-        const targetDataSetEdit = e.target.dataset.item;
-        console.log(targetDataSetEdit);
-        const newText = rootElement.querySelectorAll('#new-text');
+        // const targetDataSetEdit = e.target.dataset.item;
+        // console.log(targetDataSetEdit);
+        // const newText = rootElement.querySelectorAll('#new-text');
         const numeroLike = post.children[5].children[0].children[1];
         const modal = rootElement.querySelector('#modal-msg');
         const modalEdit = rootElement.querySelector('#modal-edit');
         console.log(modalEdit);
 
         if (targetDataSet === 'like') {
-          likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response});
+          likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response });
         }
         if (targetDataSet === 'confirm') {
           modal.style.display = 'none';
@@ -125,16 +132,16 @@ export const Feed = () => {
         if (targetDataSet === 'cancel') {
           modal.style.display = 'none';
         }
-        if (targetDataSetEdit === 'confirm-edit') {
-          modalEdit.style.display = 'block';
+        if (targetDataSet === 'confirm-edit') {
+          modal.style.display = 'none';
           editPost(idPost).then(() => {
           });
         }
-        if (targetDataSetEdit === 'open-edit') {
-          modalEdit.style.display = 'block';
+        if (targetDataSet === 'open-edit') {
+          modal.style.display = 'block';
         }
-        if (targetDataSetEdit === 'cancel-edit') {
-          modalEdit.style.display = 'none';
+        if (targetDataSet === 'cancel-edit') {
+          modal.style.display = 'none';
         }
       });
     });
