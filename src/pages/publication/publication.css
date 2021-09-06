@@ -29,7 +29,7 @@
 }
 
 .new-publication{
-    background: rgba(255, 255, 255, 0.2);
+    background: #c3d3dba1;
     backdrop-filter: blur(30px);
     resize: none;
     width: 45vw;
@@ -89,12 +89,12 @@
 .clear-text{
     width:15vw;
     height: 5vh;
-    background: rgba(255, 255, 255, 0.397);
+    background: #c3d3dba1;
     backdrop-filter: blur(30px);
     color: #FFFFFF;
     border-radius: 3px;
 }
 .clear-text:hover{
-    background: rgba(255, 255, 255, 0.2);
+    background: #c3d3db5b;
     cursor: pointer;
 }

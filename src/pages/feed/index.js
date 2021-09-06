@@ -43,6 +43,7 @@ export const Feed = () => {
     const tampleteFeed = ` 
     <div class='containerFeed' data-post id='${data.id}'> 
       <div class='dataPost'>${objetoPost.data}</div>
+      <div class='name-user-publication' data-name='${objetoPost.name}'>${objetoPost.name}</div>
       <div class='emailUserPublication' data-email='${objetoPost.email}'>${objetoPost.email}</div>
       <hr class='line'>
       <div class='postFeed'>${objetoPost.post}</div>
@@ -88,8 +89,9 @@ export const Feed = () => {
     postTamplete.forEach((post) => {
       post.addEventListener('click', (e) => {
         const idPost = post.getAttribute('id');
-        const targetDataSet = e.target.dataset.item; 
-        const numeroLike = post.children[5].children[0].children[1];
+        const targetDataSet = e.target.dataset.item;
+        const numeroLike = post.children[6].children[0].children[1];
+        console.log(numeroLike)
         const modal = rootElement.querySelector('#modal-msg');
         if (targetDataSet === 'like') {
           likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response });

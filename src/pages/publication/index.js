@@ -37,6 +37,7 @@ export const Publication = () => {
 
   btnClear.addEventListener('click', () => {
     postsText.value = '';
+    postsText.style.color = 'white';
   });
 
   publicationButton.addEventListener('click', (e) => {
