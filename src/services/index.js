@@ -21,10 +21,13 @@ export const signInGoogle = () => {
 
 // Criar conta - Está Funcionando
 export const createUser = (name, email, password, errorFunction) => db
-  .createUserWithEmailAndPassword(name, email, password)
+  .createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
     navigation('/feed');
     const user = userCredential.user;
+    user.updateProfile({
+      displayName: name,
+    });
     return user;
   })
   .catch((error) => {
@@ -34,21 +37,12 @@ export const createUser = (name, email, password, errorFunction) => db
   });
 
 // Manter usuário logado
-export const mantemConectado = (callback) => db.onAuthStateChanged(callback);
+export const userConected = (callback) => db.onAuthStateChanged(callback);
 
 /// Desconectar Usuário
 export const signOut = () => {
   localStorage.removeItem('uid');
   db.signOut();
-};
-
-// Criar coleção com informações do usuário
-export const creatFormUser = async (userId, name, email) => {
-  const collectionUser = await firebase.firestore().collection('user').doc(userId).set({
-    userName: name,
-    userEmail: email,
-  });
-  return collectionUser;
 };
 
 export const getCurrentUser = () => {
@@ -58,11 +52,11 @@ export const getCurrentUser = () => {
 
 // Adicionar publicação
 export const addPublication = async (postsText) => {
-  const usuarioExistente = firebase.auth().currentUser;
   const postUser = await firebase.firestore().collection('posts').add({
-    email: usuarioExistente.email,
+    name: getCurrentUser().displayName,
+    email: getCurrentUser().email,
     data: (new Date()).toLocaleString('pt-BR'),
-    user: usuarioExistente.uid,
+    user: getCurrentUser().uid,
     post: postsText,
     like: [],
   });

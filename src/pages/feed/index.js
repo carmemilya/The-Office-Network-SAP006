@@ -1,6 +1,6 @@
 import { navigation } from '../../routes/navigation.js';
 import {
-  signOut, showPost, deletePost, getCurrentUser, likePost, editPost,
+  signOut, showPost, deletePost, getCurrentUser, likePost,
 } from '../../services/index.js';
 
 export const Feed = () => {
@@ -21,7 +21,7 @@ export const Feed = () => {
       </section>
       `;
 
-  const sair = rootElement.querySelector('.exitAccount');
+  const sair = rootElement.querySelector('#sair-da-conta');
   const addPublication = rootElement.querySelector('.iconPlus');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
   const currentUser = getCurrentUser();
@@ -32,8 +32,7 @@ export const Feed = () => {
     navigation('/perfil');
   });
 
-  addPublication.addEventListener('click', (e) => {
-    e.preventDefault();
+  addPublication.addEventListener('click', () => {
     navigation('/add-publication');
   });
 
@@ -45,12 +44,13 @@ export const Feed = () => {
   const addPost = (data) => {
     const objetoPost = data.data();
     const like = objetoPost.like;
-    const userPost = (objetoPost.name === currentUser.email);
+    const userPost = (objetoPost.email === currentUser.email);
 
     const tampleteFeed = ` 
     <div class='containerFeed' data-post id='${data.id}'> 
       <div class='dataPost'>${objetoPost.data}</div>
-      <div class='emailUserPublication' data-email='${objetoPost.name}'>${objetoPost.email}</div>
+      <div class='name-user-publication' data-name='${objetoPost.name}'>${objetoPost.name}</div>
+      <div class='emailUserPublication' data-email='${objetoPost.email}'>${objetoPost.email}</div>
       <hr class='line'>
       <div class='postFeed'>${objetoPost.post}</div>
       <hr class='line'>
@@ -60,8 +60,6 @@ export const Feed = () => {
           <span class = 'numero-Likes '>${like.length}</span>
         </span>
         ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="open-delete"></i>' : ''}
-        <br>
-        ${userPost ? '<i id="edit-modal" class="fas fa-pen" data-item="open-edit"></i>' : ''}
         
       </div>
       <div id="modal-msg" class="modal" data-item="open-modal">
@@ -80,22 +78,8 @@ export const Feed = () => {
           <div class="modal-footer"></div>
         
         </div>
-      </div> 
-      
-      <div id="modal-edit" class="modal-edit" data-modal-open="open-modal-edit">
-       <div class="modal-content-edit">
-         <div class="modal-header">
-          <div class="modal-close" data-item="cancel">x</div>   
-         </div>
-         <div class="modal-btn">
-           <button type="button" data-item="cancel-edit" class="cancelbtn">Cancel</button>
-           <button type="button" data-item="confirm-edit" "class="deletebtn">Salvar</button>
-         </div>
-         <div class="modal-footer"></div>
-      
-       </div>
-     </div>
-
+      </div>
+     
         
     </div>
     `;
@@ -106,17 +90,10 @@ export const Feed = () => {
     postTamplete.forEach((post) => {
       post.addEventListener('click', (e) => {
         const idPost = post.getAttribute('id');
-        console.log(idPost);
-        const targetDataSet = e.target.dataset.item; //
-        console.log(targetDataSet);
-        // const targetDataSetEdit = e.target.dataset.item;
-        // console.log(targetDataSetEdit);
-        // const newText = rootElement.querySelectorAll('#new-text');
-        const numeroLike = post.children[5].children[0].children[1];
+        const targetDataSet = e.target.dataset.item;
+        const numeroLike = post.children[6].children[0].children[1];
+        console.log(numeroLike)
         const modal = rootElement.querySelector('#modal-msg');
-        const modalEdit = rootElement.querySelector('#modal-edit');
-        console.log(modalEdit);
-
         if (targetDataSet === 'like') {
           likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response });
         }
@@ -130,17 +107,6 @@ export const Feed = () => {
           modal.style.display = 'block';
         }
         if (targetDataSet === 'cancel') {
-          modal.style.display = 'none';
-        }
-        if (targetDataSet === 'confirm-edit') {
-          modal.style.display = 'none';
-          editPost(idPost).then(() => {
-          });
-        }
-        if (targetDataSet === 'open-edit') {
-          modal.style.display = 'block';
-        }
-        if (targetDataSet === 'cancel-edit') {
           modal.style.display = 'none';
         }
       });

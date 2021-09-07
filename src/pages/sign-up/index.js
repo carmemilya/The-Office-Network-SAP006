@@ -1,4 +1,4 @@
-import { createUser, creatFormUser } from '../../services/index.js';
+import { createUser } from '../../services/index.js';
 import { navigation } from '../../routes/navigation.js';
 
 export const Register = () => {
@@ -96,10 +96,8 @@ export const Register = () => {
       errorMessage.innerHTML = 'As senhas devem ser iguais';
     }
 
-    createUser(emailUser, password, errorFunction).then((response) => {
+    createUser(userName, emailUser, password, errorFunction).then((response) => {
       console.log(response);
-      const userId = firebase.auth().currentUser.uid;
-      creatFormUser(userId, userName, emailUser);
     })
       .catch((response) => {
         console.log(response);
