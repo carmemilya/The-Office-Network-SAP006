@@ -5,24 +5,32 @@ export const Register = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
       <div class='tamplete-register'>
+        <div class="purple">
+          <div class="black"> 
+            <div class="orange"></div>
+          </div>
+        </div>
+
+          <h1 class="title"> The Office Network </h1>
+
         <div class="img-register">
             <img class="img-logo" src="../../img/fun.png">
         </div>
 
         <form class= "container-register">
-          <div class="inputs"> 
+          <div class="inputs-register"> 
             <h1 class ="title-register">Cadastre-se</h1>
             <div class="inputs-name">
               <input class="input-form" id="completeName" ="type="text" placeholder="Nome Completo">
-              <input class= "input-form" id="emailRegister" type="email" placeholder="Digite seu e-mail">
+              <input placeholder="Digite seu e-mail" class= "input-form" id="emailRegister" type="email" >
             
               <div class="div-password">
-                <input class='password-register' type="password" placeholder="Digite uma senha 6 digitos">
-                <button type="button" class='eye-password-register'>
+                <input placeholder="Digite uma senha 6 digitos" class='password-register' type="password" >
+                <img class='eye-password-register' src="../../img/eye.svg"> </img>
               </div>
               <div class="div-password-repeat">
                 <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
-                <button type="button" class='eye-password-repeat'> </button>
+                <img class='eye-password-repeat' src="../../img/eye.svg"> </img>
               </div>
             </div>
             <p class="msg-error"></p>

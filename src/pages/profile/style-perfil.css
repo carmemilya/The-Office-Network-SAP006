@@ -1,0 +1,20 @@
+.forms-profile {
+    margin-bottom: 10%;
+}
+
+.logo-img{
+    width: 15%;
+}
+
+.container-main{
+    display: flex;
+    justify-content: center;
+}
+
+.fa-plus-square{
+    position: fixed;
+}
+
+.inputPhoto {
+    display: none;
+}

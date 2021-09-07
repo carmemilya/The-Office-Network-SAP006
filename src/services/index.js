@@ -99,3 +99,8 @@ export const likePost = async (idPost, userId) => {
     });
   return postLike;
 };
+
+// Incluir imagem no perfil
+export const updatePhotoProfile = (userId, file) => firebase.storage().ref(`imageProfile/${userId}`).put(file);
+
+export const downloadPhotoProfile = (userId) => firebase.storage().ref().child(`imageProfile/${userId}`).getDownloadURL();
