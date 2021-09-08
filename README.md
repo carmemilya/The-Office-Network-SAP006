@@ -17,10 +17,6 @@
 </h1>
 
 <h1 align="center">
-  <img src="https://ik.imagekit.io/ThalitaNeves95/delet_wcgrPNxlj8.gif?updatedAt=1631109651463" width="">
-</h1>
-
-<h1 align="center">
   <img src="https://ik.imagekit.io/ThalitaNeves95/perfil_XvB-MM7Gbxm.gif?updatedAt=1631117413504" width="">
 </h1>
 
