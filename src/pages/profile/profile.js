@@ -76,14 +76,21 @@ export const Profile = () => {
   const modalClose = editProfile.querySelector('.modal-close');
   const iconOpenModal = editProfile.querySelector('.fa-user');
   const msgSave = editProfile.querySelector('.modal-phrase');
- 
-  iconOpenModal.addEventListener('click', () => {
+  const routePubli = editProfile.querySelector('.plus-icon-pub');
+
+  routePubli.addEventListener('click', (e) => {
+    e.preventDefault();
+    navigation('/add-publication');
+  });
+  iconOpenModal.addEventListener('click', (e) => {
+    e.preventDefault()
     modalBg.style.display = 'block';
     name.setAttribute('contenteditable', 'true');
   });
 
-  modalClose.addEventListener('click', () => {
-    navigation('/perfil');
+  modalClose.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalBg.style.display = 'none';
   });
 
   btnSave.addEventListener('click', (e) => {
