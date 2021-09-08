@@ -1,12 +1,12 @@
 import { navigation } from '../../routes/navigation.js';
 import {
-  signOut, showPost, deletePost, getCurrentUser, likePost,
+  signOut, showPost, deletePost, getCurrentUser, likePost, editPost,
 } from '../../services/index.js';
 
 export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-  <div class='headerfeed'>
+  <div class='header-feed'>
     <h1><img class='logo' src='img/fun.png'></h1>
     <p id="sair-da-conta" class="exitAccount"><img src='img/icon_logout_feed.png'></p>
   </div>  
@@ -21,7 +21,7 @@ export const Feed = () => {
       </section>
       `;
 
-  const sair = rootElement.querySelector('#sair-da-conta');
+  const sair = rootElement.querySelector('.exitAccount');
   const addPublication = rootElement.querySelector('.iconPlus');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
   const currentUser = getCurrentUser();
@@ -50,9 +50,13 @@ export const Feed = () => {
     <div class='containerFeed' data-post id='${data.id}'> 
       <div class='dataPost'>${objetoPost.data}</div>
       <div class='name-user-publication' data-name='${objetoPost.name}'>${objetoPost.name}</div>
-      <div class='emailUserPublication' data-email='${objetoPost.email}'>${objetoPost.email}</div>
       <hr class='line'>
-      <div class='postFeed'>${objetoPost.post}</div>
+        <div class='post-feed' contenteditable="false">${objetoPost.post}</div> 
+          <div id="modal-edit" class="modal-edit" data-item="open-edit">
+            <button type="button" data-item="cancel-edit" class="cancelbtn">Cancel</button>
+            <button type="button" data-item="confirm-edit" "class="deletebtn">Salvar</button>
+          </div>
+      
       <hr class='line'>
       <div class='functionsPost'>
         <span class = 'likes'>
@@ -60,6 +64,8 @@ export const Feed = () => {
           <span class = 'numero-Likes '>${like.length}</span>
         </span>
         ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="open-delete"></i>' : ''}
+        <br>
+        ${userPost ? '<i id="edit-modal" class="fas fa-pen" data-item="open-edit"></i>' : ''}
         
       </div>
       <div id="modal-msg" class="modal" data-item="open-modal">
@@ -78,13 +84,24 @@ export const Feed = () => {
           <div class="modal-footer"></div>
         
         </div>
-      </div>
-     
-        
+      </div> 
+      
+      
     </div>
     `;
 
     showPublicationFeed.innerHTML += tampleteFeed;
+
+    const deleteItem = (idPost) => {
+      deletePost(idPost).then(() => {
+        document.getElementById(idPost).remove();
+      });
+    };
+
+    const idIndividualPost = (idPost, openModal, displayStyle) => {
+      const selectPostId = document.getElementById(idPost);
+      selectPostId.querySelector(openModal).style.display = displayStyle;
+    };
 
     const postTamplete = rootElement.querySelectorAll('[data-post]');
     postTamplete.forEach((post) => {
@@ -92,22 +109,37 @@ export const Feed = () => {
         const idPost = post.getAttribute('id');
         const targetDataSet = e.target.dataset.item;
         const numeroLike = post.children[6].children[0].children[1];
-        console.log(numeroLike)
-        const modal = rootElement.querySelector('#modal-msg');
+        const newText = rootElement.querySelector('.post-feed');
         if (targetDataSet === 'like') {
-          likePost(idPost, currentUser.uid).then((response) => { numeroLike.innerText = response });
-        }
-        if (targetDataSet === 'confirm') {
-          modal.style.display = 'none';
-          deletePost(idPost).then(() => {
-            post.remove();
+          likePost(idPost, currentUser.uid).then((response) => {
+            numeroLike.innerText = response;
           });
         }
         if (targetDataSet === 'open-delete') {
-          modal.style.display = 'block';
+          idIndividualPost(idPost, '#modal-msg', 'block');
+        }
+        if (targetDataSet === 'confirm') {
+          idIndividualPost(idPost, '#modal-msg', 'none');
+          deleteItem(idPost);
         }
         if (targetDataSet === 'cancel') {
-          modal.style.display = 'none';
+          idIndividualPost(idPost, '#modal-msg', 'none');
+        }
+        if (targetDataSet === 'open-edit') {
+          const postEdit = document.getElementById(idPost);
+          postEdit.querySelector('.modal-edit').style.display = 'block';
+          postEdit.querySelector('.post-feed').setAttribute('contenteditable', 'true');
+        }
+        if (targetDataSet === 'confirm-edit') {
+          const postEdit = document.getElementById(idPost);
+          const textPost = postEdit.querySelector('.post-feed').innerText;
+          editPost(textPost, idPost);
+          newText.removeAttribute('contenteditable');
+          postEdit.querySelector('#modal-edit').style.display = 'none';
+        }
+        if (targetDataSet === 'cancel-edit') {
+          const postEdit = document.getElementById(idPost);
+          postEdit.querySelector('#modal-edit').style.display = 'none';
         }
       });
     });

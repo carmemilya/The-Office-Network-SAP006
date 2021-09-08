@@ -1,29 +1,42 @@
-# The Office Network - A rede social do 
+<h1 align="center">
+    <img src="https://ik.imagekit.io/ThalitaNeves95/fun_htVpV8muE.png?updatedAt=1631039216013">
+</h1>
 
-## Índice
 
-- [1. Prefácio](#1-prefácio)
-- [2. Resumo do projeto](#2-resumo-do-projeto)
-- [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
-- [4. Considerações gerais](#4-considerações-gerais)
-- [5. Critérios de aceitação mínimos do projeto](#5-criterios-de-aceitação-mínimos-do-projeto)
-- [6. Hacker edition](#6-hacker-edition)
-- [7. Entrega](#7-entrega)
-- [8. Guias, dicas e leituras complementares](#8-guias-dicas-e-leituras-complementares)
+
+<h1 align="center">👴🏼🌍🛸👦🏻</h1>
+<h2 align="center">RICK AND MORTY</h2>
+<h3 align="center">Para acessar o projeto, clique <a href="https://biancacristinaalves.github.io/SAP006-data-lovers/" target="_blank" style="color:#97CE4C" title="Clique aqui!">Aqui 🚀.</a></h3>
+
+
+## 📑 Índice
+- [1. Sobre o Projeto](#1-sobre)
+- [2. Sobre o Tema](#2-tema)
+- [3. Experiência dos Usuários](#3-usuarios)
+- [4. Layout](#4-layout)
+- [5. Objetivos de Aprendizagem](#5-conteúdo)
+- [6. Começando o Projeto](#6-comecando)
+- [7. Testes](#7-testes)
+- [8. Melhorias Futuras](#8-melhorias)
+- [9. Autoras](#9-autoras)
 
 ---
 
-## 1. Prefácio
+## 1. SOBRE O PROJETO
 
+O projeto **Social Network**, foi criado dentro do bootcamp da **Laboratória**, com o intuito de estudarmos e colocarmos em prática o conteúdo do objetivos de aprendizagem. Dentre vários temas, o escolhido foi o **uma rede social voltada para colaboradores de uma empresa.**, afim de facilitar a comunicação interna em um ambiente descontraido e seguro.
+
+O projeto foi desenvolvido para os fãs e curiosos da série Rick and Morty.
+A idéia era desenvolver uma página web simples e objetiva, onde o usuário conseguisse filtrar as informações, como gênero, espécie, status e por ordem alfabética.
+
+Além disso, cada filtragem que o usuário realiza, a % dos personagens da categoria aparece.
+
+O projeto foi desenvolvido utilizando apenas vanilla JavaScript, HTML5 e CSS3, e foi realizado em 4 semanas.
 Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. As redes sociais
 invadiram nossas vidas. Nós as amamos ou odiamos, e muitas pessoas não conseguem
 viver sem elas.
 
-Há redes sociais de todo tipo para todos os tipos de interesse. Por exemplo: em
-uma rodada de financiamento com investidores, foi apresentada uma rede social
-para químicos onde os usuários podem publicar artigos a respeito de suas
-pesquisas, comentar os artigos de seus colegas e filtrar artigos de acordo com
-determinadas tags ou popularidade, mais recente ou mais comentado.
+Há redes sociais de todo tipo para todos os tipos de interesse. Seguindo isso, decidimos criar uma rede onde os colaboradores de uma empresa possam interagir em um ambiente descontraído e seguro. A ideia é 
 
 ## 2. Resumo do projeto
 
@@ -79,12 +92,6 @@ qual seja possível **ler e escrever dados.**
 - [ ] [Uso de
       onSnapshot](https://firebase.google.com/docs/firestore/query-data/listen) |
       [onAuthStateChanged](https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data)
-
-### Testing
-
-- [ ] [Teste unitários](https://jestjs.io/docs/pt-BR/getting-started)
-- [ ] [Testes assíncronos](https://jestjs.io/docs/pt-BR/asynchronous)
-- [ ] [Mocking](https://jestjs.io/docs/pt-BR/manual-mocks)
 
 ### Git e Github
 
@@ -422,7 +429,7 @@ com
 Neste projeto, convidamos você a explorar opções e decidir sobre uma opção de
 implementação.
 
-O [vídeo](https://youtu.be/hf8x3A1e57Y) da Paloma pode ajudar nessa etapa.
+
 
 ### 8.4. Gravação de dados
 
@@ -432,15 +439,11 @@ criar (salvar) novos dados, além de ler, atualizar e modificar os dados
 existentes. Esses dados podem ser salvos remotamente usando o
 [Firebase](https://firebase.google.com/).
 
-Outras:
+## 🚧 8. MELHORIAS FUTURAS:
+- _Permitir com que o usuário salve os posts;_
+- _Adição de imagens nas postagens;_
 
-- [Mobile
-  First](https://tableless.com.br/mobile-first-a-arte-de-pensar-com-foco/)
-- [Mobile First Is NOT Mobile Only - Nielsen Norman
-  Group](https://www.nngroup.com/articles/mobile-first-not-mobile-only/)
-- [Flexbox - CSS
-  Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-- [Módulos:
-  Export](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/export)
-- [Módulos:
-  Import](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import)
+
+## 👩‍💻 9. AUTORAS:
+Projeto realizado para o Bootcamp da **LABORATÓRIA.**
+<h2 align="center"><a style="color:aqua" href="https://github.com/carmemilya" target="_blank">Carmen Emilia Gozza</a> e <a style="color:aqua" href="https://github.com/ThalitaNeves95">Thalita Neves</a></h2>
