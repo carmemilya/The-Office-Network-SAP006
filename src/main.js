@@ -1,5 +1,4 @@
-// Este é o ponto de entrada da sua aplicação
+import { routeRender } from './routes/render.js';
 
-import { myFunction } from './lib/index.js';
-
-myFunction();
+window.addEventListener('popstate', routeRender);
+window.addEventListener('load', routeRender);

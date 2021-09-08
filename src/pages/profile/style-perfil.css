@@ -1,0 +1,143 @@
+.forms-profile {
+    margin-bottom: 10%;
+    background-color: #ec460e0d;
+    border-radius: 5px;
+    width: 30vw; 
+    height: 80vh;
+}
+
+.container-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+   
+}
+
+.logo-img{
+    width: 15%;
+}
+
+.label-profile {
+    display: flex;
+    justify-content: center;
+    font-size: 250%;
+    color: #F27127;
+
+}
+.name-input {
+    font-size: 150%;
+    width: 35vh;
+    margin-left:2%;
+    color: #4F238C;
+}
+
+.form-login{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin:10%
+}
+
+.icons-input{
+    margin-top: 1%;
+}
+.fa-user{
+    color: #4F238C;
+}
+
+.modal-phrase, .modal-bg{
+display: none;
+}
+
+.modal-phrase {
+    color: #F27127;
+    margin-left: 35%;
+}
+.modal-bg {
+    margin-left: 35%;
+}
+
+
+.inputPhoto {
+    display: none;
+    width: 40vw;
+    height: 30vh;
+    background: #FF7C50;
+    position: absolute;
+    top:40%;
+    left:30%;  
+}
+
+
+.icon-profile{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 5%; */
+    width: 50%;
+    background-color: #92654ba2;
+    border: 5px solid #92654ba2;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.icon-profile:hover{
+    background-color: #ec460e0d;
+    border: 5px solid #F27127;
+}
+
+.cancel-choice-photo{
+    margin:5%;
+}
+
+.btn{
+    background-color: #FF7C50;
+    border-radius: 3px;
+    color: #ffff;
+}
+
+.modal-close{
+    background-color: #302d2d8e;
+    border-radius: 3px;
+}
+
+
+
+@media (min-width: 320px) and (max-width: 768px)  {
+
+    .logo-img{
+        display: none;
+    }
+
+    .header-profile{
+        display: flex;
+        margin-top:30%;
+        justify-content: center;
+    }
+
+    .forms-profile {
+        margin-top: 10%;
+        margin-bottom: 20%;
+        background-color: #ec460e0d;
+        border-radius: 5px;
+        width: 60vw; 
+        height: 45vh;
+    }
+
+    .label-profile {
+        font-size: 150%;
+    }
+
+    .name-input {
+        font-size: 100%;
+        width: 40vw;
+    }
+
+    .modal-bg, .modal-phrase {
+        margin-left: 30%;
+    }
+}
+
+  
