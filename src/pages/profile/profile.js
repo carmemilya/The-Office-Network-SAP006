@@ -96,20 +96,22 @@ export const Profile = () => {
   });
 
   // Adicionando foto de perfil
-  iconProfile.src = user.photoURL;
+  // iconProfile.src = user.photoURL;
   iconProfile.addEventListener('click', () => {
     inputPhoto.click();
   });
 
   inputPhoto.addEventListener('change', (e) => {
     const file = e.target.files[0];
-    updatePhotoProfile(user.uid, file);
-    downloadPhotoProfile(user.uid).then((url) => {
-      const imgProfile = url;
-      user.updateProfile({
-        photoURL: imgProfile,
+    updatePhotoProfile(user.uid, file).then(() => {
+      downloadPhotoProfile(user.uid).then((url) => {
+        iconProfile.src = url;
+        user.updateProfile({
+          photoURL: url,
+        });
       });
     });
+    iconProfile.src = user.photoURL;
   });
 
   // Leva pro feed

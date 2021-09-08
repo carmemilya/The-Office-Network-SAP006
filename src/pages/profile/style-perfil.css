@@ -39,6 +39,9 @@
     margin:10%
 }
 
+.icons-input{
+    margin-top: 1%;
+}
 .fa-user{
     color: #4F238C;
 }
@@ -58,9 +61,6 @@ display: none;
 
 .inputPhoto {
     display: none;
-<<<<<<< HEAD
-}
-=======
     width: 40vw;
     height: 30vh;
     background: #FF7C50;
@@ -75,8 +75,8 @@ display: none;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
-    width: 40%;
+    /* margin-top: 5%; */
+    width: 50%;
     background-color: #92654ba2;
     border: 5px solid #92654ba2;
     cursor: pointer;
@@ -141,4 +141,3 @@ display: none;
 }
 
   
->>>>>>> 5a565b3973e09d4f866daa05d129dc9669c2238f
