@@ -9,7 +9,7 @@
 <h3 align="center">Para acessar o projeto, clique <a href="aqui-vai-link-site" target="_blank" style="color:#97CE4C" title="Clique aqui!">Aqui 🚀.</a></h3>
 
 <h1 align="center">
-  <img src="https://ik.imagekit.io/ThalitaNeves95/login-post_iPbFyNNfCBk.gif?updatedAt=1631108106562" width="">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/login-post_iPbFyNNfCBk.gif?updatedAt=1631108106562&tr=w-1200,h-630,fo-auto" width="">
 </h1>
 
 
