@@ -113,15 +113,14 @@ export const Feed = () => {
     };
 
     const postTamplete = rootElement.querySelectorAll('[data-post]');
+
     postTamplete.forEach((post) => {
       post.addEventListener('click', (e) => {
         const idPost = post.getAttribute('id');
         const targetDataSet = e.target.dataset.item;
         const numeroLike = post.children[4].children[0].children[1];
-        console.log(numeroLike)
         const newText = rootElement.querySelector('.post-feed');
         if (targetDataSet === 'like') {
-          console.log('oi')
           likePost(idPost, currentUser.uid).then((response) => {
             numeroLike.innerText = response;
           });

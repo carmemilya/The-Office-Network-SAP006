@@ -30,7 +30,7 @@ export const Publication = () => {
       <section class='icon'>
         <img class='iconHome' src='img/icon_home_feed.png'>
         <img class='iconPlus' src='img/icon_plus_feed.png'>
-        <img class='icon-profile' src='img/perfil_feed.png'>
+        <img class='icon-profile-route' src='img/perfil_feed.png'>
       </section>
        
        `;
@@ -38,7 +38,7 @@ export const Publication = () => {
   const publicationButton = rootElement.querySelector('.confirm-publication');
   const btnClear = rootElement.querySelector('.clear-text');
   const backTimeLine = rootElement.querySelector('.iconHome');
-  const goToProfile = rootElement.querySelector('.icon-profile');
+  const goToProfile = rootElement.querySelector('.icon-profile-route');
 
   backTimeLine.addEventListener('click', () => {
     navigation('/feed');
