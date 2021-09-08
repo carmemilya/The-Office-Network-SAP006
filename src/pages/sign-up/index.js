@@ -104,11 +104,9 @@ export const Register = () => {
       errorMessage.innerHTML = 'As senhas devem ser iguais';
     }
 
-    createUser(userName, emailUser, password, errorFunction).then((response) => {
-      console.log(response);
+    createUser(userName, emailUser, password, errorFunction).then(() => {
     })
-      .catch((response) => {
-        console.log(response);
+      .catch(() => {
       });
   });
   return rootElement;

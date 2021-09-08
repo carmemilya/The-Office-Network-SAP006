@@ -32,7 +32,6 @@ export const createUser = (name, email, password, errorFunction) => db
   })
   .catch((error) => {
     errorFunction(error);
-    console.log(error);
     return error;
   });
 
@@ -104,4 +103,3 @@ export const likePost = async (idPost, userId) => {
 export const updatePhotoProfile = (userId, file) => firebase.storage().ref(`imageProfile/${userId}`).put(file);
 
 export const downloadPhotoProfile = (userId) => firebase.storage().ref().child(`imageProfile/${userId}`).getDownloadURL();
-

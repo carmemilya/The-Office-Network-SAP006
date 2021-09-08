@@ -75,14 +75,21 @@ export const Profile = () => {
   const modalClose = editProfile.querySelector('.modal-close');
   const iconOpenModal = editProfile.querySelector('.fa-user');
   const msgSave = editProfile.querySelector('.modal-phrase');
+  const routePubli = editProfile.querySelector('.plus-icon-pub');
 
-  iconOpenModal.addEventListener('click', () => {
+  routePubli.addEventListener('click', (e) => {
+    e.preventDefault();
+    navigation('/add-publication');
+  });
+  iconOpenModal.addEventListener('click', (e) => {
+    e.preventDefault();
     modalBg.style.display = 'block';
     name.setAttribute('contenteditable', 'true');
   });
 
-  modalClose.addEventListener('click', () => {
-    navigation('/perfil');
+  modalClose.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalBg.style.display = 'none';
   });
 
   btnSave.addEventListener('click', (e) => {
@@ -96,7 +103,6 @@ export const Profile = () => {
   });
 
   // Adicionando foto de perfil
-  // iconProfile.src = user.photoURL;
   iconProfile.addEventListener('click', () => {
     inputPhoto.click();
   });

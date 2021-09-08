@@ -1,7 +1,6 @@
 import { navigation } from '../../routes/navigation.js';
 import { addPublication } from '../../services/index.js';
 
-//  import { navigation } from
 export const Publication = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
