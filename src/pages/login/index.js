@@ -4,46 +4,47 @@ import { navigation } from '../../routes/navigation.js';
 export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-
-    <div class="purple">
-      <div class="black"> 
-        <div class="orange"></div>
-      </div>
-    </div>
-
-      <h1 class="title"> The Office Network </h1>
-
-    <div class="tamplete-login">
-      <div class="container-img-forms">
-        <img class="img-fundo" src="../../img/fun.png">
+    <div class="container-login">
+      <div class="purple">
+        <div class="black"> 
+          <div class="orange"></div>
+        </div>
       </div>
 
-      <form class= "container-forms">
-        <div class="inputs">
-          <h2 class="title-login">Conecte-se</h2>
-          <div class"input-box">
-              <input id= "email-login" class="email-login" placeholder="Digite seu e-mail"></input>
-              
-            <div class="container-password-login">
-                <input id="password" type="password" class="password-login" placeholder="Digite sua senha"></input>
-                <button type="button" class="btn-eye-login"> </button>
+        <h1 class="title"> The Office Network </h1>
+
+      <div class="tamplete-login">
+        <div class="container-img-forms">
+          <img class="img-fundo" src="../../img/fun.png">
+        </div>
+
+        <form class= "container-forms">
+          <div class="inputs">
+            <h2 class="title-login">Conecte-se</h2>
+            <div class"input-box">
+                <input id= "email-login" class="email-login" placeholder="Digite seu e-mail"></input>
+                
+              <div class="container-password-login">
+                  <input id="password" type="password" placeholder="Digite sua senha" class="password-login" ></input>
+                  <img type="button" class="btn-eye-login" src= "../../img/eye.svg"> </img>
+              </div>
+            </div>
+            
+            <p id='error-message' class="erro-login"></p>
+
+            <button id="btnEnter" class="btn-enter">Entrar</button>
+            <p class="another-option">OU</p>
+            <button id= "google" class="btn-google"><img class="logo-google" src="../../img/google-logo.svg">Entrar com Google</button>
+            
+            <div class="enter-login">
+              <p class="register-msg"> Não tem conta? <u class="page-register" id="route-register"> Cadastre-se</u> </p>
             </div>
           </div>
-          
-          <p id='error-message' class="erro-login"></p>
-
-          <button id="btnEnter" class="btn-enter">Entrar</button>
-          <p class="another-option">OU</p>
-          <button id= "google" class="btn-google"><img class="logo-google" src="../../img/google-logo.svg">Entrar com Google</button>
-          
-          <div class="enter-login">
-            <p class="register-msg"> Não tem conta? <u class="page-register" id="route-register"> Cadastre-se</u> </p>
-          </div>
-        </div>
-      </form>
-      
+        </form>
+        
+      </div>
     </div>
-    `;
+  `;
 
   const email = rootElement.querySelector('#email-login');
   const passwordLogin = rootElement.querySelector('#password');

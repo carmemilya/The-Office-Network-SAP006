@@ -6,26 +6,35 @@ import {
 export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-  <div class='header-feed'>
-    <h1><img class='logo' src='img/fun.png'></h1>
-    <p id="sair-da-conta" class="exitAccount"><img src='img/icon_logout_feed.png'></p>
-  </div>  
-  <div class= "container">
-      <div class='showPublication' ></div>
-  
-  </div>
+  <div class='tamplete-container-feed'>
+        <div class="purple">
+          <div class="black"> 
+            <div class="orange"></div>
+          </div>
+        </div>
+      <div class='header-feed'>
+        <h1 class="title-website-feed"> The Office Network </h1>
+      
+        <h2><img class='logo' src='img/fun.png'></h2>
+        <i id="sign-out" class="fas fa-sign-out-alt"></i> 
+      </div>  
+       </div>
+    <div class= "container">
+        <div class='showPublication' ></div>
+    </div>
+ 
       <section class='icon'>
-        <img class='iconHome' src='img/icon_home_feed.png'>
-        <img class='iconPlus' src='img/icon_plus_feed.png'>
-        <img class='iconPerfil' src='img/perfil_feed.png'>
+        <img class='icon-home' src='img/icon_home_feed.png'>
+        <img class='plus-icon' src='img/icon_plus_feed.png'>
+        <img class='icon-perfil' src='img/perfil_feed.png'>
       </section>
       `;
 
-  const sair = rootElement.querySelector('.exitAccount');
-  const addPublication = rootElement.querySelector('.iconPlus');
+  const sair = rootElement.querySelector('.fa-sign-out-alt');
+  const addPublication = rootElement.querySelector('.plus-icon');
+  const btnProfile = rootElement.querySelector('.icon-perfil');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
   const currentUser = getCurrentUser();
-  const btnProfile = rootElement.querySelector('.iconPerfil');
 
   btnProfile.addEventListener('click', (e) => {
     e.preventDefault();
@@ -47,24 +56,23 @@ export const Feed = () => {
     const userPost = (objetoPost.email === currentUser.email);
 
     const tampleteFeed = ` 
-    <div class='containerFeed' data-post id='${data.id}'> 
-      <div class='dataPost'>${objetoPost.data}</div>
-      <div class='name-user-publication' data-name='${objetoPost.name}'>${objetoPost.name}</div>
-      <hr class='line'>
+    <div class='containerFeed' data-post id='${data.id}'>
+      <div class='name-user-publication' data-name='${objetoPost.name}'>${objetoPost.name}</div> 
+      <div class='data-post'>${objetoPost.data}</div>
+
         <div class='post-feed' contenteditable="false">${objetoPost.post}</div> 
           <div id="modal-edit" class="modal-edit" data-item="open-edit">
-            <button type="button" data-item="cancel-edit" class="cancelbtn">Cancel</button>
-            <button type="button" data-item="confirm-edit" "class="deletebtn">Salvar</button>
+            <button type="button" data-item="cancel-edit" class="cancel-btn">Cancel</button>
+            <button type="button" data-item="confirm-edit" class="confirm-btn">Salvar</button>
           </div>
       
-      <hr class='line'>
-      <div class='functionsPost'>
+     
+      <div class='functions-post'>
         <span class = 'likes'>
           <i class="far fa-heart icone-curtir" data-item="like"></i>
           <span class = 'numero-Likes '>${like.length}</span>
         </span>
         ${userPost ? '<i id="delete-modal" class="far fa-trash-alt" data-item="open-delete"></i>' : ''}
-        <br>
         ${userPost ? '<i id="edit-modal" class="fas fa-pen" data-item="open-edit"></i>' : ''}
         
       </div>
@@ -78,8 +86,8 @@ export const Feed = () => {
             <h2>Tem certeza que deseja excluir este post?</h2>
           </div>
           <div class="modal-btn">
-            <button type="button" data-item="cancel" class="cancelbtn">Cancel</button>
-            <button type="button" data-item="confirm" "class="deletebtn">Delete</button>
+            <button type="button" data-item="cancel" class="cancel-btn">Cancel</button>
+            <button type="button" data-item="confirm" "class="confirm-btn">Delete</button>
           </div>
           <div class="modal-footer"></div>
         
@@ -108,9 +116,11 @@ export const Feed = () => {
       post.addEventListener('click', (e) => {
         const idPost = post.getAttribute('id');
         const targetDataSet = e.target.dataset.item;
-        const numeroLike = post.children[6].children[0].children[1];
+        const numeroLike = post.children[4].children[0].children[1];
+        console.log(numeroLike)
         const newText = rootElement.querySelector('.post-feed');
         if (targetDataSet === 'like') {
+          console.log('oi')
           likePost(idPost, currentUser.uid).then((response) => {
             numeroLike.innerText = response;
           });

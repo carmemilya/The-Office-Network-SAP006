@@ -2,17 +2,19 @@
     margin-bottom: 10%;
 }
 
-.icon-perfil {
+.logo-img{
+    width: 15%;
+}
 
+.container-main{
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position:fixed;
-    bottom:5%;
-    width:100%; 
-    height: 6%;
-    left: 0%;
-    background: #FF7C50;
-    color: #FFFFFF;
+    justify-content: center;
+}
 
-} 
+.fa-plus-square{
+    position: fixed;
+}
+
+.inputPhoto {
+    display: none;
+}

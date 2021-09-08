@@ -12,6 +12,10 @@
     color: #FFFFFF;
 
 } 
+.title-website{
+    display: none;
+} 
+
 .title-text{
     font-size: 120%;
     color:#F27127;
@@ -97,4 +101,39 @@
 .clear-text:hover{
     background: #c3d3db5b;
     cursor: pointer;
+}
+
+@media (min-width: 320px) and (max-width: 768px)  {
+
+    .img-logo-page{
+      display: none;  
+    }
+
+    .title-website{
+        display: block;
+        margin-right: 20%;
+        margin-top: 10%;
+        color:#F27127;
+        font-size: 160%;
+    
+    }
+
+    .title-text {
+        margin: 5%; 
+        font-size: 80%;
+    }
+
+    .tamplete-text{
+        width: 80vw;
+        height: 30vh;
+    }
+
+    .confirm-publication, .clear-text{
+       width: 20vw;
+    }
+
+    .new-publication{
+        width: 70vw;
+        height: 20vh;
+    }
 }
