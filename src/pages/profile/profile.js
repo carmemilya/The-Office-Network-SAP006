@@ -7,79 +7,100 @@ import { navigation } from '../../routes/navigation.js';
 
 export const Profile = () => {
   const user = getCurrentUser();
+  const userPhoto = user.photoURL;
   const rootElement = document.createElement('div');
   rootElement.innerHTML = '';
-  const profilePage = document.createElement('section');
-  profilePage.setAttribute('class', 'container background');
-  profilePage.innerHTML = `
-    <div class="container-principal">
-        <header>
-            <img class="logo-img" src="img/fun.png" alt="logo">
-        </header>
-        <main class="container-main">
-            <form class="forms-profile">
-            <label class="label label-profile" for="chk" aria-hidden="true">Perfil</label>
-                <div class="photo-profile">
-                  <img class="icon-profile" src="" alt="profile" title="profile">
-                   
-                      <div class="fas fa-plus-square">
-                        <input class="inputPhoto" type="file">
-                      </div>
-                </div>
-                
-            <fieldset class="form-login">
-                <input class="name-input" type="text" id="text-name" placeholder="User Name" value="${user.displayName}">
-                <div class="icons-input">
-                    <i class="fas fa-user icons"></i>
-                </div>
-            </fieldset>
-            <fieldset class="form-login">
-                <input class="email-input" type="email" id="profile-email" value="${user.email}">
-                <div class="icons-input">
-                <i class="far fa-envelope icons"></i>
-                </div>
-            </fieldset>
-            <button class="btn" id="btn-save" type="button">Salvar</button>
-                <div class="modal-bg">
-                <div class="modal"></div>
-                    <h2 class="modal-phrase">Informações salvas.</h2>
-                    <button class="modal-close">X</button>
-                </div>
-                <section class='icon'>
-                  <img class='icon-home' src='img/icon_home_feed.png'>
-                  <img class='iconPlus' src='img/icon_plus_feed.png'>
-                  <img class='icon-profile' src='img/perfil_feed.png'>
-                </section>
-            </form>
-        </main>
+  const editProfile = document.createElement('section');
+  editProfile.setAttribute('class', 'container background');
+  editProfile.innerHTML = `
+    <div class="container-principal"  >
+      <header>
+        <div class= "tamplete-responsive-publi">
+          <div class="purple">
+            <div class="black"> 
+              <div class="orange"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class='header-profile'>
+          <h1 class="title-website"> The Office Network </h1>
+        </div>
+        
+        <img class="logo-img" src="img/fun.png" alt="logo">
+      </header>
+
+      <main class="container-main">
+        <form class="forms-profile">
+          <label class="label label-profile" for="chk" aria-hidden="true">Perfil</label>
+
+          <div class="photo-profile">
+            <img class="icon-profile" src="${userPhoto}" alt="profile" title="profile">
+              <input class="inputPhoto" type="file">
+            
+          </div>
+          <fieldset class="form-login">
+            <div class="icons-input">
+                <i class="fas fa-user icons" ></i>
+            </div>
+            <div class="name-input" type="text" id="text-name" contenteditable="false">${user.displayName}</div>
+            
+          </fieldset>
+
+
+          
+          <div class="modal-bg">
+            <button class="modal-close">Cancel</button>
+            <button class="btn" id="btn-save" type="button" data-item="save">Salvar</button>  
+          </div>
+          <p class="modal-phrase">Informações salvas.</p>
+
+          
+        </form>
+      </main>
+          <section class='icon'>
+            <img class='icon-home' src='img/icon_home_feed.png'>
+            <img class='plus-icon-pub' src='img/icon_plus_feed.png'>
+            <img class='route-profile' src='img/perfil_feed.png'>
+          </section>
     </div>       
     `;
 
-  const inputName = profilePage.querySelector('.name-input');
-  const iconProfile = profilePage.querySelector('.icon-profile');
-  const inputPhoto = profilePage.querySelector('.inputPhoto');
-  const openEditPhoto = profilePage.querySelector('.openOptionPhoto');
-  const btnSave = profilePage.querySelector('#btn-save');
-  const btnBackFeed = profilePage.querySelector('.icon-home');
-  const modalBg = profilePage.querySelector('.modal-bg');
-  const modalClose = profilePage.querySelector('.modal-close');
+  const name = editProfile.querySelector('.name-input');
+  const iconProfile = editProfile.querySelector('.icon-profile');
+  const inputPhoto = editProfile.querySelector('.inputPhoto');
+  const btnSave = editProfile.querySelector('#btn-save');
+  const btnFeed = editProfile.querySelector('.icon-home');
+  const modalBg = editProfile.querySelector('.modal-bg');
+  const modalClose = editProfile.querySelector('.modal-close');
+  const iconOpenModal = editProfile.querySelector('.fa-user');
+  const msgSave = editProfile.querySelector('.modal-phrase');
 
-  // SALVANDO AS INFORMAÇÕES DO PERFIL
+  iconOpenModal.addEventListener('click', () => {
+    modalBg.style.display = 'block';
+    name.setAttribute('contenteditable', 'true');
+  });
+
+  modalClose.addEventListener('click', () => {
+    navigation('/perfil');
+  });
+
   btnSave.addEventListener('click', (e) => {
     e.preventDefault();
     user.updateProfile({
-      displayName: inputName.value,
+      displayName: name.innerText,
     });
-    modalBg.classList.add('bg-active');
+    msgSave.style.display = 'block';
+    name.removeAttribute('contenteditable');
+    modalBg.style.display = 'none';
   });
 
-  modalClose.addEventListener('click', (e) => {
-    e.preventDefault();
-    modalBg.classList.remove('bg-active');
-  });
-
-  // FOTO DE PERFIL
+  // Adicionando foto de perfil
   iconProfile.src = user.photoURL;
+  iconProfile.addEventListener('click', () => {
+    inputPhoto.click();
+  });
+
   inputPhoto.addEventListener('change', (e) => {
     const file = e.target.files[0];
     updatePhotoProfile(user.uid, file);
@@ -91,11 +112,11 @@ export const Profile = () => {
     });
   });
 
-  // BOTÃO PARA RETORNAR PRO FEED
-  btnBackFeed.addEventListener('click', (e) => {
+  // Leva pro feed
+  btnFeed.addEventListener('click', (e) => {
     e.preventDefault();
     navigation('/feed');
   });
 
-  return rootElement.appendChild(profilePage);
+  return rootElement.appendChild(editProfile);
 };

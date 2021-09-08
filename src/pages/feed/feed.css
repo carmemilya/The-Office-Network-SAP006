@@ -266,11 +266,13 @@
 
     .showPublication{
         margin-bottom: 40%; 
+        
     }
 
     .containerFeed {
         width: 80vw;
         height: 20vh;
+        margin-bottom: 5%;
     }
 
     .data-post{
