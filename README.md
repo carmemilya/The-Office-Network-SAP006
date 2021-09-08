@@ -9,19 +9,19 @@
 <h3 align="center">Para acessar o projeto, clique <a href="aqui-vai-link-site" target="_blank" style="color:#97CE4C" title="Clique aqui!">Aqui 🚀.</a></h3>
 
 <h1 align="center">
-  <img src="https://ik.imagekit.io/ThalitaNeves95/login_Vpd75yR20.gif?updatedAt=1631109533264" width="400">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/login_Vpd75yR20.gif?updatedAt=1631109533264" width="600">
 </h1>
 
 <h1 align="center">
-  <img src="https://ik.imagekit.io/ThalitaNeves95/feed_zPjGyAR--.gif?updatedAt=1631109615458" width="400">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/feed_zPjGyAR--.gif?updatedAt=1631109615458" width="600">
 </h1>
 
 <h1 align="center">
-  <img src="https://ik.imagekit.io/ThalitaNeves95/delet_wcgrPNxlj8.gif?updatedAt=1631109651463" width="400">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/delet_wcgrPNxlj8.gif?updatedAt=1631109651463" width="600">
 </h1>
 
 <h1 align="center">
-  <img src="https://ik.imagekit.io/ThalitaNeves95/perfil_XvB-MM7Gbxm.gif?updatedAt=1631117413504" width="400">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/perfil_XvB-MM7Gbxm.gif?updatedAt=1631117413504" width="600">
 </h1>
 
 
