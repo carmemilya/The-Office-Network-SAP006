@@ -77,7 +77,6 @@ export const Profile = () => {
   const iconOpenModal = editProfile.querySelector('.fa-user');
   const msgSave = editProfile.querySelector('.modal-phrase');
  
-
   iconOpenModal.addEventListener('click', () => {
     modalBg.style.display = 'block';
     name.setAttribute('contenteditable', 'true');
@@ -109,7 +108,7 @@ export const Profile = () => {
       downloadPhotoProfile(user.uid).then((url) => {
         iconProfile.src = url;
         user.updateProfile({
-          photoURL: iconProfile,
+          photoURL: url,
         });
       });
     });
