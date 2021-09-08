@@ -9,7 +9,9 @@
 <h3 align="center">Para acessar o projeto, clique <a href="aqui-vai-link-site" target="_blank" style="color:#97CE4C" title="Clique aqui!">Aqui 🚀.</a></h3>
 
 <h1 align="center">
-  <img src="https://ik.imagekit.io/ThalitaNeves95/login-post_iPbFyNNfCBk.gif?updatedAt=1631108106562&tr=w-1200,h-630,fo-auto" width="">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/login_Vpd75yR20.gif?updatedAt=1631109533264" width="">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/feed_zPjGyAR--.gif?updatedAt=1631109615458" width="">
+  <img src="https://ik.imagekit.io/ThalitaNeves95/delet_wcgrPNxlj8.gif?updatedAt=1631109651463" width="">
 </h1>
 
 
