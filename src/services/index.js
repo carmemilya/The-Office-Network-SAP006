@@ -20,7 +20,7 @@ export const signInGoogle = () => {
 };
 
 // Criar conta - Está Funcionando
-export const createUser = (name, email, password, errorFunction) => db
+export const createUser = (name, email, password) => db
   .createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
     navigation('/feed');
@@ -30,9 +30,9 @@ export const createUser = (name, email, password, errorFunction) => db
     });
     return user;
   })
-  .catch((error) => {
-    errorFunction(error);
-    return error;
+  .catch((error) => { 
+     console.log(error.code);
+     cosole.log(error.message);
   });
 
 // Manter usuário logado

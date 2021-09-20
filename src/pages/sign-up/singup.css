@@ -1,0 +1,219 @@
+
+.tamplete-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.img-register{
+   display: flex;
+   align-items: center;  
+}
+
+.container-register {  
+    margin: 15vh;
+} 
+
+.inputs-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
+    height: 65vh;
+    border:solid #F27127;
+}  
+
+.title-register {
+    font-family: 'Signika Negative', sans-serif;
+    color:#FF7C50;
+    margin-bottom: 10%;
+    font-size: 250%;
+    text-align: center;
+}
+
+.inputs-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-name-register{
+    display: flex;
+    width: 20vw;
+    height: 5vh; 
+    margin-top: 10%;
+    border-radius: 5px;
+    outline: 0;
+    border: solid #ff7c5036;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%); 
+}
+ 
+.input-form, .div-password {
+    display: flex;
+    width: 20vw;
+    height: 5vh; 
+    margin-top: 5%;
+    border-radius: 5px;
+    outline: 0;
+    border: solid #ff7c5036;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);  
+}
+
+.password-register, .password-repeat {
+    width: 30vw;
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
+
+}
+
+.div-password-repeat {
+    display: flex;
+    width: 20vw;
+    height: 5vh; 
+    margin-top: 5%;
+    border-radius: 5px;
+    outline: 0;
+    border: solid #ff7c5036;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);  
+}
+
+.input-form::placeholder, 
+.password-register::placeholder, 
+.password-repeat::placeholder {
+    color: #353434;
+}
+
+.msg-error {
+    font-size: 20px;
+    color: #FF7C50;
+    text-align: center;
+}
+
+.btn-register {
+    background: #FF7C50;
+    width: 13vw;
+    height: 5vh;
+    border-radius: 10px;
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 120%;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    margin: 10% 0 2% 0;
+}
+
+.btn-register:hover{
+    background-color: #353434;
+   
+}
+
+.btn-eye-register{
+    border: none;
+    background: #FFFFFF;
+    width: 10vw;
+    border-radius: 5px;
+}
+
+.eye-password-register, .eye-password-repeat {
+    cursor: pointer;
+    color:#FFF4EE;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    width: 35%;
+    margin: 1%;
+    border: 0;
+    background-color: #FFFFFF;
+}
+
+.page-login{
+    font-family: 'Signika Negative', sans-serif;
+    color: #F27127;  
+}
+
+.click-page-login {
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 135%;
+    color: #F27127;
+    text-decoration: underline;
+    border: none;
+    background: #FFF4EE;
+}
+
+.click-page-login:hover {
+    cursor: pointer;
+    color: #643969; 
+}
+
+
+@media (min-width: 320px) and (max-width: 768px)  {  
+    .img-logo, .title-register {
+        display: none;
+    }
+
+    .tamplete-register{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .purple {
+        position: fixed;
+        width: 122%; /*98*/
+        height: 29vh; /*32*/
+        left: -7.5vw; /*-7.5*/
+        top: -12vh;
+        background: #643969;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        overflow: hidden;
+        border-radius: 60%;
+    }
+
+    .black {
+        position: absolute;
+        width: 160%; /*160*/
+        height: 91vh; /*91*/
+        left: 22%; /* 22*/
+        top: -62vh; /* -62*/
+        background: #161616;
+        border-radius: 40%;
+    }
+
+    .orange{
+        position: absolute;
+        width: 80%; /*80*/
+        height: 88%; /*88*/
+        left: 12%;/*12*/
+        top: 13%;/*13*/
+        background: #F27127; 
+        border-radius: 50%;
+        
+    }
+
+    .input-form {
+        width: 60vw;
+        margin: 5%;
+    }
+
+    .div-password, .div-password-repeat{
+        border: 1px solid #000000;
+        display: flex;
+        width: 61vw;
+        align-items: center;
+        overflow: hidden;
+        margin: 5%;
+    }
+
+    .password-register, .password-repeat {    
+        width: 50vw;
+    }
+
+    u.page-login{
+        color: #FF7C50;
+    }
+
+    
+}
+
+
+

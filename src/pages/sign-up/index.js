@@ -4,58 +4,63 @@ import { navigation } from '../../routes/navigation.js';
 export const Register = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-      <div class='tamplete-register'>
-        <div class="purple">
-          <div class="black"> 
-            <div class="orange"></div>
-          </div>
-        </div>
-
-          <h1 class="title"> The Office Network </h1>
-
-        <div class="img-register">
-            <img class="img-logo" src="../../img/fun.png">
-        </div>
+    <header class="container-login">
+      <ul class="colors">
+        <li class="purple">
+          <ul class="black"> 
+            <li class="orange"></li>
+          </ul>
+        </li>
+      </ul>
+        <h1 class="title"> The Office Network </h1>
+    </head>
+    <main class="tamplete-register">
+        <figure class="img-register">
+            <img class="img-logo" src="../../img/logo-rede-social.png">
+        </figure>
 
         <form class= "container-register">
-          <div class="inputs-register"> 
-            <h1 class ="title-register">Cadastre-se</h1>
-            <div class="inputs-name">
-              <input class="input-form" id="completeName" ="type="text" placeholder="Nome Completo">
+          <fildset class="inputs-register"> 
+            <legend class ="title-register">Cadastre-se</legend>
+            <section class="inputs-name">
+              <input placeholder="Nome Completo" class="input-name-register" id="completeName" "type="text" >
+              <label class="msg-erro-name"></label>
               <input placeholder="Digite seu e-mail" class= "input-form" id="emailRegister" type="email" >
+              <label class="msg-erro-email"></label>
             
               <div class="div-password">
                 <input placeholder="Digite uma senha 6 digitos" class='password-register' type="password" >
-                <img class='eye-password-register' src="../../img/eye.svg"> </img>
+                <button type="button" class="btn-eye-register"><img class='eye-password-register' src="../../img/eye.svg"> </img></button>
               </div>
               <div class="div-password-repeat">
                 <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
-                <img class='eye-password-repeat' src="../../img/eye.svg"> </img>
+                <button type="button" class="btn-eye-register"><img class='eye-password-repeat' src="../../img/eye.svg"></img></button>
               </div>
-            </div>
+            </section>
             <p class="msg-error"></p>
-            <p class="msg-erro-firebase"></p>
                     
             <button class= "btn-register">Cadastrar</button>
             
             <div class="enter-login">
-              <p class="page-login">Já tem uma conta? <u class="page-login"> Entre</u> </p>
+              <p class="page-login">Já tem uma conta? <button class="click-page-login"> Entre</button> </p>
             </div>
-          </div>
+          </fildset>
         </form>
-      </div>
+    </main>
     `;
 
   const completeName = rootElement.querySelector('#completeName');
-  const emailInput = rootElement.querySelector('#emailRegister');
+  const errorName = rootElement.querySelector('.msg-erro-name');
+  const emailInput = rootElement.querySelector('.input-form');
+  const errorEmail = rootElement.querySelector('.msg-erro-email');
   const passwordInput = rootElement.querySelector('.password-register');
   const viewPassword = rootElement.querySelector('.eye-password-register');
   const passwordRepeat = rootElement.querySelector('.password-repeat');
   const viewPasswordRepeat = rootElement.querySelector('.eye-password-repeat');
   const errorMessage = rootElement.querySelector('.msg-error');
-  const erroFirebase = rootElement.querySelector('.msg-erro-firebase');
   const createUserButton = rootElement.querySelector('.btn-register');
   const backToLogin = rootElement.querySelector('.page-login');
+  
 
   backToLogin.addEventListener('click', () => {
     navigation('/');
@@ -77,37 +82,35 @@ export const Register = () => {
     }
   });
 
-  const errorFunction = (error) => {
-    if (error.code === 'auth/uid-already-exists') {
-      erroFirebase.innerHTML = 'E-mail já existe';
-    } else if (error.code === 'auth/email-already-in-use') {
-      erroFirebase.innerHTML = 'E-mail já cadastrado';
-    } else if (error.code === 'auth/invalid-email') {
-      erroFirebase.innerHTML = 'E-mail invalido';
-    } else if (error.code === 'auth/invalid-password') {
-      erroFirebase.innerHTML = 'Senha inválida';
+  completeName.addEventListener('keyup', () => {
+    if (completeName.value.length <= 2) {
+      errorName.setAttribute('style', 'color: red');
+      errorName.innerHTML = 'Nome *Insira no minimo 3 caracteres';
+      completeName.setAttribute('style', 'border-color: red');
     } else {
-      erroFirebase.innerHTML = 'Ocorreu algum erro. Tente novamente.';
+      errorName.setAttribute('style', 'color: #F27127');
+      errorName.style.display = 'none';
+      completeName.setAttribute('style', 'border-color: #F27127');
     }
-  };
+  });
+
+  emailInput.addEventListener('keyup', () => {
+    if (emailInput.value.length <= 2) {
+      errorEmail.setAttribute('style', 'color: red');
+      !/\S+@\S+\.\S+/.test(emailInput)
+      errorEmail.innerHTML = 'Insira no minimo 3 caracteres';
+      emailInput.setAttribute('style', 'border-color: red');
+    } else {
+      errorEmail.setAttribute('style', 'color: #F27127');
+      errorEmail.style.display = 'none';
+      emailInput.setAttribute('style', 'border-color: #F27127');
+    }
+  });
+
 
   createUserButton.addEventListener('click', (e) => {
     e.preventDefault();
-    const userName = completeName.value;
-    const emailUser = emailInput.value;
-    const password = passwordInput.value;
-    const confirmPassword = passwordRepeat.value;
-
-    if (userName === '' || emailUser === '' || password === '' || confirmPassword === '') {
-      errorMessage.innerHTML = 'Todos os campos devem ser preenchidos';
-    } else if (password !== confirmPassword) {
-      errorMessage.innerHTML = 'As senhas devem ser iguais';
-    }
-
-    createUser(userName, emailUser, password, errorFunction).then(() => {
-    })
-      .catch(() => {
-      });
+     createUser(completeName.value, emailInput.value, passwordInput.value) 
   });
   return rootElement;
 };
