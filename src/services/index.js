@@ -2,14 +2,14 @@ import { navigation } from '../routes/navigation.js';
 
 const db = firebase.auth();
 // Login de usuários existentes
-export const existingUser = (email, password, errorFunction) => {
+export const existingUser = (email, password) => {
   db.signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       navigation('/feed');
       const user = userCredential.user;
       return user;
     })
-    .catch((error) => errorFunction(error));
+    .catch((error) => console.log(error)); 
 };
 
 // Login com o Google - Está funcionando (APARENTEMENTE)
@@ -20,7 +20,7 @@ export const signInGoogle = () => {
 };
 
 // Criar conta - Está Funcionando
-export const createUser = (name, email, password, errorFunction) => db
+export const createUser = (name, email, password) => db
   .createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
     navigation('/feed');
@@ -30,16 +30,16 @@ export const createUser = (name, email, password, errorFunction) => db
     });
     return user;
   })
-  .catch((error) => {
-    errorFunction(error);
-    return error;
+  .catch((error) => { 
+     console.log(error.code);
+     cosole.log(error.message);
   });
 
 // Manter usuário logado
 export const userConected = (callback) => db.onAuthStateChanged(callback);
 
 /// Desconectar Usuário
-export const signOut = () => {
+export const signOutApp = () => {
   localStorage.removeItem('uid');
   db.signOut();
 };

@@ -1,10 +1,7 @@
-
 .tamplete-register {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    flex-wrap: nowrap;
-    align-content: center;
 }
 
 .img-register{
@@ -13,30 +10,24 @@
 }
 
 .container-register {  
-    padding: 5%;
-    margin-top: 5%;
+    margin: 15vh;
 } 
 
- .inputs-register {
+.inputs-register {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 25vw;
+    height: 65vh;
+    border:solid #F27127;
 }  
 
 .title-register {
-    font-family: Noto Sans JP;
-    font-size: 150%;
-    text-align: center;
+    font-family: 'Signika Negative', sans-serif;
+    color:#FF7C50;
     margin-bottom: 10%;
-}
-
-.input-form, .div-password {
-    display: flex;
-    width: 25vw;
-    height: 5vh; 
-    margin: 2%;
-    border-radius: 5px;
-    border: 1px solid; 
+    font-size: 250%;
+    text-align: center;
 }
 
 .inputs-name{
@@ -44,8 +35,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 30vh;
-    width: 28vw;
+}
+
+.input-name-register{
+    display: flex;
+    width: 20vw;
+    height: 5vh; 
+    color: #000000;
+    margin-top: 10%;
+    border-radius: 5px;
+    outline: 0;
+    border: solid #ff7c5036;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%); 
+}
+ 
+.input-form, .div-password {
+    display: flex;
+    width: 20vw;
+    height: 5vh; 
+    margin-top: 5%;
+    border-radius: 5px;
+    outline: 0;
+    border: solid #ff7c5036;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);  
 }
 
 .password-register, .password-repeat {
@@ -58,11 +70,13 @@
 
 .div-password-repeat {
     display: flex;
-    width: 25vw;
+    width: 20vw;
     height: 5vh; 
-    margin: 2%;
+    margin-top: 5%;
     border-radius: 5px;
-    border: 1px solid;
+    outline: 0;
+    border: solid #ff7c5036;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);  
 }
 
 .input-form::placeholder, 
@@ -71,22 +85,23 @@
     color: #353434;
 }
 
-.msg-error, .msg-erro-firebase {
+.msg-error {
+    font-size: 20px;
     color: #FF7C50;
-    font-size: 90%;
-    line-height: 1.5;
+    text-align: center;
 }
 
 .btn-register {
-    background: #161616;
-    width: 50%;
-    height: 7vh;
+    background: #FF7C50;
+    width: 13vw;
+    height: 5vh;
     border-radius: 10px;
-    font-family: Noto Sans JP;
-    font-size: 20px;
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 120%;
     color: #FFFFFF;
     cursor: pointer;
-    margin: 2%;
+    display: block;
+    margin: 10% 0 2% 0;
 }
 
 .btn-register:hover{
@@ -94,29 +109,41 @@
    
 }
 
-.enter-login {
-    font-size: 22px;
+.btn-eye-register{
+    border: none;
+    background: #FFFFFF;
+    width: 10vw;
+    border-radius: 5px;
 }
 
 .eye-password-register, .eye-password-repeat {
+    cursor: pointer;
+    color:#FFF4EE;
     background-repeat: no-repeat;
-    background-size: 30px, 30px;
-    width: 15%;
+    background-size: 90%;
+    width: 35%;
+    margin: 1%;
     border: 0;
     background-color: #FFFFFF;
-    border-radius: 10px;
 }
 
 .page-login{
-    font-family: Noto Sans JP;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
+    font-family: 'Signika Negative', sans-serif;
+    color: #F27127;  
 }
 
-u.page-login:hover {
+.click-page-login {
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 135%;
+    color: #F27127;
+    text-decoration: underline;
+    border: none;
+    background: #FFF4EE;
+}
+
+.click-page-login:hover {
     cursor: pointer;
-    color: #F27127;  
+    color: #643969; 
 }
 
 

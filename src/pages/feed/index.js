@@ -1,53 +1,90 @@
 import { navigation } from '../../routes/navigation.js';
 import {
-  signOut, showPost, deletePost, getCurrentUser, likePost, editPost,
+  signOutApp, showPost, deletePost, getCurrentUser, likePost, editPost,  updatePhotoProfile,
+  downloadPhotoProfile,
 } from '../../services/index.js';
 
 export const Feed = () => {
+   const user = getCurrentUser();
+   const userPhoto = localStorage.setItem('photoURL', user.photoURL)
+  const provisionalPhoto  = './img/logo-rede-social.png';
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-  <div class='tamplete-container-feed'>
-        <div class="purple">
-          <div class="black"> 
-            <div class="orange"></div>
-          </div>
-        </div>
-      <div class='header-feed'>
-        <h1 class="title-website-feed"> The Office Network </h1>
-      
-        <h2><img class='logo' src='img/fun.png'></h2>
-        <i id="sign-out" class="fas fa-sign-out-alt"></i> 
-      </div>  
-       </div>
-    <div class= "container">
-        <div class='showPublication' ></div>
+  <header class='tamplete-container-feed'>
+    <div class="purple">
+      <div class="black"> 
+        <div class="orange"></div>
+      </div>
     </div>
- 
-      <section class='icon'>
-        <img class='icon-home' src='img/icon_home_feed.png'>
-        <img class='plus-icon' src='img/icon_plus_feed.png'>
-        <img class='icon-perfil' src='img/perfil_feed.png'>
-      </section>
-      `;
+    <div class='header-feed'>
+      <h1 class="title-website-feed"> The Office Network </h1>
+      <img class='logo' src='img/logo-rede-social.png'>
+      
+    </div>  
+  </header>
+  <div class="tamplete-feed-profile">
+    <main class= "container">
+        <article class='showPublication'></article>
+    </main>
 
+
+     <form class="forms-profile">
+      <label class="label label-profile" for="chk" aria-hidden="true">Perfil</label>
+
+      <div class="photo-profile">
+      ${userPhoto ? `<img class="icon-profile" src= '${user}>'` : `<img class="icon-profile" src= '${provisionalPhoto}'> `}
+          <input class="inputPhoto" type="file">
+       
+      </div>
+      <fieldset class="form-login">
+        <div class="icons-input">
+            <i class="fas fa-user icons" ></i>
+        </div>
+        <div class="name-input" type="text" id="text-name" contenteditable="false">${user.displayName}</div> 
+      </fieldset>
+      
+      
+    
+      <div class="modal-bg">
+        <button class="modal-close">Cancel</button>
+        <button class="btn" id="btn-save" type="button" data-item="save">Salvar</button>  
+      </div>
+      <p class="modal-phrase">Informações salvas.</p>
+        
+     </form>
+  </div>
+    <section class='icon'>
+      <i class="fas fa-home"></i>
+      <i class="fas fa-plus"></i>
+      <i id="sign-out" class="fas fa-sign-out-alt"></i> 
+    </section>
+      
+      `;
+    
+     
+ console.log(localStorage.setItem('photoURL', user.photoURL))
   const sair = rootElement.querySelector('.fa-sign-out-alt');
-  const addPublication = rootElement.querySelector('.plus-icon');
-  const btnProfile = rootElement.querySelector('.icon-perfil');
+  const addPublication = rootElement.querySelector('.fa-plus');
   const showPublicationFeed = rootElement.querySelector('.showPublication');
   const currentUser = getCurrentUser();
-
-  btnProfile.addEventListener('click', (e) => {
-    e.preventDefault();
-    navigation('/perfil');
-  });
-
+  const name = rootElement.querySelector('.name-input');
+  const iconProfile = rootElement.querySelector('.icon-profile');
+  const inputPhoto = rootElement.querySelector('.inputPhoto');
+  console.log(iconProfile)
+  const btnSave = rootElement.querySelector('#btn-save');
+  const modalBg = rootElement.querySelector('.modal-bg');
+  const modalClose = rootElement.querySelector('.modal-close');
+  const iconOpenModal = rootElement.querySelector('.fa-user');
+  const msgSave = rootElement.querySelector('.modal-phrase');
+ 
   addPublication.addEventListener('click', () => {
     navigation('/add-publication');
   });
 
   sair.addEventListener('click', (e) => {
     e.preventDefault();
-    signOut().then(() => navigation('/'));
+    signOutApp()
+    .then(() => navigation('/'));
   });
 
   const addPost = (data) => {
@@ -156,5 +193,45 @@ export const Feed = () => {
   showPost().then((allPosts) => {
     allPosts.forEach((individualPost) => addPost(individualPost));
   });
+
+  iconOpenModal.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalBg.style.display = 'block';
+    name.setAttribute('contenteditable', 'true');
+  });
+
+  modalClose.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalBg.style.display = 'none';
+  });
+
+  btnSave.addEventListener('click', (e) => {
+    e.preventDefault();
+    user.updateProfile({
+      displayName: name.innerText,
+    });
+    msgSave.style.display = 'block';
+    name.removeAttribute('contenteditable');
+    modalBg.style.display = 'none';
+  });
+
+  // Adicionando foto de perfil
+  iconProfile.addEventListener('click', () => {
+    inputPhoto.click();
+  });
+
+  inputPhoto.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    updatePhotoProfile(user.uid, file).then(() => {
+      downloadPhotoProfile(user.uid).then((url) => {
+        iconProfile.src = url;
+        user.updateProfile({
+          photoURL: url,
+        });
+      });
+    });
+    iconProfile.src = user.photoURL;
+  });
+
   return rootElement;
 };

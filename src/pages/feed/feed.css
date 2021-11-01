@@ -1,3 +1,9 @@
+.tamplete-feed-profile{
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
 .header-feed{
     display: flex;
     justify-content: space-between;
@@ -6,41 +12,42 @@
 }  
 
 .logo{
-    width: 40%;
+    width: 15%;
 }
 
-.fa-sign-out-alt{
-    color:#F27127;
-    
-    
+.black, .purple, .orange{
+    display: none;
 }
+
 .title-website-feed{
     display: none;
 }
+
+
 
 .showPublication {
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 20%;
+    margin: 0 20% 20% 0;
 }  
 
  .containerFeed {
+    display: flex;
     flex-direction: column;
     padding: 2%;
     margin: 1%;
-    height: 35vh;
-    width: 50%;
+    height: 30vh;
+    width: 60%;
     border-radius: 10px;
     background-image: 
-    linear-gradient(
-        
-        #4F238C,
-        #bd6450,
+    linear-gradient(  
         #F26E50,
-        #F27127
-           
+        #bd6450,
+        #bd6450,
+        #4f238cc4        
     );
+    box-shadow: 4px 4px 4px 2px rgb(0 0 0 / 20%);  
 }  
 
 .name-user-publication {
@@ -51,7 +58,7 @@
 }
 
 .data-post{
-    font-family: initial;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 55%;
     margin-left: 3%;
     color: #4F238C;
@@ -64,16 +71,23 @@
     position:fixed;
     bottom:5%;
     width:100%; 
-    height: 6%;
+    height: 4%;
     left: 0%;
-    background: #FF7C50;
+    background: #F26E50;
     color: #FFFFFF;
 
 } 
 
-.icon-home:hover, .plus-icon:hover, .icon-perfil:hover {
-    background-color: #ffffff8e;
-    width: 3vw;
+.fa-sign-out-alt{
+    margin-left: 2%; 
+    color: #ffff;
+  
+}
+
+.fa-plus:hover, .fa-home:hover, .icon-perfil:hover, 
+.fa-sign-out-alt:hover {
+    cursor: pointer;
+   
 }
 
 .functions-post{
@@ -88,11 +102,11 @@
     height: 12vh;
     padding: 2%;
     color: #ffffffda;
-    border-width: thin; 
+    border-width: 5%; 
     border-style: solid;
     border-right: none;
     border-left: none;
-    margin: 2%
+    margin: 2% 4% 2% 2%;
 }
 
 .modal-edit{
@@ -186,7 +200,138 @@
     display:none;
 }
 
+.forms-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-end;
+    position:fixed;
+    top:0;
+    right: 0;
+    margin-bottom: 10%;
+    background-color: #F26E50;
+    border-radius: 5px;
+    width: 20vw; 
+    height: 100%;
+    box-shadow: 4px 4px 4px 2px rgb(0 0 0 / 20%); 
+}
+
+.label-profile {
+    display: flex;
+    justify-content: center;
+    font-size: 250%;
+    color: #ffff;
+    margin-bottom: 8%;
+
+}
+
+.name-input {
+    font-size: 150%;
+    width: 35vh;
+    margin-left:2%;
+    color: #ffff;
+}
+
+.form-login{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 10% 0 0 30%;
+}
+
+.icons-input{
+    margin: 3% 2% 0 0;
+}
+
+.fa-user{
+    color: #ffff;
+}
+
+.modal-phrase, .modal-bg{
+display: none;
+}
+
+.modal-phrase {
+    color: #F27127;
+    margin-left: 35%;
+}
+.modal-bg {
+    margin-left: 35%;
+}
+
+.inputPhoto {
+    display: none;
+    width: 40vw;
+    height: 30vh;
+    background: #FF7C50;
+    position: absolute;
+    top:40%;
+    left:30%;  
+}
+
+.icon-profile{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 5%; */
+    width: 50%;
+    background-color: #ffff;
+    border: 5px solid #ffff;
+    cursor: pointer;
+    transition: background .5s;
+}
+
+.icon-profile:hover{
+    background-color: #ec460e0d;
+    border: 5px solid #4f238cc4;
+}
+
+.cancel-choice-photo{
+    margin:5%;
+}
+
+.btn{
+    background-color: #4f238cc4;
+    border-radius: 3px;
+    color: #ffff;
+}
+
+.modal-close{
+    background-color: #302d2d65;
+    border-radius: 3px;
+}
+
 @media (min-width: 320px) and (max-width: 768px)  {
+
+    .logo-img{
+        display: none;
+    }
+
+    .forms-profile {
+        margin-top: 10%;
+        margin-bottom: 20%;
+        background-color: #ec460e0d;
+        border-radius: 5px;
+        width: 60vw; 
+        height: 45vh;
+    }
+
+    .label-profile {
+        font-size: 150%;
+    }
+
+    .name-input {
+        font-size: 100%;
+        width: 40vw;
+    }
+
+    .modal-bg, .modal-phrase {
+        margin-left: 30%;
+    }
+}
+
+/* @media (min-width: 320px) and (max-width: 768px)  {
     .logo{
         display: none;
     }
@@ -256,7 +401,8 @@
         width: 70vw;
         height: 8vh;
     }
+
     .modal-content{
         width: 60vw;
     }
-}
+} */
