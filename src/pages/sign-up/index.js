@@ -23,9 +23,9 @@ export const Register = () => {
           <fildset class="inputs-register"> 
             <legend class ="title-register">Cadastre-se</legend>
             <section class="inputs-name">
-              <input placeholder="Nome Completo" class="input-name-register" id="completeName" "type="text" >
+              <input placeholder="Digite seu nome" class="input-name-register" id="completeName" "type="text" >
               <label class="msg-erro-name"></label>
-              <input placeholder="Digite seu e-mail" class= "input-form" id="emailRegister" type="email" >
+              <input placeholder="Digite seu e-mail" class= "input-form" id="emailRegister" type="text" >
               <label class="msg-erro-email"></label>
             
               <div class="div-password">

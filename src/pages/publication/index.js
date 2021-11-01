@@ -1,5 +1,5 @@
 import { navigation } from '../../routes/navigation.js';
-import { addPublication } from '../../services/index.js';
+import { addPublication, signOutApp } from '../../services/index.js';
 
 export const Publication = () => {
   const rootElement = document.createElement('div');
@@ -13,7 +13,7 @@ export const Publication = () => {
       <div class='header-feed'>
       <h1 class="title-website"> The Office Network </h1>
     </div>
-    <img class= "img-logo-page" src="../../img/fun.png">
+    <img class= "img-logo-page" src="../../img/logo-rede-social.png">
       <div class= "container-publication">
         <h1 class="title-text">Compartilhe aqui suas experiencias com outros colaboradores</h1>
 
@@ -27,17 +27,23 @@ export const Publication = () => {
         
       </div>
       <section class='icon'>
-        <img class='iconHome' src='img/icon_home_feed.png'>
-        <img class='iconPlus' src='img/icon_plus_feed.png'>
-        <img class='icon-profile-route' src='img/perfil_feed.png'>
+        <i class="fas fa-home"></i>
+        <i class="fas fa-plus"></i>
+        <i id="sign-out" class="fas fa-sign-out-alt"></i> 
       </section>
        
        `;
+  const signOutPage = rootElement.querySelector('.fa-sign-out-alt');
   const postsText = rootElement.querySelector('.new-publication');
   const publicationButton = rootElement.querySelector('.confirm-publication');
   const btnClear = rootElement.querySelector('.clear-text');
-  const backTimeLine = rootElement.querySelector('.iconHome');
-  const goToProfile = rootElement.querySelector('.icon-profile-route');
+  const backTimeLine = rootElement.querySelector('.fa-home');
+
+  signOutPage.addEventListener('click', (e) => {
+    e.preventDefault();
+    signOutApp()
+    .then(() => navigation('/'));
+  });
 
   backTimeLine.addEventListener('click', () => {
     navigation('/feed');
@@ -46,10 +52,6 @@ export const Publication = () => {
   btnClear.addEventListener('click', () => {
     postsText.value = '';
     postsText.style.color = 'white';
-  });
-
-  goToProfile.addEventListener('click', () => {
-    navigation('/perfil');
   });
 
   publicationButton.addEventListener('click', (e) => {

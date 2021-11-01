@@ -67,6 +67,7 @@ export const Login = () => {
   btnEnter.addEventListener('click', (e) => {
     e.preventDefault();
     const emailUser = emailLogin.value;
+    console.log(emailUser)
     const password = passwordLogin.value;
 
     if (emailUser === '' || password === '') {
@@ -74,12 +75,13 @@ export const Login = () => {
     } 
     else if (!/\S+@\S+\.\S+/.test(emailUser)){
       msgErro.innerHTML = 'Formato de e-mail incorreto'
+      
     }
     else if (password.length < 6){
       msgErro.innerHTML = 'A senha deve conter no mínimo 6 caracteres'
     }
     else {
-      existingUser(email.value, passwordLogin.value);
+      existingUser(emailUser, password);
     }
   });
 

@@ -8,7 +8,7 @@
     width:100%; 
     height: 8%;
     left: 0%;
-    background: #F27127;
+    background: #F26E50;
     color: #FFFFFF;
 
 } 
@@ -21,6 +21,7 @@
     color:#F27127;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .container-publication{
     display: flex;
     flex-direction: column;
@@ -52,11 +53,13 @@
     align-items: center;
     background-image: 
     linear-gradient(
-        #4F238C,
-        #6D3F73,
-        #6D3F73,
-        #F27127
-           
+          
+        #F27127,
+        #F27127,
+        #bd6450,
+        #bd6450,
+        
+        #4F238C      
     );
     border: none;
     margin: 2%;
