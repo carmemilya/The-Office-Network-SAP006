@@ -1,9 +1,3 @@
-/* .tamplete-feed-profile{
-    display:flex;
-    flex-direction: row;
-    justify-content: end;
-} */
-
 .header-feed{
     display: flex;
     justify-content: space-between;
@@ -22,8 +16,6 @@
 .title-website-feed{
     display: none;
 }
-
-
 
 .showPublication {
     display: flex; 
@@ -217,7 +209,7 @@
 }
 
 .name-input {
-    font-size: 80%;
+    font-size: 120%;
     width: 35vh;
     margin-left:2%;
     color: #ffff;
