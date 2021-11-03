@@ -1,7 +1,4 @@
 {
-  "database": {
-    "rules": "public directory"
-  },
   "hosting": {
     "public": "src",
     "ignore": [
