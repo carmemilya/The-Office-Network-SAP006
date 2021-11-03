@@ -69,20 +69,24 @@ export const Login = () => {
     const emailUser = emailLogin.value;
     console.log(emailUser)
     const password = passwordLogin.value;
+    let msgError = false;
 
     if (emailUser === '' || password === '') {
       msgErro.innerHTML = 'Todos os campos devem ser preenchidos';
+      msgError = true;
     } 
-    else if (!/\S+@\S+\.\S+/.test(emailUser)){
+    if (!/\S+@\S+\.\S+/.test(emailUser)){
       msgErro.innerHTML = 'Formato de e-mail incorreto'
-      
+      msgError = true;
     }
-    else if (password.length < 6){
+    if (password.length < 6){
       msgErro.innerHTML = 'A senha deve conter no mínimo 6 caracteres'
+      msgError = true;
     }
     else {
       existingUser(emailUser, password);
     }
+    return msgError
   });
 
   googleBtn.addEventListener('click', (e) => {

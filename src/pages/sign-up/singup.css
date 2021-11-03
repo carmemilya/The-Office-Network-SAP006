@@ -9,6 +9,10 @@
    align-items: center;  
 }
 
+.img-logo {
+    width: 60%;
+}
+
 .container-register {  
     margin: 15vh;
 } 
@@ -25,8 +29,8 @@
 .title-register {
     font-family: 'Signika Negative', sans-serif;
     color:#FF7C50;
-    margin-bottom: 10%;
-    font-size: 250%;
+    margin-bottom: 5%;
+    font-size:100%;
     text-align: center;
 }
 
@@ -61,7 +65,8 @@
 }
 
 .password-register, .password-repeat {
-    width: 30vw;
+    width: 15vw;
+    background-color: #FFFFFF;
     border: 0;
     border-radius: 5px;
     outline: 0;
@@ -96,12 +101,13 @@
     width: 13vw;
     height: 5vh;
     border-radius: 10px;
+    border: 1px solid #FF7C50;
     font-family: 'Signika Negative', sans-serif;
-    font-size: 120%;
+    font-size: 80%;
     color: #FFFFFF;
     cursor: pointer;
     display: block;
-    margin: 10% 0 2% 0;
+   
 }
 
 .btn-register:hover{
@@ -121,7 +127,7 @@
     color:#FFF4EE;
     background-repeat: no-repeat;
     background-size: 90%;
-    width: 35%;
+    width: 50%;
     margin: 1%;
     border: 0;
     background-color: #FFFFFF;
@@ -130,11 +136,12 @@
 .page-login{
     font-family: 'Signika Negative', sans-serif;
     color: #F27127;  
+    font-size: 60%;
 }
 
 .click-page-login {
     font-family: 'Signika Negative', sans-serif;
-    font-size: 135%;
+    font-size: 80%;
     color: #F27127;
     text-decoration: underline;
     border: none;
@@ -146,8 +153,11 @@
     color: #643969; 
 }
 
+.msg-erro-email, .msg-erro-name {
+    font-size: 40%;
+}
 
-@media (min-width: 320px) and (max-width: 768px)  {  
+@media (min-width: 320px) and (max-width: 414px)  {  
     .img-logo, .title-register {
         display: none;
     }

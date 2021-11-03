@@ -45,8 +45,8 @@ export const signOutApp = () => {
 };
 
 export const getCurrentUser = () => {
-  const usuarioExistente = firebase.auth().currentUser;
-  return usuarioExistente;
+ return firebase.auth().currentUser;
+ 
 };
 
 // Adicionar publicação
