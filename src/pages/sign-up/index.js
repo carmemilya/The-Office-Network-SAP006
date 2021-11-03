@@ -29,11 +29,11 @@ export const Register = () => {
               <label class="msg-erro-email"></label>
             
               <div class="div-password">
-                <input placeholder="Digite uma senha 6 digitos" class='password-register' type="password" >
+                <input placeholder="Digite uma senha" class='password-register' type="password" >
                 <button type="button" class="btn-eye-register"><img class='eye-password-register' src="../../img/eye.svg"> </img></button>
               </div>
               <div class="div-password-repeat">
-                <input class="password-repeat" type="password" placeholder="Digite uma senha 6 digitos">
+                <input class="password-repeat" type="password" placeholder="Digite uma senha">
                 <button type="button" class="btn-eye-register"><img class='eye-password-repeat' src="../../img/eye.svg"></img></button>
               </div>
             </section>

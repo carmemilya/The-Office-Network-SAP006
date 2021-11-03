@@ -32,8 +32,8 @@ export const Feed = () => {
       <label class="label label-profile" for="chk" aria-hidden="true">Perfil</label>
 
       <div class="photo-profile">
-      ${userPhoto ? `<img class="icon-profile" src= '${user}>'` : `<img class="icon-profile" src= '${provisionalPhoto}'> `}
-          <input class="inputPhoto" type="file">
+        ${userPhoto ? `<img class="icon-profile" src='${user}'>` : `<img class="icon-profile" src= '${provisionalPhoto}'>`}
+        <input class="inputPhoto" type="file">
        
       </div>
       <fieldset class="form-login">
@@ -124,7 +124,7 @@ export const Feed = () => {
           </div>
           <div class="modal-btn">
             <button type="button" data-item="cancel" class="cancel-btn">Cancel</button>
-            <button type="button" data-item="confirm" "class="confirm-btn">Delete</button>
+            <button type="button" data-item="confirm" class="confirm-btn">Delete</button>
           </div>
           <div class="modal-footer"></div>
         

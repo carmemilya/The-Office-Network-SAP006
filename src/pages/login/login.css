@@ -1,18 +1,8 @@
-*{
-    margin: 0;
-    border: none;
-    box-sizing: border-box; 
-}
-
 .general-style{
     background: #FFF4EE;
 }
 
-.colors, .purple, .orange{
-    list-style-type: none;
-}
-
-.title{
+.colors, .purple, .orange, .title{
     display: none;
 }
 
@@ -20,22 +10,36 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;   
+    align-items: center;
+    align-content: center;
 } 
+
+.img-logo-login {
+    width: 45%;
+    
+}
 
 .container-img-forms {
     display: flex;
     align-items: center; 
+    justify-content: center;
+    margin-inline-start: 0
 }
-
-.container-forms {
-   margin: 15vh;
-}
+ 
+ .container-forms {
+   margin: 10vh 15vh 5vh 0; 
+   width: 30%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+} 
 
 .inputs{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10%;
+    padding: 5%;
     width: 25vw;
     height: 65vh;
     border:solid #F27127;
@@ -44,8 +48,8 @@
 .title-login{
     font-family: 'Signika Negative', sans-serif;
     color:#FF7C50;
-    margin-bottom: 10%;
-    font-size: 250%;
+    margin-bottom: 5%;
+    font-size: 120%;
     text-align: center;
 }
 
@@ -72,7 +76,7 @@
 .container-password-login{
     display: flex;
     justify-content: space-between;
-    width: 20vw;
+    width: 20.5vw;
     height: 5vh; 
     margin: 4% 0 4% 0;
     border-radius: 5px;
@@ -81,7 +85,7 @@
 }
 
 .password-login {
-    width: 30vw;
+    width: 15vw;
     border: 0;
     border-radius: 5px;
     outline: 0;   
@@ -94,8 +98,8 @@
 .btn-eye-login{
     border: none;
     background: #FFFFFF;
-    width: 10vw;
-    border-radius: 5px;
+    width: 5vw;
+    border-radius: 0 5px 5px 0;
 }
 
 .img-eye-login {
@@ -103,14 +107,14 @@
     color:#FFF4EE;
     background-repeat: no-repeat;
     background-size: 90%;
-    width: 35%;
+    width: 45%;
     margin: 1%;
     border: 0;
     background-color: #FFFFFF;
 }
 
 .erro-login {
-    font-size: 20px;
+    font-size: 50%;
     color: #FF7C50;
     text-align: center;
 }
@@ -120,12 +124,13 @@
     width: 13vw;
     height: 5vh;
     border-radius: 10px;
+    border: 1px solid #FF7C50;
     font-family: 'Signika Negative', sans-serif;
-    font-size: 120%;
+    font-size: 60%;
     color: #FFFFFF;
     cursor: pointer;
     display: block;
-    margin: 5%;
+    margin-top: 10% ;
 }
 
 .btn-enter:hover {
@@ -133,7 +138,7 @@
 }
 
 .another-option {
-   font-size: 18px;
+   font-size: 10px;
    display: flex;
    justify-content: center;
 }
@@ -143,7 +148,7 @@
     height: 5vh;
     font-family: 'Signika Negative', sans-serif;
     color: #FF7C50;
-    font-size: 100%;
+    font-size: 50%;
     background: #ffffff7a;
     border: 1px solid #FF7C50;
     cursor: pointer;
@@ -152,7 +157,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    margin: 2%;
+    /* margin: 2%; */
 }
 
 .btn-google:hover{
@@ -166,12 +171,13 @@
 
 .register-msg {
     font-family: 'Signika Negative', sans-serif;
-    color: #F27127;   
+    color: #F27127;  
+    font-size:50% 
 }
 
 .page-register {   
     font-family: 'Signika Negative', sans-serif;
-    font-size: 135%;
+    font-size: 100%;
     color: #F27127;
     text-decoration: underline;
     border: none;
@@ -189,15 +195,16 @@
     justify-content: center;
     position: fixed;
     bottom: 0;
+    right: 0;
     width: 100%;
     height: 5%;
     background: #161616;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 20px;
+    font-size: 70%;
     color: #FFFFFF;
 }
 
-@media (min-width: 320px) and (max-width: 768px)  {  
+/* @media (min-width: 320px) and (max-width: 768px)  {  
 
     .container-login {
         display: flex; 
@@ -315,4 +322,4 @@
     .footer{
         font-size: 80%; 
     }
-}
+} */

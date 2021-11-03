@@ -4,14 +4,12 @@ import { Feed } from '../pages/feed/index.js';
 import { Publication } from '../pages/publication/index.js';
 import { userConected } from '../services/index.js';
 import { navigation } from './navigation.js';
-import { Profile } from '../pages/profile/profile.js';
 
 export const routes = {
   '/': Login,
   '/cadastro': Register,
   '/feed': Feed,
-  '/add-publication': Publication,
-  '/perfil': Profile,
+  '/add-publication': Publication
 };
 
 window.addEventListener('load', (e) => {
