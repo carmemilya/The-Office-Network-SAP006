@@ -1,4 +1,4 @@
-import { signInGoogle, existingUser } from '../../services/index.js';
+import { signInGoogle, existingUser} from '../../services/index.js';
 import { navigation } from '../../routes/navigation.js';
 
 export const Login = () => {
@@ -79,12 +79,17 @@ export const Login = () => {
       msgErro.innerHTML = 'Formato de e-mail incorreto'
       msgError = true;
     }
+    // if (emailUser !== ) {
+    //   console.log('oi')
+    //   msgErro.innerHTML = 'e-mail não cadastrado'
+    //   msgError = true;
+    // }
     if (password.length < 6){
       msgErro.innerHTML = 'A senha deve conter no mínimo 6 caracteres'
       msgError = true;
     }
     else {
-      existingUser(emailUser, password);
+      existingUser(emailUser, password, msgErro);
     }
     return msgError
   });

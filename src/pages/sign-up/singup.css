@@ -10,7 +10,7 @@
 }
 
 .img-logo {
-    width: 60%;
+    width: 80%;
 }
 
 .container-register {  
@@ -30,7 +30,7 @@
     font-family: 'Signika Negative', sans-serif;
     color:#FF7C50;
     margin-bottom: 5%;
-    font-size:100%;
+    font-size:180%;
     text-align: center;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .password-register, .password-repeat {
-    width: 15vw;
+    width: 20vw;
     background-color: #FFFFFF;
     border: 0;
     border-radius: 5px;
@@ -84,7 +84,7 @@
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);  
 }
 
-.input-form::placeholder, 
+.input-name-register::placeholder, .input-form::placeholder, 
 .password-register::placeholder, 
 .password-repeat::placeholder {
     color: #353434;
@@ -103,7 +103,7 @@
     border-radius: 10px;
     border: 1px solid #FF7C50;
     font-family: 'Signika Negative', sans-serif;
-    font-size: 80%;
+    font-size: 120%;
     color: #FFFFFF;
     cursor: pointer;
     display: block;
@@ -127,7 +127,7 @@
     color:#FFF4EE;
     background-repeat: no-repeat;
     background-size: 90%;
-    width: 50%;
+    width: 30%;
     margin: 1%;
     border: 0;
     background-color: #FFFFFF;
@@ -136,12 +136,12 @@
 .page-login{
     font-family: 'Signika Negative', sans-serif;
     color: #F27127;  
-    font-size: 60%;
+    font-size: 100%;
 }
 
 .click-page-login {
     font-family: 'Signika Negative', sans-serif;
-    font-size: 80%;
+    font-size: 100%;
     color: #F27127;
     text-decoration: underline;
     border: none;
@@ -154,7 +154,7 @@
 }
 
 .msg-erro-email, .msg-erro-name {
-    font-size: 40%;
+    font-size: 90%;
 }
 
 @media (min-width: 320px) and (max-width: 414px)  {  
